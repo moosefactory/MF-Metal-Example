@@ -42,13 +42,14 @@ class ParticleLayer: CALayer {
     
     override func draw(in ctx: CGContext) {
         let c = center
-        let particleRect = CGRect(x: c.x - ray, y: c.y - ray, width: ray * 2, height: ray * 2)
-        ctx.addEllipse(in: particleRect)
-        ctx.setFillColor(Color.black.cgColor)
         ctx.setStrokeColor(Color.white.cgColor)
+        
+        //        let particleRect = CGRect(x: c.x - ray, y: c.y - ray, width: ray * 2, height: ray * 2)
+        //        ctx.addEllipse(in: particleRect)
+        //        ctx.setFillColor(Color.black.cgColor)
+        //        ctx.setLineWidth(1)
+        //        ctx.drawPath(using: .fillStroke)
         ctx.setLineWidth(1)
-        ctx.drawPath(using: .fillStroke)
-        ctx.setLineWidth(2)
         let tipx = min(100,sqrt(abs(particle.gravityVector.x) * 100000)) * (particle.gravityVector.x > 0 ? 1 : -1)
         let tipy = -min(100,sqrt(abs(particle.gravityVector.y) * 100000)) * (particle.gravityVector.y > 0 ? 1 : -1)
         let tip = CGPoint(x: CGFloat(tipx), y: CGFloat(tipy))
@@ -60,7 +61,7 @@ class ParticleLayer: CALayer {
 
 class AttractorLayer: CALayer {
     
-    var ray: CGFloat = 2
+    var ray: CGFloat = 5
     var superFrame: CGRect = .zero
     var attractor: Model.Attractor
     
@@ -140,7 +141,7 @@ class ParticlesLayer: CALayer {
         }
         setNeedsDisplay()
     }
-
+    
     func update() {
         removeAllSublayers()
         rebuildParticleLayers()

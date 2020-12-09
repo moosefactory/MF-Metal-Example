@@ -16,6 +16,8 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
         case showHideMetalView = 100
         case showHideAttractors = 101
         case randomize = 102
+        case showHideControls = 103
+        case lockOnGrid = 110
     }
     
     enum SliderAction: Int {
@@ -34,7 +36,9 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     @IBOutlet var minDistanceSlider: NSSlider!
     @IBOutlet var gExponentSlider: NSSlider!
     @IBOutlet var gFactorSlider: NSSlider!
-    
+
+    @IBOutlet var controlsView: NSStackView!
+
     var mtkView: GraviFieldsView!
     var particlesView: ParticlesView!
 
@@ -74,8 +78,7 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
         //mtkView.delegate = self // Not working... Wonder why
         mtkView.renderedClosure = { fraeIndex in
             DispatchQueue.main.async {
-                self.particlesView.update()
-                self.updateFPS()
+                self.tick()
             }
         }
     }
@@ -94,10 +97,50 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
         case .showHideMetalView:
             mtkView.isHidden = !mtkView.isHidden
         case .showHideAttractors:
+            particlesView.isHidden = !particlesView.isHidden
             break
         case .randomize:
             randomize()
+        case .showHideControls:
+            controlsView.isHidden = !controlsView.isHidden
+        case .lockOnGrid:
+            break
         }
+        
+        // Since we hide the metal view, the rendered closure won't be called anymore, so we start our timer to continue update particles if needed.
+        if mtkView.isHidden && !particlesView.isHidden {
+            startTimer()
+        }
+        else {
+            stopTimer()
+        }
+    }
+    
+    var timer: Timer?
+    
+    func startTimer() {
+        guard timer == nil else { return }
+        timer = Timer.scheduledTimer(timeInterval: 1 / 60, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    @objc func tick() {
+        if !particlesView.isHidden {
+            
+            // If metal view is  hidden, we update position here
+            if mtkView.isHidden {
+                self.worldBuffers.frameIndex += 1
+                self.worldBuffers.computeAttractorsPosition()
+                self.worldBuffers.computeParticlesPosition()
+            }
+
+            self.particlesView.update()
+        }
+        self.updateFPS()
     }
     
     @IBAction func sliderChanged(_ sender: NSSlider) {
