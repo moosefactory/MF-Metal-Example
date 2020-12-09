@@ -1,0 +1,6 @@
+framework module MoofFoundation {
+  umbrella header "MoofFoundation-macOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

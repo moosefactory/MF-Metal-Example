@@ -1,0 +1,6 @@
+framework module Pods_MF_Metal_iOS {
+  umbrella header "Pods-MF Metal iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

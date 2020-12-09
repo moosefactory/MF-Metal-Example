@@ -1,0 +1,27 @@
+{
+  "name": "MoofFoundation",
+  "version": "1.0.0",
+  "summary": "MoofFoundation is a cross-platofrm (iOS/MacOS) Utility Library.",
+  "description": "MoofFoundation is a cross-platofrm (iOS/MacOS) Utility Library.\nIt includes\n- Convenient extras ( categories ) on some foundation classes\n- Date Utils\n- Formatters\n- System functions ( model, ios version test, …)",
+  "homepage": "https://gitlab.com/MooseFactoryFrameworks/MoofFoundation",
+  "license": "MIT",
+  "authors": {
+    "Tristan Leblanc": "tristan@moosefactory.eu"
+  },
+  "source": {
+    "git": "git@github.com:moosefactory/MoofFoundation.git",
+    "tag": "1.0.0"
+  },
+  "social_media_url": "https://twitter.com/moosefactory_eu",
+  "platforms": {
+    "ios": "13.5",
+    "osx": "10.15",
+    "tvos": "14.0",
+    "watchos": "7.0"
+  },
+  "requires_arc": true,
+  "source_files": [
+    "MoofFoundation/MoofFoundation.h",
+    "MoofFoundation/Sources/**/*.*"
+  ]
+}

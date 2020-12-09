@@ -1,0 +1,680 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		725E5D5A8E86D78725B048EA /* Pods_MF_Metal_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99386E52562299FAA575C4D1 /* Pods_MF_Metal_Example.framework */; };
+		BC6D96EC257FE33100086A5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D96EB257FE33100086A5C /* AppDelegate.swift */; };
+		BC6D96F0257FE33200086A5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6D96EF257FE33200086A5C /* Assets.xcassets */; };
+		BC6D9718257FE38400086A5C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = BC6D9717257FE38300086A5C /* Podfile */; };
+		BC6D9721257FE46B00086A5C /* Model+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971A257FE46B00086A5C /* Model+GPU.metal */; };
+		BC6D9722257FE46B00086A5C /* Calculator+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971B257FE46B00086A5C /* Calculator+GPU.metal */; };
+		BC6D9724257FE46B00086A5C /* Model+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971D257FE46B00086A5C /* Model+CPU.swift */; };
+		BC6D9725257FE46B00086A5C /* Calculator+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971E257FE46B00086A5C /* Calculator+CPU.swift */; };
+		BC6D9726257FE46B00086A5C /* MacOSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971F257FE46B00086A5C /* MacOSViewController.swift */; };
+		BC6D9727257FE46B00086A5C /* GraviFieldsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D9720257FE46B00086A5C /* GraviFieldsView.swift */; };
+		BC6D9729257FE49800086A5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6D9728257FE49800086A5C /* Main.storyboard */; };
+		BC6D973425800F7D00086A5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D973325800F7D00086A5C /* AppDelegate.swift */; };
+		BC6D973625800F7D00086A5C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D973525800F7D00086A5C /* SceneDelegate.swift */; };
+		BC6D973825800F7D00086A5C /* iOSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D973725800F7D00086A5C /* iOSViewController.swift */; };
+		BC6D973B25800F7D00086A5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6D973925800F7D00086A5C /* Main.storyboard */; };
+		BC6D973D25800F7E00086A5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6D973C25800F7E00086A5C /* Assets.xcassets */; };
+		BC6D974025800F7E00086A5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6D973E25800F7E00086A5C /* LaunchScreen.storyboard */; };
+		BC6D976125800FAB00086A5C /* GraviFieldsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D9720257FE46B00086A5C /* GraviFieldsView.swift */; };
+		BC6D976325800FB600086A5C /* Calculator+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971B257FE46B00086A5C /* Calculator+GPU.metal */; };
+		BC6D976425800FB600086A5C /* Model+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971D257FE46B00086A5C /* Model+CPU.swift */; };
+		BC6D976525800FB600086A5C /* Model+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971A257FE46B00086A5C /* Model+GPU.metal */; };
+		BC6D976625800FB600086A5C /* Calculator+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971E257FE46B00086A5C /* Calculator+CPU.swift */; };
+		BCF4D34A2580195D0050427B /* GraviFieldsView+World.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF4D3492580195C0050427B /* GraviFieldsView+World.swift */; };
+		BCF4D34B2580195D0050427B /* GraviFieldsView+World.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF4D3492580195C0050427B /* GraviFieldsView+World.swift */; };
+		BCF4D34E25803BA50050427B /* HowTo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF4D34D25803BA40050427B /* HowTo.png */; };
+		BCF4D35025804D470050427B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BCF4D34F25804D470050427B /* README.md */; };
+		D850EE03D87C5E99E153522A /* Pods_MF_Metal_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7365C4B7B0D8896A55A784 /* Pods_MF_Metal_iOS.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0A56AE1EEFF5478B200569BD /* Pods-MF Metal Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MF Metal Example.debug.xcconfig"; path = "Target Support Files/Pods-MF Metal Example/Pods-MF Metal Example.debug.xcconfig"; sourceTree = "<group>"; };
+		233A73E6325286AEBBC9CA8D /* Pods-MF Metal Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MF Metal Example.release.xcconfig"; path = "Target Support Files/Pods-MF Metal Example/Pods-MF Metal Example.release.xcconfig"; sourceTree = "<group>"; };
+		2F3C7E3C46D16113133FB0A2 /* Pods_MF_Metal_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MF_Metal_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E7365C4B7B0D8896A55A784 /* Pods_MF_Metal_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MF_Metal_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DC18DEEACF26BB600E17384 /* Pods-MF Metal ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MF Metal ExampleTests.release.xcconfig"; path = "Target Support Files/Pods-MF Metal ExampleTests/Pods-MF Metal ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		91F07157439F2F37D03D96B0 /* Pods-MF Metal Example-MF Metal ExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MF Metal Example-MF Metal ExampleUITests.release.xcconfig"; path = "Target Support Files/Pods-MF Metal Example-MF Metal ExampleUITests/Pods-MF Metal Example-MF Metal ExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		99386E52562299FAA575C4D1 /* Pods_MF_Metal_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MF_Metal_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8D774E98C21C4AF88B1D2C0 /* Pods_MF_Metal_Example_MF_Metal_ExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MF_Metal_Example_MF_Metal_ExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2CA5854CFEAA906F1FD71AC /* Pods-MF Metal ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MF Metal ExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-MF Metal ExampleTests/Pods-MF Metal ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BC6D96E8257FE33100086A5C /* MF Metal Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MF Metal Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC6D96EB257FE33100086A5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BC6D96EF257FE33200086A5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BC6D96F4257FE33200086A5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC6D96F5257FE33200086A5C /* MF_Metal_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MF_Metal_Example.entitlements; sourceTree = "<group>"; };
+		BC6D9717257FE38300086A5C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BC6D971A257FE46B00086A5C /* Model+GPU.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = "Model+GPU.metal"; sourceTree = "<group>"; };
+		BC6D971B257FE46B00086A5C /* Calculator+GPU.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = "Calculator+GPU.metal"; sourceTree = "<group>"; };
+		BC6D971D257FE46B00086A5C /* Model+CPU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+CPU.swift"; sourceTree = "<group>"; };
+		BC6D971E257FE46B00086A5C /* Calculator+CPU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Calculator+CPU.swift"; sourceTree = "<group>"; };
+		BC6D971F257FE46B00086A5C /* MacOSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacOSViewController.swift; sourceTree = "<group>"; };
+		BC6D9720257FE46B00086A5C /* GraviFieldsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraviFieldsView.swift; sourceTree = "<group>"; };
+		BC6D9728257FE49800086A5C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BC6D973125800F7D00086A5C /* MF Metal iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MF Metal iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC6D973325800F7D00086A5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BC6D973525800F7D00086A5C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BC6D973725800F7D00086A5C /* iOSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSViewController.swift; sourceTree = "<group>"; };
+		BC6D973A25800F7D00086A5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BC6D973C25800F7E00086A5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BC6D973F25800F7E00086A5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BC6D974125800F7E00086A5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCF4D3492580195C0050427B /* GraviFieldsView+World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GraviFieldsView+World.swift"; sourceTree = "<group>"; };
+		BCF4D34D25803BA40050427B /* HowTo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HowTo.png; sourceTree = "<group>"; };
+		BCF4D34F25804D470050427B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BFB6DD8D9781EA899D91EB17 /* Pods-MF Metal iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MF Metal iOS.release.xcconfig"; path = "Target Support Files/Pods-MF Metal iOS/Pods-MF Metal iOS.release.xcconfig"; sourceTree = "<group>"; };
+		CC83FCE6BDAA14209394366A /* Pods-MF Metal iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MF Metal iOS.debug.xcconfig"; path = "Target Support Files/Pods-MF Metal iOS/Pods-MF Metal iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		E1C4022B18F45C8859C21B76 /* Pods-MF Metal Example-MF Metal ExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MF Metal Example-MF Metal ExampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-MF Metal Example-MF Metal ExampleUITests/Pods-MF Metal Example-MF Metal ExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC6D96E5257FE33100086A5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				725E5D5A8E86D78725B048EA /* Pods_MF_Metal_Example.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC6D972E25800F7D00086A5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D850EE03D87C5E99E153522A /* Pods_MF_Metal_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04CB6849525C48E816D6585A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A56AE1EEFF5478B200569BD /* Pods-MF Metal Example.debug.xcconfig */,
+				233A73E6325286AEBBC9CA8D /* Pods-MF Metal Example.release.xcconfig */,
+				E1C4022B18F45C8859C21B76 /* Pods-MF Metal Example-MF Metal ExampleUITests.debug.xcconfig */,
+				91F07157439F2F37D03D96B0 /* Pods-MF Metal Example-MF Metal ExampleUITests.release.xcconfig */,
+				B2CA5854CFEAA906F1FD71AC /* Pods-MF Metal ExampleTests.debug.xcconfig */,
+				5DC18DEEACF26BB600E17384 /* Pods-MF Metal ExampleTests.release.xcconfig */,
+				CC83FCE6BDAA14209394366A /* Pods-MF Metal iOS.debug.xcconfig */,
+				BFB6DD8D9781EA899D91EB17 /* Pods-MF Metal iOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7AC8009004605D7FF5E1130B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				99386E52562299FAA575C4D1 /* Pods_MF_Metal_Example.framework */,
+				A8D774E98C21C4AF88B1D2C0 /* Pods_MF_Metal_Example_MF_Metal_ExampleUITests.framework */,
+				2F3C7E3C46D16113133FB0A2 /* Pods_MF_Metal_ExampleTests.framework */,
+				3E7365C4B7B0D8896A55A784 /* Pods_MF_Metal_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC6D96DF257FE33000086A5C = {
+			isa = PBXGroup;
+			children = (
+				BC6D9717257FE38300086A5C /* Podfile */,
+				BCF4D34F25804D470050427B /* README.md */,
+				BC6D9719257FE46B00086A5C /* Gravity Calculator */,
+				BC6D96EA257FE33100086A5C /* MF Metal Example */,
+				BC6D973225800F7D00086A5C /* MF Metal iOS */,
+				BC6D96E9257FE33100086A5C /* Products */,
+				04CB6849525C48E816D6585A /* Pods */,
+				7AC8009004605D7FF5E1130B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BC6D96E9257FE33100086A5C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC6D96E8257FE33100086A5C /* MF Metal Example.app */,
+				BC6D973125800F7D00086A5C /* MF Metal iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC6D96EA257FE33100086A5C /* MF Metal Example */ = {
+			isa = PBXGroup;
+			children = (
+				BC6D96EB257FE33100086A5C /* AppDelegate.swift */,
+				BC6D9728257FE49800086A5C /* Main.storyboard */,
+				BC6D971F257FE46B00086A5C /* MacOSViewController.swift */,
+				BC6D96EF257FE33200086A5C /* Assets.xcassets */,
+				BC6D96F4257FE33200086A5C /* Info.plist */,
+				BC6D96F5257FE33200086A5C /* MF_Metal_Example.entitlements */,
+			);
+			path = "MF Metal Example";
+			sourceTree = "<group>";
+		};
+		BC6D9719257FE46B00086A5C /* Gravity Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				BC6D9720257FE46B00086A5C /* GraviFieldsView.swift */,
+				BCF4D3492580195C0050427B /* GraviFieldsView+World.swift */,
+				BC6D972C257FF9D900086A5C /* Model */,
+				BCF4D34C258031970050427B /* Calculator */,
+			);
+			path = "Gravity Calculator";
+			sourceTree = "<group>";
+		};
+		BC6D972C257FF9D900086A5C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BC6D971A257FE46B00086A5C /* Model+GPU.metal */,
+				BC6D971D257FE46B00086A5C /* Model+CPU.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BC6D973225800F7D00086A5C /* MF Metal iOS */ = {
+			isa = PBXGroup;
+			children = (
+				BCF4D34D25803BA40050427B /* HowTo.png */,
+				BC6D973325800F7D00086A5C /* AppDelegate.swift */,
+				BC6D973525800F7D00086A5C /* SceneDelegate.swift */,
+				BC6D973725800F7D00086A5C /* iOSViewController.swift */,
+				BC6D973925800F7D00086A5C /* Main.storyboard */,
+				BC6D973C25800F7E00086A5C /* Assets.xcassets */,
+				BC6D973E25800F7E00086A5C /* LaunchScreen.storyboard */,
+				BC6D974125800F7E00086A5C /* Info.plist */,
+			);
+			path = "MF Metal iOS";
+			sourceTree = "<group>";
+		};
+		BCF4D34C258031970050427B /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				BC6D971B257FE46B00086A5C /* Calculator+GPU.metal */,
+				BC6D971E257FE46B00086A5C /* Calculator+CPU.swift */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC6D96E7257FE33100086A5C /* MF Metal Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC6D970E257FE33300086A5C /* Build configuration list for PBXNativeTarget "MF Metal Example" */;
+			buildPhases = (
+				73733DE5D11C61904D69CBA8 /* [CP] Check Pods Manifest.lock */,
+				BC6D96E4257FE33100086A5C /* Sources */,
+				BC6D96E5257FE33100086A5C /* Frameworks */,
+				BC6D96E6257FE33100086A5C /* Resources */,
+				05327FCBCC6070F87034E9E7 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MF Metal Example";
+			productName = "MF Metal Example";
+			productReference = BC6D96E8257FE33100086A5C /* MF Metal Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BC6D973025800F7D00086A5C /* MF Metal iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC6D975825800F7F00086A5C /* Build configuration list for PBXNativeTarget "MF Metal iOS" */;
+			buildPhases = (
+				355FFEEC63F48ABDE496DDB8 /* [CP] Check Pods Manifest.lock */,
+				BC6D972D25800F7D00086A5C /* Sources */,
+				BC6D972E25800F7D00086A5C /* Frameworks */,
+				BC6D972F25800F7D00086A5C /* Resources */,
+				5E03BEED4888BDCAFE45E774 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MF Metal iOS";
+			productName = "MF Metal iOS";
+			productReference = BC6D973125800F7D00086A5C /* MF Metal iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC6D96E0257FE33000086A5C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					BC6D96E7257FE33100086A5C = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					BC6D973025800F7D00086A5C = {
+						CreatedOnToolsVersion = 12.0;
+					};
+				};
+			};
+			buildConfigurationList = BC6D96E3257FE33000086A5C /* Build configuration list for PBXProject "MF Metal Example" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BC6D96DF257FE33000086A5C;
+			productRefGroup = BC6D96E9257FE33100086A5C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC6D96E7257FE33100086A5C /* MF Metal Example */,
+				BC6D973025800F7D00086A5C /* MF Metal iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC6D96E6257FE33100086A5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC6D9729257FE49800086A5C /* Main.storyboard in Resources */,
+				BC6D9718257FE38400086A5C /* Podfile in Resources */,
+				BCF4D35025804D470050427B /* README.md in Resources */,
+				BC6D96F0257FE33200086A5C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC6D972F25800F7D00086A5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC6D974025800F7E00086A5C /* LaunchScreen.storyboard in Resources */,
+				BCF4D34E25803BA50050427B /* HowTo.png in Resources */,
+				BC6D973D25800F7E00086A5C /* Assets.xcassets in Resources */,
+				BC6D973B25800F7D00086A5C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05327FCBCC6070F87034E9E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MF Metal Example/Pods-MF Metal Example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MF Metal Example/Pods-MF Metal Example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MF Metal Example/Pods-MF Metal Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		355FFEEC63F48ABDE496DDB8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MF Metal iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E03BEED4888BDCAFE45E774 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MF Metal iOS/Pods-MF Metal iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MF Metal iOS/Pods-MF Metal iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MF Metal iOS/Pods-MF Metal iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		73733DE5D11C61904D69CBA8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MF Metal Example-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC6D96E4257FE33100086A5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC6D9722257FE46B00086A5C /* Calculator+GPU.metal in Sources */,
+				BC6D9727257FE46B00086A5C /* GraviFieldsView.swift in Sources */,
+				BC6D96EC257FE33100086A5C /* AppDelegate.swift in Sources */,
+				BC6D9724257FE46B00086A5C /* Model+CPU.swift in Sources */,
+				BCF4D34A2580195D0050427B /* GraviFieldsView+World.swift in Sources */,
+				BC6D9726257FE46B00086A5C /* MacOSViewController.swift in Sources */,
+				BC6D9721257FE46B00086A5C /* Model+GPU.metal in Sources */,
+				BC6D9725257FE46B00086A5C /* Calculator+CPU.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC6D972D25800F7D00086A5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC6D973825800F7D00086A5C /* iOSViewController.swift in Sources */,
+				BC6D976125800FAB00086A5C /* GraviFieldsView.swift in Sources */,
+				BC6D976625800FB600086A5C /* Calculator+CPU.swift in Sources */,
+				BC6D973425800F7D00086A5C /* AppDelegate.swift in Sources */,
+				BC6D976325800FB600086A5C /* Calculator+GPU.metal in Sources */,
+				BC6D973625800F7D00086A5C /* SceneDelegate.swift in Sources */,
+				BC6D976525800FB600086A5C /* Model+GPU.metal in Sources */,
+				BCF4D34B2580195D0050427B /* GraviFieldsView+World.swift in Sources */,
+				BC6D976425800FB600086A5C /* Model+CPU.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BC6D973925800F7D00086A5C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC6D973A25800F7D00086A5C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BC6D973E25800F7E00086A5C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC6D973F25800F7E00086A5C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BC6D970C257FE33300086A5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BC6D970D257FE33300086A5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		BC6D970F257FE33300086A5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A56AE1EEFF5478B200569BD /* Pods-MF Metal Example.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "MF Metal Example/MF_Metal_Example.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = VMXFN634RR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "MF Metal Example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.moosefactory.MF-Metal-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		BC6D9710257FE33300086A5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 233A73E6325286AEBBC9CA8D /* Pods-MF Metal Example.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "MF Metal Example/MF_Metal_Example.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = VMXFN634RR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "MF Metal Example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.moosefactory.MF-Metal-Example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		BC6D975925800F7F00086A5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC83FCE6BDAA14209394366A /* Pods-MF Metal iOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VMXFN634RR;
+				INFOPLIST_FILE = "MF Metal iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.moosefactory.MF-Metal-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BC6D975A25800F7F00086A5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFB6DD8D9781EA899D91EB17 /* Pods-MF Metal iOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VMXFN634RR;
+				INFOPLIST_FILE = "MF Metal iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.moosefactory.MF-Metal-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC6D96E3257FE33000086A5C /* Build configuration list for PBXProject "MF Metal Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC6D970C257FE33300086A5C /* Debug */,
+				BC6D970D257FE33300086A5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC6D970E257FE33300086A5C /* Build configuration list for PBXNativeTarget "MF Metal Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC6D970F257FE33300086A5C /* Debug */,
+				BC6D9710257FE33300086A5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC6D975825800F7F00086A5C /* Build configuration list for PBXNativeTarget "MF Metal iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC6D975925800F7F00086A5C /* Debug */,
+				BC6D975A25800F7F00086A5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BC6D96E0257FE33000086A5C /* Project object */;
+}

@@ -1,0 +1,21 @@
+PODS:
+  - MoofFoundation (1.0.0)
+
+DEPENDENCIES:
+  - MoofFoundation (from `https://github.com/MooseFactory/MoofFoundation.git`)
+
+EXTERNAL SOURCES:
+  MoofFoundation:
+    :git: https://github.com/MooseFactory/MoofFoundation.git
+
+CHECKOUT OPTIONS:
+  MoofFoundation:
+    :commit: 2490d4d29f97c760b880949516af2527185c82e8
+    :git: https://github.com/MooseFactory/MoofFoundation.git
+
+SPEC CHECKSUMS:
+  MoofFoundation: 5d77652f8d4c9ee3e6f874ef97abbe3f7a2f1997
+
+PODFILE CHECKSUM: 1b8339596af18dd879dc267004a29de01da39171
+
+COCOAPODS: 1.9.3
