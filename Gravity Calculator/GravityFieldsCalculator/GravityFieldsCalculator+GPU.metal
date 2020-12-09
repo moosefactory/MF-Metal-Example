@@ -9,8 +9,16 @@
 #include <metal_stdlib>
 #include "../Model/Model+GPU.metal"
 
+using namespace metal;
+
+/// Compute gravity fields
+///
+/// The function takes the renderer pixels in main input
+/// It also takes attractors and environment variables as constant buffers
+///
+/// The gid ( x,y ) is the coordinate of the pixel
+
 kernel void computeGravityFields(texture2d<float, access::write> output [[texture(0)]],
-                                 device const Group* group,
                                  device const Attractor* a,
                                  device const Environment* settings,
                                  uint2 gid [[thread_position_in_grid]])

@@ -120,6 +120,13 @@ open class MetalCalculator {
     open func encodeCommand(commandBuffer: MTLCommandBuffer, rpd: MTLRenderPassDescriptor? = nil) throws { }
 }
 
+public extension MTLDevice {
+    
+    func tryToMakeBuffer(length: Int, options: MTLResourceOptions = .storageModeShared) -> MTLBuffer? {
+        guard length > 0 else { return nil }
+        return self.makeBuffer(length: length, options: options)
+    }
+}
 
 public extension CAMetalDrawable {
 

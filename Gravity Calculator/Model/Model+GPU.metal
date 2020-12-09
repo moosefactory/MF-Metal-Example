@@ -27,6 +27,17 @@ struct Attractor {
     float4 color;
 };
 
+struct Particle {
+    float2 location;
+    float mass;
+    float4 color;
+    
+    // Will be computed by Particles Calculator
+    
+    float2 gravityVector;
+    float2 gravityPolarVector;
+};
+
 struct Environment {
     // Render informations, frame index, drawable width and height.
     // We also pass the radius of the smallest circle containing the drawable area ( the distance corner to corner ).
@@ -40,6 +51,12 @@ struct Environment {
     // ( element offset / number of elements )
     uint numberOfAttractors;
     uint numberOfGroups;
+    
+    // This is used in particles calculator
+    //
+    // Particles are splitted in groups, each group will be dispatched in its own thread
+    uint numberOfParticles;
+    uint numberOfParticlesPerGroup;
     
     // Our environment settings
     float minimalDistance;

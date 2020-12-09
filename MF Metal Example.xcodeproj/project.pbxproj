@@ -12,9 +12,9 @@
 		BC6D96F0257FE33200086A5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6D96EF257FE33200086A5C /* Assets.xcassets */; };
 		BC6D9718257FE38400086A5C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = BC6D9717257FE38300086A5C /* Podfile */; };
 		BC6D9721257FE46B00086A5C /* Model+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971A257FE46B00086A5C /* Model+GPU.metal */; };
-		BC6D9722257FE46B00086A5C /* Calculator+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971B257FE46B00086A5C /* Calculator+GPU.metal */; };
+		BC6D9722257FE46B00086A5C /* GravityFieldsCalculator+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971B257FE46B00086A5C /* GravityFieldsCalculator+GPU.metal */; };
 		BC6D9724257FE46B00086A5C /* Model+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971D257FE46B00086A5C /* Model+CPU.swift */; };
-		BC6D9725257FE46B00086A5C /* Calculator+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971E257FE46B00086A5C /* Calculator+CPU.swift */; };
+		BC6D9725257FE46B00086A5C /* GravityFieldsCalculator+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971E257FE46B00086A5C /* GravityFieldsCalculator+CPU.swift */; };
 		BC6D9726257FE46B00086A5C /* MacOSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971F257FE46B00086A5C /* MacOSViewController.swift */; };
 		BC6D9727257FE46B00086A5C /* GraviFieldsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D9720257FE46B00086A5C /* GraviFieldsView.swift */; };
 		BC6D9729257FE49800086A5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6D9728257FE49800086A5C /* Main.storyboard */; };
@@ -25,12 +25,22 @@
 		BC6D973D25800F7E00086A5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6D973C25800F7E00086A5C /* Assets.xcassets */; };
 		BC6D974025800F7E00086A5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6D973E25800F7E00086A5C /* LaunchScreen.storyboard */; };
 		BC6D976125800FAB00086A5C /* GraviFieldsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D9720257FE46B00086A5C /* GraviFieldsView.swift */; };
-		BC6D976325800FB600086A5C /* Calculator+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971B257FE46B00086A5C /* Calculator+GPU.metal */; };
+		BC6D976325800FB600086A5C /* GravityFieldsCalculator+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971B257FE46B00086A5C /* GravityFieldsCalculator+GPU.metal */; };
 		BC6D976425800FB600086A5C /* Model+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971D257FE46B00086A5C /* Model+CPU.swift */; };
 		BC6D976525800FB600086A5C /* Model+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971A257FE46B00086A5C /* Model+GPU.metal */; };
-		BC6D976625800FB600086A5C /* Calculator+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971E257FE46B00086A5C /* Calculator+CPU.swift */; };
-		BCF4D34A2580195D0050427B /* GraviFieldsView+World.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF4D3492580195C0050427B /* GraviFieldsView+World.swift */; };
-		BCF4D34B2580195D0050427B /* GraviFieldsView+World.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF4D3492580195C0050427B /* GraviFieldsView+World.swift */; };
+		BC6D976625800FB600086A5C /* GravityFieldsCalculator+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D971E257FE46B00086A5C /* GravityFieldsCalculator+CPU.swift */; };
+		BC91B5902580DA6F00152D1C /* ParticlesCalculator+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91B58F2580DA6F00152D1C /* ParticlesCalculator+CPU.swift */; };
+		BC91B5912580DA6F00152D1C /* ParticlesCalculator+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91B58F2580DA6F00152D1C /* ParticlesCalculator+CPU.swift */; };
+		BC91B5932580DBBC00152D1C /* ParticlesCalculator+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC91B5922580DBBC00152D1C /* ParticlesCalculator+GPU.metal */; };
+		BC91B5942580DBBC00152D1C /* ParticlesCalculator+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BC91B5922580DBBC00152D1C /* ParticlesCalculator+GPU.metal */; };
+		BC91B5972580ED4D00152D1C /* ParticlesLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91B5962580ED4D00152D1C /* ParticlesLayer.swift */; };
+		BC91B5982580ED4D00152D1C /* ParticlesLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91B5962580ED4D00152D1C /* ParticlesLayer.swift */; };
+		BC91B59A2580F44A00152D1C /* World+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91B5992580F44900152D1C /* World+CPU.swift */; };
+		BC91B59B2580F44A00152D1C /* World+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC91B5992580F44900152D1C /* World+CPU.swift */; };
+		BCA00EED258101CE00163AC5 /* World+GPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA00EEC258101CE00163AC5 /* World+GPU.swift */; };
+		BCA00EEE258101CE00163AC5 /* World+GPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA00EEC258101CE00163AC5 /* World+GPU.swift */; };
+		BCA00EF0258118F900163AC5 /* ParticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA00EEF258118F900163AC5 /* ParticlesView.swift */; };
+		BCA00EF1258118F900163AC5 /* ParticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA00EEF258118F900163AC5 /* ParticlesView.swift */; };
 		BCF4D34E25803BA50050427B /* HowTo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF4D34D25803BA40050427B /* HowTo.png */; };
 		BCF4D35025804D470050427B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BCF4D34F25804D470050427B /* README.md */; };
 		D850EE03D87C5E99E153522A /* Pods_MF_Metal_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7365C4B7B0D8896A55A784 /* Pods_MF_Metal_iOS.framework */; };
@@ -53,9 +63,9 @@
 		BC6D96F5257FE33200086A5C /* MF_Metal_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MF_Metal_Example.entitlements; sourceTree = "<group>"; };
 		BC6D9717257FE38300086A5C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BC6D971A257FE46B00086A5C /* Model+GPU.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = "Model+GPU.metal"; sourceTree = "<group>"; };
-		BC6D971B257FE46B00086A5C /* Calculator+GPU.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = "Calculator+GPU.metal"; sourceTree = "<group>"; };
+		BC6D971B257FE46B00086A5C /* GravityFieldsCalculator+GPU.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = "GravityFieldsCalculator+GPU.metal"; sourceTree = "<group>"; };
 		BC6D971D257FE46B00086A5C /* Model+CPU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Model+CPU.swift"; sourceTree = "<group>"; };
-		BC6D971E257FE46B00086A5C /* Calculator+CPU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Calculator+CPU.swift"; sourceTree = "<group>"; };
+		BC6D971E257FE46B00086A5C /* GravityFieldsCalculator+CPU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GravityFieldsCalculator+CPU.swift"; sourceTree = "<group>"; };
 		BC6D971F257FE46B00086A5C /* MacOSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MacOSViewController.swift; sourceTree = "<group>"; };
 		BC6D9720257FE46B00086A5C /* GraviFieldsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraviFieldsView.swift; sourceTree = "<group>"; };
 		BC6D9728257FE49800086A5C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -67,7 +77,12 @@
 		BC6D973C25800F7E00086A5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC6D973F25800F7E00086A5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC6D974125800F7E00086A5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BCF4D3492580195C0050427B /* GraviFieldsView+World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GraviFieldsView+World.swift"; sourceTree = "<group>"; };
+		BC91B58F2580DA6F00152D1C /* ParticlesCalculator+CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticlesCalculator+CPU.swift"; sourceTree = "<group>"; };
+		BC91B5922580DBBC00152D1C /* ParticlesCalculator+GPU.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = "ParticlesCalculator+GPU.metal"; sourceTree = "<group>"; };
+		BC91B5962580ED4D00152D1C /* ParticlesLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticlesLayer.swift; sourceTree = "<group>"; };
+		BC91B5992580F44900152D1C /* World+CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "World+CPU.swift"; sourceTree = "<group>"; };
+		BCA00EEC258101CE00163AC5 /* World+GPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "World+GPU.swift"; sourceTree = "<group>"; };
+		BCA00EEF258118F900163AC5 /* ParticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticlesView.swift; sourceTree = "<group>"; };
 		BCF4D34D25803BA40050427B /* HowTo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HowTo.png; sourceTree = "<group>"; };
 		BCF4D34F25804D470050427B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BFB6DD8D9781EA899D91EB17 /* Pods-MF Metal iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MF Metal iOS.release.xcconfig"; path = "Target Support Files/Pods-MF Metal iOS/Pods-MF Metal iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,10 +175,9 @@
 		BC6D9719257FE46B00086A5C /* Gravity Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				BC6D9720257FE46B00086A5C /* GraviFieldsView.swift */,
-				BCF4D3492580195C0050427B /* GraviFieldsView+World.swift */,
+				BC91B5952580ED3500152D1C /* Views */,
 				BC6D972C257FF9D900086A5C /* Model */,
-				BCF4D34C258031970050427B /* Calculator */,
+				BCF4D34C258031970050427B /* GravityFieldsCalculator */,
 			);
 			path = "Gravity Calculator";
 			sourceTree = "<group>";
@@ -173,6 +187,8 @@
 			children = (
 				BC6D971A257FE46B00086A5C /* Model+GPU.metal */,
 				BC6D971D257FE46B00086A5C /* Model+CPU.swift */,
+				BC91B5992580F44900152D1C /* World+CPU.swift */,
+				BCA00EEC258101CE00163AC5 /* World+GPU.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -192,13 +208,25 @@
 			path = "MF Metal iOS";
 			sourceTree = "<group>";
 		};
-		BCF4D34C258031970050427B /* Calculator */ = {
+		BC91B5952580ED3500152D1C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BC6D971B257FE46B00086A5C /* Calculator+GPU.metal */,
-				BC6D971E257FE46B00086A5C /* Calculator+CPU.swift */,
+				BC6D9720257FE46B00086A5C /* GraviFieldsView.swift */,
+				BC91B5962580ED4D00152D1C /* ParticlesLayer.swift */,
+				BCA00EEF258118F900163AC5 /* ParticlesView.swift */,
 			);
-			path = Calculator;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BCF4D34C258031970050427B /* GravityFieldsCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				BC6D971B257FE46B00086A5C /* GravityFieldsCalculator+GPU.metal */,
+				BC6D971E257FE46B00086A5C /* GravityFieldsCalculator+CPU.swift */,
+				BC91B58F2580DA6F00152D1C /* ParticlesCalculator+CPU.swift */,
+				BC91B5922580DBBC00152D1C /* ParticlesCalculator+GPU.metal */,
+			);
+			path = GravityFieldsCalculator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,14 +417,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC6D9722257FE46B00086A5C /* Calculator+GPU.metal in Sources */,
+				BC6D9722257FE46B00086A5C /* GravityFieldsCalculator+GPU.metal in Sources */,
+				BC91B5902580DA6F00152D1C /* ParticlesCalculator+CPU.swift in Sources */,
 				BC6D9727257FE46B00086A5C /* GraviFieldsView.swift in Sources */,
+				BCA00EF0258118F900163AC5 /* ParticlesView.swift in Sources */,
 				BC6D96EC257FE33100086A5C /* AppDelegate.swift in Sources */,
 				BC6D9724257FE46B00086A5C /* Model+CPU.swift in Sources */,
-				BCF4D34A2580195D0050427B /* GraviFieldsView+World.swift in Sources */,
+				BC91B5932580DBBC00152D1C /* ParticlesCalculator+GPU.metal in Sources */,
+				BC91B59A2580F44A00152D1C /* World+CPU.swift in Sources */,
+				BC91B5972580ED4D00152D1C /* ParticlesLayer.swift in Sources */,
 				BC6D9726257FE46B00086A5C /* MacOSViewController.swift in Sources */,
+				BCA00EED258101CE00163AC5 /* World+GPU.swift in Sources */,
 				BC6D9721257FE46B00086A5C /* Model+GPU.metal in Sources */,
-				BC6D9725257FE46B00086A5C /* Calculator+CPU.swift in Sources */,
+				BC6D9725257FE46B00086A5C /* GravityFieldsCalculator+CPU.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,13 +438,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC6D973825800F7D00086A5C /* iOSViewController.swift in Sources */,
+				BCA00EEE258101CE00163AC5 /* World+GPU.swift in Sources */,
+				BCA00EF1258118F900163AC5 /* ParticlesView.swift in Sources */,
+				BC91B59B2580F44A00152D1C /* World+CPU.swift in Sources */,
 				BC6D976125800FAB00086A5C /* GraviFieldsView.swift in Sources */,
-				BC6D976625800FB600086A5C /* Calculator+CPU.swift in Sources */,
+				BC6D976625800FB600086A5C /* GravityFieldsCalculator+CPU.swift in Sources */,
 				BC6D973425800F7D00086A5C /* AppDelegate.swift in Sources */,
-				BC6D976325800FB600086A5C /* Calculator+GPU.metal in Sources */,
+				BC6D976325800FB600086A5C /* GravityFieldsCalculator+GPU.metal in Sources */,
 				BC6D973625800F7D00086A5C /* SceneDelegate.swift in Sources */,
+				BC91B5942580DBBC00152D1C /* ParticlesCalculator+GPU.metal in Sources */,
+				BC91B5982580ED4D00152D1C /* ParticlesLayer.swift in Sources */,
 				BC6D976525800FB600086A5C /* Model+GPU.metal in Sources */,
-				BCF4D34B2580195D0050427B /* GraviFieldsView+World.swift in Sources */,
+				BC91B5912580DA6F00152D1C /* ParticlesCalculator+CPU.swift in Sources */,
 				BC6D976425800FB600086A5C /* Model+CPU.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

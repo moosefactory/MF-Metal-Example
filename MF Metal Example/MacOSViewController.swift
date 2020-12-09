@@ -19,6 +19,9 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     }
     
     enum SliderAction: Int {
+        case setNumberOfAttractors = 100
+        case setNumberOfParticles = 101
+
         case setMinDistance = 200
         case setExponent = 201
         case setScale = 202
@@ -33,9 +36,19 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     @IBOutlet var gFactorSlider: NSSlider!
     
     var mtkView: GraviFieldsView!
-    
+    var particlesView: ParticlesView!
+
     var chrono = Date()
     var fps: Double = 0
+    
+    // The world, contains particles, attractors, and environment variables
+    var world = World()
+    
+    // The world adapted to GPU - it basically holds raw buffers with world element,
+    // and adds the notion of time and space ( Renderer size and frame index )
+    lazy var worldBuffers: WorldBuffers = {
+        return WorldBuffers(world: world, for: MTLCreateSystemDefaultDevice()!)
+    }()
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         // Will recreate the texture
@@ -48,16 +61,31 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        makeGravityFieldsView()
+        makeParticlesView()
+    }
+    
+    func makeGravityFieldsView() {
+        
         // Creates the Metal view under the controls box
-        mtkView = GraviFieldsView( frame: view.bounds, device: MTLCreateSystemDefaultDevice()!)
+        mtkView = GraviFieldsView( frame: view.bounds, world: worldBuffers)
         view.addSubview(mtkView, positioned: NSWindow.OrderingMode.below, relativeTo: controlBox)
-        view.layer?.backgroundColor = CGColor(red: 1, green: 0, blue: 0, alpha: 0.5)
         mtkView.autoresizingMask = [.width, .height]
         //mtkView.delegate = self // Not working... Wonder why
         mtkView.renderedClosure = { fraeIndex in
-            self.updateFPS()
+            DispatchQueue.main.async {
+                self.particlesView.update()
+                self.updateFPS()
+            }
         }
-        randomize()
+    }
+    
+    func makeParticlesView() {
+        // Creates the Particles view between the metal view and the controls box
+        particlesView = ParticlesView(frame: view.bounds, world: worldBuffers)
+        view.addSubview(particlesView, positioned: NSWindow.OrderingMode.below, relativeTo: controlBox)
+        view.layer?.backgroundColor = CGColor(red: 0.5, green: 0, blue: 0, alpha: 0.5)
+        particlesView.autoresizingMask = [.width, .height]
     }
     
     @IBAction func buttonTapped(_ sender: NSButton) {
@@ -75,26 +103,23 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     @IBAction func sliderChanged(_ sender: NSSlider) {
         guard let action = SliderAction(rawValue: sender.tag) else { return }
         switch action {
+        case .setNumberOfAttractors:
+            world.complexity = Int(sender.intValue)
+        case .setNumberOfParticles:
+            world.numberOfParticles = Int(sender.intValue)
         case .setExponent:
-            mtkView.calculator?.gravityExponent = CGFloat(sender.doubleValue / 10)
+            world.gravityExponent = CGFloat(sender.doubleValue / 10)
         case .setMinDistance:
-            mtkView.calculator?.minimalDistance = CGFloat(sender.doubleValue / 10)
+            world.minimalDistance = CGFloat(sender.doubleValue / 10)
         case .setScale:
-            mtkView.calculator?.gravityFactor = CGFloat(sender.doubleValue / 10)
+            world.gravityFactor = CGFloat(sender.doubleValue / 10)
         }
     }
 
     /// Recreate random attractors
     func randomize() {
-        mtkView.makeWorld()
-        updateSettingsFromSliders()
-        attractorsLabel.stringValue = "\(Int(mtkView.attractors.count))"
-    }
-    
-    func updateSettingsFromSliders() {
-        mtkView.calculator?.gravityExponent = CGFloat(gExponentSlider.doubleValue / 10)
-        mtkView.calculator?.minimalDistance = CGFloat(minDistanceSlider.doubleValue / 10)
-        mtkView.calculator?.gravityFactor = CGFloat(gFactorSlider.doubleValue / 10)
+        world.randomize()
+        attractorsLabel.stringValue = "\(Int(world.attractors.count))"
     }
 
     func updateFPS() {

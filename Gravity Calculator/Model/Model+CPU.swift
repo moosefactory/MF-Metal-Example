@@ -10,9 +10,9 @@ import Foundation
 import QuartzCore
 import simd
 
-struct Model {
+public struct Model {
     
-    struct Group {
+    public struct Group {
         // Group index. Group index is unique among all groups. Index 0 is root group.
         let index: simd_int1
         let superGroupIndex: simd_int1
@@ -24,7 +24,7 @@ struct Model {
         static let root = Group(index: 0, superGroupIndex: 0, location: [0,0], rotationSpeed: 0, scale: 1)
     }
     
-    struct Attractor {
+    public struct Attractor {
         let groupIndex: simd_int1
 
         let location: simd_float2
@@ -34,22 +34,39 @@ struct Model {
         let color: simd_float4
     }
     
-    struct Settings {
-        var frame: simd_int1
-        var width: simd_int1
-        var height: simd_int1
-        var radius: simd_float1
+    public struct Particle {
+        let location: simd_float2
+        let mass: simd_float1
+        let color: simd_float4
         
-        var numberOfAttractors: simd_int1
-        var numberOfGroups: simd_int1
+        // Will be computed by Particles Calculator
+
+        let gravityVector: simd_float2
+        let gravityPolarVector: simd_float2
+    }
+    
+    public struct Settings {
+        var frame: simd_int1 = 0
+        var width: simd_int1 = 0
+        var height: simd_int1 = 0
+        var radius: simd_float1 = 0
         
-        var minimaldistance: simd_float1
-        var gravityFactor: simd_float1
-        var gravityExponent: simd_float1
+        var numberOfAttractors: simd_int1 = 0
+        var numberOfGroups: simd_int1 = 0
+        var numberOfParticles: simd_int1 = 0
+        var numberOfParticlesPerGroup: simd_int1 = 0
+        
+        var minimalDistance: simd_float1 = 0
+        var gravityFactor: simd_float1 = 0.1
+        var gravityExponent: simd_float1 = 2
     }
 }
 
-extension Model.Attractor {
+public extension Model.Particle {
+    var position: CGPoint { return CGPoint(x: CGFloat(location.x), y: CGFloat(location.y))}
+}
+
+public extension Model.Attractor {
 
     func positionned(at frameIndex: Int, in frame: CGRect, in group: [Model.Group]) -> Model.Attractor {
         let width = Float(frame.width / 2)

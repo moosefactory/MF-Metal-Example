@@ -11,27 +11,23 @@ import MetalKit
 
 /// A view that renders gravity fields between moving attractors
 class GraviFieldsView: MTKView {
-    
-    // The frame counter, used to determine attractors and groups angle
-    var frameIndex = 0
-    
+        
     // The metal calculator
-    var calculator: Calculator?
+    var calculator: GravityFieldsCalculator?
     
     // The swift model ( CPU side )
-    var attractors = [Model.Attractor]()
-    var groups = [Model.Group.root]
+    var world: WorldBuffers
 
     var renderedClosure: ((Int)->Void)?
-    
-    override init(frame frameRect: CGRect, device: MTLDevice?) {
-        super.init(frame: frameRect, device: device)
+        
+    init(frame frameRect: CGRect, world: WorldBuffers) {
+        self.world = world
+        super.init(frame: frameRect, device: world.device)
         setup()
     }
     
     required init(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
+        fatalError()
     }
     
     func setup() {
@@ -45,23 +41,18 @@ class GraviFieldsView: MTKView {
         #endif
     }
     
-    func makeCalculator(with drawable: CAMetalDrawable) -> Calculator {
-        if attractors.isEmpty {
-           makeWorld()
-        }
-        let calc = try! Calculator(drawable: drawable,
-                                               groups: groups,
-                                               attractors: attractors)
-        try! calc.prepareData(frameIndex: frameIndex)
-        return calc
+    func makeCalculator(with drawable: CAMetalDrawable) -> GravityFieldsCalculator {
+        return try! GravityFieldsCalculator(drawable: drawable, world: world)
     }
     
     #if os(macOS)
     override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
         render()
     }
     #else
     override func draw(_ rect: CGRect) {
+        super.draw(rect)
         render()
     }
     #endif
@@ -74,15 +65,21 @@ class GraviFieldsView: MTKView {
         // Calulator can be set nil when attractors are recreated or size is changed
         if calculator == nil {
             calculator = makeCalculator(with: drawable)
-        }
-        // Update data will update necessary buffers
-        calculator?.updateData(with: drawable,frameIndex: frameIndex)
-        try? calculator!.compute(rpd: currentRenderPassDescriptor) { commandBuffer in
+        } else {
+            calculator?.drawable = drawable
+            
+            self.renderedClosure?(self.world.frameIndex)
+            DispatchQueue.main.async {
+                self.world.world.recreateBuffersIfNeeded()
+                if self.world.needsRecreateBuffer {
+                    self.world.createBuffers()
+                }
+            }
 
+            self.world.frameIndex += 1
         }
-        
-        renderedClosure?(frameIndex)
-        frameIndex += 1
-        
+        try? calculator!.compute(rpd: currentRenderPassDescriptor) { commandBuffer in
+            
+        }
     }
 }
