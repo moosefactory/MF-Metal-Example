@@ -34,4 +34,4 @@ MoofFoundation is available under the MIT license. See the [LICENSE](LICENSE) fi
 
 ***
 
-*Preliminary document - Updated 13/03/2016 - 04/06/2016*
+Updated 2016_12_09

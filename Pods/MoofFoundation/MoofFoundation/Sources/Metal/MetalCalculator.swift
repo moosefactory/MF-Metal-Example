@@ -47,7 +47,7 @@ open class MetalCalculator {
     }
     
     public private(set) var device: MTLDevice
-    public private(set) var computePipelineState: MTLComputePipelineState!
+    public private(set) var computeFunctionPipelineState: MTLComputePipelineState!
     
     public private(set)var commandQueue: MTLCommandQueue!
     
@@ -83,7 +83,7 @@ open class MetalCalculator {
         
         // Create a compute pipeline state object.
         
-        try computePipelineState = device.makeComputePipelineState(function: stateFunction)
+        try computeFunctionPipelineState = device.makeComputePipelineState(function: stateFunction)
         
         guard let commandQueue = device.makeCommandQueue() else {
             throw Errors.cantMakeCommandQueue
@@ -120,11 +120,11 @@ open class MetalCalculator {
     open func encodeCommand(commandBuffer: MTLCommandBuffer, rpd: MTLRenderPassDescriptor? = nil) throws { }
 }
 
+
 public extension MTLDevice {
-    
     func tryToMakeBuffer(length: Int, options: MTLResourceOptions = .storageModeShared) -> MTLBuffer? {
         guard length > 0 else { return nil }
-        return self.makeBuffer(length: length, options: options)
+        return makeBuffer(length: length, options: options)
     }
 }
 

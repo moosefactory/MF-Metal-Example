@@ -18,65 +18,22 @@ class ParticlesCalculator: MetalCalculator {
     
     // Swift Model ( CPU )
     var world: WorldBuffers
-        
-    var needsUpdateEnvironment: Bool = false
-    
+            
     var numberOfParticlesPerGroup: Int = 0
     
     // MARK: - Init
     
     public init(world: WorldBuffers) throws {
-        
         self.world = world
         try super.init(device: world.device, computeFunctionName: "computeParticlesForces", drawable: nil)
     }
-    
-    /// Prepare buffers
-    
-//    func prepareData(frameIndex: Int) throws {
-//        world.
-//        updateEnvironment(with: frameIndex)
-//    }
-    
-//    func updateEnvironment(with frame: Int) {
-//        // Fill settings buffer with the settings
-//        // This is done once when calculator is created, or when the user changes some values using UI
-//
-//        let drawableSize = drawable?.bounds ?? .zero
-//
-//        settingsArray[0] = Model.Settings(frame: frame.simd,
-//                                          width: Int32(drawableSize.width),
-//                                          height: Int32(drawableSize.height),
-//                                          radius: drawableSize.hypo.simd,
-//                                          numberOfAttractors: world.attractors.count.simd,
-//                                          // We don't use the groups in particles calculator
-//                                          numberOfGroups: 0,
-//                                          numberOfParticles: world.particles.count.simd,
-//                                          numberOfParticlesPerGroup: numberOfParticlesPerGroup.simd,
-//                                          minimaldistance: minimalDistance.simd,
-//                                          gravityFactor: gravityFactor.simd,
-//                                          gravityExponent: gravityExponent.simd)
-//    }
-//
-    /// Update the attractors metal buffers from the swift model
-    ///
-    /// We need to update buffers because attractors position is computed on CPU
-    
-//    func updateData(with drawable: CAMetalDrawable?, frameIndex: Int) {
-//        self.drawable = drawable
-//        guard let drawable = drawable else { return }
-//
-//        // Update drawable size in settings
-//        world.rendererSize = drawable.bounds.size
-//
-//    }
     
     /// Encode command
     ///
     /// Render pass descriptor is used for more complex cases ( With vertexes ).
     /// In this example, we don't need it. We simply compute pixels color, and move onscreen at the end
     override func encodeCommand(commandBuffer: MTLCommandBuffer, rpd: MTLRenderPassDescriptor? = nil) throws {
-        let nParticles = world.world.particles.count
+        let nParticles = world.numberOfParticles
         guard nParticles > 0 else {
             throw Errors.particlesBufferEmpty
         }
@@ -85,7 +42,7 @@ class ParticlesCalculator: MetalCalculator {
             throw MetalCalculator.Errors.cantMakeCommandEncoder
         }
         
-        computeEncoder.setComputePipelineState(computePipelineState)
+        computeEncoder.setComputePipelineState(computeFunctionPipelineState)
         
         // Set the subdivision size
         // We subdivide view in 8 x 8, meaning we will have 256 processing threads
@@ -118,6 +75,5 @@ class ParticlesCalculator: MetalCalculator {
         
         // Send commands to GPU
         computeEncoder.endEncoding()
-        
     }
 }

@@ -2,6 +2,7 @@
 
 target 'MF Metal Example' do
   use_frameworks!
+  
   pod 'MoofFoundation', :git => 'https://github.com/MooseFactory/MoofFoundation.git'
 end
 

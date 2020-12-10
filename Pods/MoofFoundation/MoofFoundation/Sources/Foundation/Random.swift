@@ -31,6 +31,7 @@ THE SOFTWARE. */
 //  Created by Tristan Leblanc on 19/11/2020.
 
 import Foundation
+import QuartzCore
 
 #if !os(watchOS)
 

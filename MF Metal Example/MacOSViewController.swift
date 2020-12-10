@@ -23,7 +23,7 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     enum SliderAction: Int {
         case setNumberOfAttractors = 100
         case setNumberOfParticles = 101
-
+        
         case setMinDistance = 200
         case setExponent = 201
         case setScale = 202
@@ -32,16 +32,16 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     @IBOutlet var controlBox: NSBox!
     @IBOutlet var fpsLabel: NSTextField!
     @IBOutlet var attractorsLabel: NSTextField!
-
+    
     @IBOutlet var minDistanceSlider: NSSlider!
     @IBOutlet var gExponentSlider: NSSlider!
     @IBOutlet var gFactorSlider: NSSlider!
-
+    
     @IBOutlet var controlsView: NSStackView!
-
+    
     var mtkView: GraviFieldsView!
     var particlesView: ParticlesView!
-
+    
     var chrono = Date()
     var fps: Double = 0
     
@@ -55,7 +55,6 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     }()
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        // Will recreate the texture
         mtkView.calculator = nil
     }
     
@@ -70,16 +69,13 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     }
     
     func makeGravityFieldsView() {
-        
         // Creates the Metal view under the controls box
         mtkView = GraviFieldsView( frame: view.bounds, world: worldBuffers)
         view.addSubview(mtkView, positioned: NSWindow.OrderingMode.below, relativeTo: controlBox)
         mtkView.autoresizingMask = [.width, .height]
         //mtkView.delegate = self // Not working... Wonder why
-        mtkView.renderedClosure = { fraeIndex in
-            DispatchQueue.main.async {
-                self.tick()
-            }
+        mtkView.renderedClosure = { frameIndex in
+            self.tick()
         }
     }
     
@@ -129,18 +125,27 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     }
     
     @objc func tick() {
-        if !particlesView.isHidden {
-            
-            // If metal view is  hidden, we update position here
-            if mtkView.isHidden {
-                self.worldBuffers.frameIndex += 1
-                self.worldBuffers.computeAttractorsPosition()
-                self.worldBuffers.computeParticlesPosition()
+        
+        func finishUpdate() {
+            if world.updateFlag.contains(.attractors) {
+                attractorsLabel.stringValue = "\(Int(world.objects.attractors.count))"
             }
-
-            self.particlesView.update()
+            self.updateFPS()
+            if !world.updateFlag.isEmpty { world.updateFlag = [] }
         }
-        self.updateFPS()
+        
+        guard !particlesView.isHidden else {
+            finishUpdate()
+            return
+        }
+        // If metal view is  hidden, we update position and frame index here // TO CHANGE
+        if mtkView.isHidden {
+            self.worldBuffers.createOrUpdateBuffers()
+            self.worldBuffers.frameIndex += 1
+        }
+        
+        self.particlesView.update() { }
+        finishUpdate()
     }
     
     @IBAction func sliderChanged(_ sender: NSSlider) {
@@ -158,13 +163,12 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
             world.gravityFactor = CGFloat(sender.doubleValue / 10)
         }
     }
-
+    
     /// Recreate random attractors
     func randomize() {
         world.randomize()
-        attractorsLabel.stringValue = "\(Int(world.attractors.count))"
     }
-
+    
     func updateFPS() {
         let elapsedTime = -chrono.timeIntervalSinceNow
         chrono = Date()

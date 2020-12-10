@@ -7,64 +7,78 @@
 
 import MoofFoundation
 
+/// World is the Matrix that will be used to create buffers
+///
+/// This is a nice way to avoid multithreading issues.
+///
+/// World can be changed from UI at any time by the user, even while a calulator is accessing buffers while computing
+///
+/// A flag is set to tells the WorldBuffers will be responsible to recreate buffers at the right time
+
 class World {
     
-    var particles = [Model.Particle]()
-    var attractors = [Model.Attractor]()
-    var groups = [Model.Group]()
+    /// UpdateFlag is used to set update granularity.
+    /// It optimise performances to only recreate buffers that need it
+    struct UpdateFlag: OptionSet {
+        var rawValue: Int = 0
+        
+        static let particles = UpdateFlag(rawValue: 0x01)
+        static let attractors = UpdateFlag(rawValue: 0x02)
+        static let settings = UpdateFlag(rawValue: 0x04)
+        
+        static let all = UpdateFlag(rawValue: 0x07)
+    }
     
-    var settings = Model.Settings()
-    var frameIndex: Int = 0
+    // We group elements in a struct to copy at once when passing to WorldBuffers
+    //
+    struct Objects {
+        var particles = [Model.Particle]()
+        var attractors = [Model.Attractor]()
+        var groups = [Model.Group]()
+        var settings = Model.Settings()
+    }
     
-    var worldChangedClosure: (()->Void)?
-    
-    var needsRecreateBuffer: Bool = false
+    var objects = Objects()
+
+    var updateFlag = UpdateFlag()
     
     // Settings
     
-    
     var complexity: Int = 10 {
         didSet {
-            needsRecreateBuffer = true
+            makeWorld()
         }
     }
-    
-    func recreateBuffersIfNeeded() {
-        guard needsRecreateBuffer else { return }
-        makeWorld()
-        makeParticles()
-        worldChangedClosure?()
-        needsRecreateBuffer = false
-    }
+        
+    // MARK: - Convenience getters/setters for UI
     
     var numberOfParticles: Int = 1000 {
         didSet {
-            needsRecreateBuffer = true
+            makeParticles()
         }
     }
     
     var gravityFactor: CGFloat {
         set {
-            settings.gravityFactor = newValue.simd
-            worldChangedClosure?()
+            objects.settings.gravityFactor = newValue.simd
+            updateFlag = .settings
         }
-        get { return CGFloat(settings.gravityFactor) }
+        get { return CGFloat(objects.settings.gravityFactor) }
     }
     
     var gravityExponent: CGFloat {
         set {
-            settings.gravityExponent = newValue.simd
-            worldChangedClosure?()
+            objects.settings.gravityExponent = newValue.simd
+            updateFlag = .settings
         }
-        get { return CGFloat(settings.gravityExponent) }
+        get { return CGFloat(objects.settings.gravityExponent) }
     }
     
     var minimalDistance: CGFloat {
         set {
-            settings.minimalDistance = newValue.simd
-            worldChangedClosure?()
+            objects.settings.minimalDistance = newValue.simd
         }
-        get { return CGFloat(settings.minimalDistance) }
+        get { return CGFloat(objects.settings.minimalDistance) }
     }
     
     /// Creates the attractors and groups
@@ -81,24 +95,30 @@ class World {
     }
     
     func makeParticles() {
-        particles = [Model.Particle]()
+        objects.particles = [Model.Particle]()
+        let di = CGFloat(1) / CGFloat(numberOfParticles)
+        let dj = CGFloat(1) / CGFloat(numberOfParticles)
+        
         for i in 0..<numberOfParticles {
             for j in 0..<numberOfParticles {
-                let loc = CGPoint(x: CGFloat(i) / CGFloat(numberOfParticles), y: CGFloat(j) / CGFloat(numberOfParticles) )
+                let loc = CGPoint(x: di / 2 + di * CGFloat(i) , y: dj / 2 + dj * CGFloat(j) )
                 let color = Color(red: 0, green: 0.3, blue: 0.9, alpha: 0.9)
                 let particle = Model.Particle(location: loc.simd,
                                               mass: 1, color: color.simd,
                                               gravityVector: .zero,
                                               gravityPolarVector: .zero)
-                particles.append(particle)
+                objects.particles.append(particle)
             }
         }
+        updateFlag.insert(.particles)
     }
     
     func makeWorld() {
-        
-        groups = [Model.Group.root]
-        attractors = [Model.Attractor]()
+        if updateFlag.contains(.attractors) {
+            return
+        }
+        objects.groups = [Model.Group.root]
+        objects.attractors = [Model.Attractor]()
         
         let maxNumberOfGroups = max(1, complexity / 4)
         let maxNumberOfSubGroups = max(1,complexity / 2)
@@ -110,21 +130,23 @@ class World {
         
         for _ in 0..<numberOfGroups {
             let group = makeGroup(in: Model.Group.root, index: &groupIndex)
-            groups.append(group)
+            objects.groups.append(group)
             
             // Create between 1 and 10 sub groups
             let numberOfSubGroups = Int.random(in: 1...maxNumberOfSubGroups)
             for _ in 0..<numberOfSubGroups {
                 let subGroup = makeGroup(in: group, index: &groupIndex)
-                groups.append(subGroup)
+                objects.groups.append(subGroup)
             }
         }
         
         // Compute attractors - we create between 1 and 20 attractors in each groups
-        groups.forEach { group in
+        objects.groups.forEach { group in
             let numberOfAttractors = Int.random(in: 1...maxNumberOfParticlesPerGroup)
-            attractors += makeAttractors(in: group, count: numberOfAttractors)
+            objects.attractors += makeAttractors(in: group, count: numberOfAttractors)
         }
+        
+        updateFlag.insert(.attractors)
     }
     
     /// Make a group

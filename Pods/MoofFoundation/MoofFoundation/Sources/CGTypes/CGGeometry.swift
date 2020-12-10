@@ -221,7 +221,7 @@ public extension CGSize {
     var diagonal: CGFloat {
         return sqrt( width * width + height * height) / 2
     }
-    
+
     // Returns the size mapped to (1,1)
     var fractional: CGSize {
         return self /  max(width, height)

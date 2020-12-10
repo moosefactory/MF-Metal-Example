@@ -31,14 +31,8 @@ class GraviFieldsView: MTKView {
     }
     
     func setup() {
+        // Authorize the metal function to write in texture memory
         framebufferOnly = false
-        #if os(macOS)
-        layer?.backgroundColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-        layer?.isOpaque = false
-        #else
-        layer.backgroundColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-        layer.isOpaque = false
-        #endif
     }
     
     func makeCalculator(with drawable: CAMetalDrawable) -> GravityFieldsCalculator {
@@ -58,28 +52,31 @@ class GraviFieldsView: MTKView {
     #endif
     
     func render() {
+        // Check if a drawable is available
         guard let drawable = currentDrawable else {
             return
         }
-        // If calculator is nil, we recreate buffers
-        // Calulator can be set nil when attractors are recreated or size is changed
+        
+        // If calculator is nil, we create it now
         if calculator == nil {
             calculator = makeCalculator(with: drawable)
         } else {
-            calculator?.drawable = drawable
-            
-            self.renderedClosure?(self.world.frameIndex)
-            DispatchQueue.main.async {
-                self.world.world.recreateBuffersIfNeeded()
-                if self.world.needsRecreateBuffer {
-                    self.world.createBuffers()
-                }
+            if drawable.bounds != calculator!.drawable?.bounds {
+                world.updateFlag.insert(.settings)
             }
+            // We attach drawable to calculator to process available texture
+            calculator!.drawable = drawable
+        }
+        
+        guard let calculator = calculator else { return }
 
-            self.world.frameIndex += 1
+        // Will recreate buffers if updateFlag is set
+        world.createOrUpdateBuffers()
+        if !world.updateFlag.contains([.attractors]) {
+            try? calculator.compute(rpd: currentRenderPassDescriptor) { commandBuffer in
+            }
         }
-        try? calculator!.compute(rpd: currentRenderPassDescriptor) { commandBuffer in
-            
-        }
+        self.renderedClosure?(self.world.frameIndex)
+        self.world.frameIndex += 1
     }
 }

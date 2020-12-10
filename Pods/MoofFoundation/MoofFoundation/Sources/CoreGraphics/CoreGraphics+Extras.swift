@@ -48,6 +48,11 @@ public extension CGContext {
 
 public extension CALayer {
 
+    func forEachSublayer(_ closure: (CALayer)->Void) {
+        guard let sublayers = sublayers else { return }
+        sublayers.forEach { closure($0) }
+    }
+    
     /// Remove all sublayers
     func removeAllSublayers() {
         sublayers?.forEach { $0.removeFromSuperlayer() }

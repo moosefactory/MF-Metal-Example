@@ -906,7 +906,7 @@
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="90" id="ckV-Pg-33a"/>
                                                                             </constraints>
-                                                                            <sliderCell key="cell" state="on" alignment="left" maxValue="20" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="foG-lC-zdr"/>
+                                                                            <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="20" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="foG-lC-zdr"/>
                                                                             <connections>
                                                                                 <action selector="sliderChanged:" target="XfG-lQ-9wD" id="UVJ-Qk-2RR"/>
                                                                             </connections>
@@ -937,7 +937,7 @@
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="90" id="dtU-hn-npv"/>
                                                                             </constraints>
-                                                                            <sliderCell key="cell" state="on" alignment="left" maxValue="40" tickMarkPosition="above" sliderType="linear" id="CzX-pJ-2Pt"/>
+                                                                            <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="80" tickMarkPosition="above" sliderType="linear" id="CzX-pJ-2Pt"/>
                                                                             <connections>
                                                                                 <action selector="sliderChanged:" target="XfG-lQ-9wD" id="7qy-2F-VTf"/>
                                                                             </connections>

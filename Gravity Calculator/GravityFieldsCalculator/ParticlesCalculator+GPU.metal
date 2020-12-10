@@ -51,5 +51,6 @@ kernel void computeParticlesForces(device Particle* p,
     p[particleIndex].gravityVector = gVec;
     p[particleIndex].gravityPolarVector.x = g;
     p[particleIndex].gravityPolarVector.y = atan2(gVec.y, gVec.x);
+    p[particleIndex].location += gVec * 100;
 }
 

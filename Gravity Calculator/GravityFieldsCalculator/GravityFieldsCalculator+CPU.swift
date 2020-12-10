@@ -46,7 +46,7 @@ class GravityFieldsCalculator: MetalCalculator {
                 throw MetalCalculator.Errors.cantMakeCommandEncoder
             }
             
-            computeEncoder.setComputePipelineState(computePipelineState)
+            computeEncoder.setComputePipelineState(computeFunctionPipelineState)
             
             let texture = drawable.texture
             

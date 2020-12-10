@@ -10,32 +10,43 @@ import Foundation
 import QuartzCore
 import simd
 
+
+public protocol WorldElement {
+    var location: simd_float2 { get }
+}
+
+public extension WorldElement {
+    var position: CGPoint { CGPoint(simd: location) }
+}
+
 public struct Model {
     
-    public struct Group {
+    
+    public struct Group: WorldElement {
         // Group index. Group index is unique among all groups. Index 0 is root group.
         let index: simd_int1
         let superGroupIndex: simd_int1
 
-        let location: simd_float2
+        public let location: simd_float2
         let rotationSpeed: simd_float1
         let scale: simd_float1
         
         static let root = Group(index: 0, superGroupIndex: 0, location: [0,0], rotationSpeed: 0, scale: 1)
     }
     
-    public struct Attractor {
+    public struct Attractor: WorldElement {
         let groupIndex: simd_int1
 
-        let location: simd_float2
+        public let location: simd_float2
         let rotationSpeed: simd_float1
         
         let mass: simd_float1
         let color: simd_float4
     }
     
-    public struct Particle {
-        let location: simd_float2
+    public struct Particle: WorldElement {
+        
+        public let location: simd_float2
         let mass: simd_float1
         let color: simd_float4
         

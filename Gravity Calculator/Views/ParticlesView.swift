@@ -11,12 +11,15 @@ import QuartzCore
 
 #if os(macOS)
 import Cocoa
+typealias View = NSView
+typealias Rect = NSRect
 #else
 import UIKit
+typealias View = UIView
+typealias Rect = CGRect
 #endif
 
-#if os(macOS)
-class ParticlesView: NSView {
+class ParticlesView: View {
     
     var world: WorldBuffers
     
@@ -26,7 +29,7 @@ class ParticlesView: NSView {
         ParticlesLayer(world: world)
     }()
     
-    init(frame frameRect: NSRect, world: WorldBuffers) {
+    init(frame frameRect: Rect, world: WorldBuffers) {
         self.world = world
         super.init(frame: frameRect)
         setup()
@@ -37,29 +40,45 @@ class ParticlesView: NSView {
     }
     
     func setup() {
+        #if os(macOS)
         wantsLayer = true
         layer?.addSublayer(particlesLayer)
+        #else
+        layer.addSublayer(particlesLayer)
+        #endif
         particlesLayer.frame = bounds
     }
     
-    override var frame: NSRect {
+    override var frame: Rect {
         didSet {
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
             particlesLayer.frame = bounds
+            CATransaction.commit()
         }
     }
     
-    func update() {
+    var updating: Bool = false
+    
+    func update(_ completion: @escaping ()->Void) {
+        guard !isHidden && !particlesLayer.updating else { return }
+
+        // Create the matal calculator if needed
         if particleCalculator == nil {
             particleCalculator = try? ParticlesCalculator(world: world)
         }
-        try? particleCalculator?.compute(completion: { (commandBuffer) in
-            DispatchQueue.main.async {
-                self.particlesLayer.update()
-            }
-        })
+        
+        // We avoid accessing buffer while recreating particles
+        if !world.updateFlag.contains(.particles) {
+            // Compute particles forces and update layers when done
+            try? particleCalculator?.compute(completion: { (commandBuffer) in
+                DispatchQueue.main.async {
+                    self.particlesLayer.update()
+                }
+            })
+            
+        }
+        
+        completion()
     }
 }
-
-#else
-
-#endif

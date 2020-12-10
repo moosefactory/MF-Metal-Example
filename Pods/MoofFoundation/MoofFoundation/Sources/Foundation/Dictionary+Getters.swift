@@ -31,6 +31,7 @@ THE SOFTWARE. */
 //  Created by Tristan Leblanc on 06/12/2020.
 
 import Foundation
+import QuartzCore
 
 extension Dictionary where Key == String, Value == Any {
     
