@@ -77,10 +77,19 @@ class World {
     var minimalDistance: CGFloat {
         set {
             objects.settings.minimalDistance = newValue.simd
+            updateFlag = .settings
         }
         get { return CGFloat(objects.settings.minimalDistance) }
     }
     
+    var lockParticles: Bool {
+        set {
+            objects.settings.lockParticles = newValue
+            updateFlag = .settings
+        }
+        get { return Bool(objects.settings.lockParticles) }
+    }
+
     /// Creates the attractors and groups
     ///
     /// We create a random number of root groups between 1 and 10

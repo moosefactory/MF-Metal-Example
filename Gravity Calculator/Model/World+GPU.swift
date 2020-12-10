@@ -149,7 +149,8 @@ class WorldBuffers {
                                           numberOfParticlesPerGroup: 0,
                                           minimalDistance: objects.settings.minimalDistance,
                                           gravityFactor: objects.settings.gravityFactor,
-                                          gravityExponent: objects.settings.gravityExponent)
+                                          gravityExponent: objects.settings.gravityExponent,
+                                          lockParticles: objects.settings.lockParticles)
 
     }
     

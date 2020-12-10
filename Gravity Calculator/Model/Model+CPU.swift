@@ -70,6 +70,8 @@ public struct Model {
         var minimalDistance: simd_float1 = 0
         var gravityFactor: simd_float1 = 0.1
         var gravityExponent: simd_float1 = 2
+        
+        var lockParticles: Bool = false
     }
 }
 

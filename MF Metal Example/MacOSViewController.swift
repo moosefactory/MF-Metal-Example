@@ -100,7 +100,7 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
         case .showHideControls:
             controlsView.isHidden = !controlsView.isHidden
         case .lockOnGrid:
-            break
+            world.lockParticles = sender.state == NSControl.StateValue.on
         }
         
         // Since we hide the metal view, the rendered closure won't be called anymore, so we start our timer to continue update particles if needed.

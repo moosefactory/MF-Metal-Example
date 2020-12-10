@@ -62,4 +62,6 @@ struct Environment {
     float minimalDistance;
     float gravityFactor;
     float gravityExponent;
+    
+    bool lockParticles;
 };
