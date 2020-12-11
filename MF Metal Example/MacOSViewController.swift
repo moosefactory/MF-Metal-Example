@@ -12,7 +12,10 @@ import MoofFoundation
 
 class MacOSViewController: NSViewController, MTKViewDelegate {
         
-    @IBOutlet var controlBox: NSBox!
+    @IBOutlet var controlBox: BoxStackView!
+    
+    @IBOutlet var appActionButtons: NSBox!
+
     @IBOutlet var fpsLabel: NSTextField!
     @IBOutlet var attractorsLabel: NSTextField!
     
@@ -20,7 +23,7 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     @IBOutlet var gExponentSlider: NSSlider!
     @IBOutlet var gFactorSlider: NSSlider!
     
-    @IBOutlet var controlsView: NSStackView!
+    var controlsView: BoxStackView!
     
     var mtkView: GraviFieldsView!
     var particlesView: ParticlesView!
@@ -48,6 +51,27 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /// Create the main buttons box
+        
+        ActionsBox.load(in: controlBox.stack, title: "Actions".localized,
+                        orientation: .horizontal,
+                        with: ActionIdentifier.allCases) { action, control in
+            if let appAction = action as? ActionIdentifier {
+                self.executeAppAction(appAction)
+            }
+        }
+        
+        /// Create the parameterss box
+        controlsView = ActionsBox.load(in: controlBox.stack,
+                                         title: "Parameters".localized,
+                                         with: ParameterIdentifier.allCases) { action, control in
+            if let appAction = action as? ParameterIdentifier {
+                let setParamAction = appAction.makeSetParameterAction(from: control)
+                self.executeParameterAction(setParamAction)
+            }
+        }
+        controlsView.stack.alignment = .right
         
         makeGravityFieldsView()
         makeParticlesView()

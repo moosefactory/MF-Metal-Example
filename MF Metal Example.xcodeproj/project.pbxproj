@@ -51,6 +51,17 @@
 		BCBFB6D72582F7A70040D60C /* MacOSViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D62582F7A70040D60C /* MacOSViewController+Actions.swift */; };
 		BCBFB6D92582F8900040D60C /* World+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D82582F8900040D60C /* World+UI.swift */; };
 		BCBFB6DA2582F8900040D60C /* World+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D82582F8900040D60C /* World+UI.swift */; };
+		BCBFB6DE25838D500040D60C /* BoxStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6DD25838D500040D60C /* BoxStackView.swift */; };
+		BCBFB6E1258392D70040D60C /* ActionsBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6E0258392D70040D60C /* ActionsBox.swift */; };
+		BCBFB6E325839EEB0040D60C /* ActionsBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBFB6E2258399B40040D60C /* ActionsBox.xib */; };
+		BCBFB6E62583A8E10040D60C /* Actions.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCBFB6E82583A8E10040D60C /* Actions.strings */; };
+		BCBFB6E92583A9F30040D60C /* Actions.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCBFB6E82583A8E10040D60C /* Actions.strings */; };
+		BCBFB6EB2583B0B30040D60C /* ActionProtocol+Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6EA2583B0B30040D60C /* ActionProtocol+Controls.swift */; };
+		BCBFB6ED2583B4000040D60C /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCBFB6EC2583B4000040D60C /* Strings.strings */; };
+		BCBFB6EE2583B4000040D60C /* Strings.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCBFB6EC2583B4000040D60C /* Strings.strings */; };
+		BCBFB6F02583B4440040D60C /* ActionIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6EF2583B4440040D60C /* ActionIdentifierProtocol.swift */; };
+		BCBFB6F12583B4440040D60C /* ActionIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6EF2583B4440040D60C /* ActionIdentifierProtocol.swift */; };
+		BCBFB6F22583C0BB0040D60C /* BoxStackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBFB6DF25838FBC0040D60C /* BoxStackView.xib */; };
 		BCF4D34E25803BA50050427B /* HowTo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF4D34D25803BA40050427B /* HowTo.png */; };
 		BCF4D35025804D470050427B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BCF4D34F25804D470050427B /* README.md */; };
 		D850EE03D87C5E99E153522A /* Pods_MF_Metal_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7365C4B7B0D8896A55A784 /* Pods_MF_Metal_iOS.framework */; };
@@ -102,6 +113,14 @@
 		BCBFB6D42582F7450040D60C /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		BCBFB6D62582F7A70040D60C /* MacOSViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MacOSViewController+Actions.swift"; sourceTree = "<group>"; };
 		BCBFB6D82582F8900040D60C /* World+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "World+UI.swift"; sourceTree = "<group>"; };
+		BCBFB6DD25838D500040D60C /* BoxStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxStackView.swift; sourceTree = "<group>"; };
+		BCBFB6DF25838FBC0040D60C /* BoxStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxStackView.xib; sourceTree = "<group>"; };
+		BCBFB6E0258392D70040D60C /* ActionsBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsBox.swift; sourceTree = "<group>"; };
+		BCBFB6E2258399B40040D60C /* ActionsBox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionsBox.xib; sourceTree = "<group>"; };
+		BCBFB6E72583A8E10040D60C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Actions.strings; sourceTree = "<group>"; };
+		BCBFB6EA2583B0B30040D60C /* ActionProtocol+Controls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionProtocol+Controls.swift"; sourceTree = "<group>"; };
+		BCBFB6EC2583B4000040D60C /* Strings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Strings.strings; sourceTree = "<group>"; };
+		BCBFB6EF2583B4440040D60C /* ActionIdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionIdentifierProtocol.swift; sourceTree = "<group>"; };
 		BCF4D34D25803BA40050427B /* HowTo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HowTo.png; sourceTree = "<group>"; };
 		BCF4D34F25804D470050427B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BFB6DD8D9781EA899D91EB17 /* Pods-MF Metal iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MF Metal iOS.release.xcconfig"; path = "Target Support Files/Pods-MF Metal iOS/Pods-MF Metal iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +201,7 @@
 				BCF4D34F25804D470050427B /* README.md */,
 				BC56441E2582BA2E00FB0653 /* AppIcon */,
 				BC6D9719257FE46B00086A5C /* Gravity Calculator */,
+				BCBFB6DB258379DC0040D60C /* Gravity Controller */,
 				BC6D96EA257FE33100086A5C /* MF Metal Example */,
 				BC6D973225800F7D00086A5C /* MF Metal iOS */,
 				BC6D96E9257FE33100086A5C /* Products */,
@@ -203,10 +223,10 @@
 			isa = PBXGroup;
 			children = (
 				BC6D96EB257FE33100086A5C /* AppDelegate.swift */,
+				BCBFB6EC2583B4000040D60C /* Strings.strings */,
 				BC6D9728257FE49800086A5C /* Main.storyboard */,
 				BC6D971F257FE46B00086A5C /* MacOSViewController.swift */,
 				BCBFB6D62582F7A70040D60C /* MacOSViewController+Actions.swift */,
-				BCBFB6D42582F7450040D60C /* Actions.swift */,
 				BC6D96EF257FE33200086A5C /* Assets.xcassets */,
 				BC6D96F4257FE33200086A5C /* Info.plist */,
 				BC6D96F5257FE33200086A5C /* MF_Metal_Example.entitlements */,
@@ -217,9 +237,10 @@
 		BC6D9719257FE46B00086A5C /* Gravity Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				BC91B5952580ED3500152D1C /* Views */,
 				BC6D972C257FF9D900086A5C /* Model */,
-				BCF4D34C258031970050427B /* GravityFieldsCalculator */,
+				BCBFB6DC25837A0C0040D60C /* Particles Claculator */,
+				BCF4D34C258031970050427B /* Fields Calculator */,
+				BCBFB6E82583A8E10040D60C /* Actions.strings */,
 			);
 			path = "Gravity Calculator";
 			sourceTree = "<group>";
@@ -262,15 +283,37 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		BCF4D34C258031970050427B /* GravityFieldsCalculator */ = {
+		BCBFB6DB258379DC0040D60C /* Gravity Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BC91B5952580ED3500152D1C /* Views */,
+				BCBFB6EF2583B4440040D60C /* ActionIdentifierProtocol.swift */,
+				BCBFB6EA2583B0B30040D60C /* ActionProtocol+Controls.swift */,
+				BCBFB6D42582F7450040D60C /* Actions.swift */,
+				BCBFB6DF25838FBC0040D60C /* BoxStackView.xib */,
+				BCBFB6DD25838D500040D60C /* BoxStackView.swift */,
+				BCBFB6E2258399B40040D60C /* ActionsBox.xib */,
+				BCBFB6E0258392D70040D60C /* ActionsBox.swift */,
+			);
+			path = "Gravity Controller";
+			sourceTree = "<group>";
+		};
+		BCBFB6DC25837A0C0040D60C /* Particles Claculator */ = {
+			isa = PBXGroup;
+			children = (
+				BC91B58F2580DA6F00152D1C /* ParticlesCalculator+CPU.swift */,
+				BC91B5922580DBBC00152D1C /* ParticlesCalculator+GPU.metal */,
+			);
+			path = "Particles Claculator";
+			sourceTree = "<group>";
+		};
+		BCF4D34C258031970050427B /* Fields Calculator */ = {
 			isa = PBXGroup;
 			children = (
 				BC6D971B257FE46B00086A5C /* GravityFieldsCalculator+GPU.metal */,
 				BC6D971E257FE46B00086A5C /* GravityFieldsCalculator+CPU.swift */,
-				BC91B58F2580DA6F00152D1C /* ParticlesCalculator+CPU.swift */,
-				BC91B5922580DBBC00152D1C /* ParticlesCalculator+GPU.metal */,
 			);
-			path = GravityFieldsCalculator;
+			path = "Fields Calculator";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,7 +400,11 @@
 			files = (
 				BC6D9729257FE49800086A5C /* Main.storyboard in Resources */,
 				BC6D9718257FE38400086A5C /* Podfile in Resources */,
+				BCBFB6E62583A8E10040D60C /* Actions.strings in Resources */,
+				BCBFB6F22583C0BB0040D60C /* BoxStackView.xib in Resources */,
 				BC56442B2582BBB300FB0653 /* Assets.xcassets in Resources */,
+				BCBFB6ED2583B4000040D60C /* Strings.strings in Resources */,
+				BCBFB6E325839EEB0040D60C /* ActionsBox.xib in Resources */,
 				BCF4D35025804D470050427B /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,7 +418,9 @@
 				BC5644282582BA2E00FB0653 /* AppIcon256.png in Resources */,
 				BC5644272582BA2E00FB0653 /* AppIcon.png in Resources */,
 				BC5644252582BA2E00FB0653 /* AppIcon128.png in Resources */,
+				BCBFB6EE2583B4000040D60C /* Strings.strings in Resources */,
 				BC56441B2582B66F00FB0653 /* HowTo2.png in Resources */,
+				BCBFB6E92583A9F30040D60C /* Actions.strings in Resources */,
 				BC5644262582BA2E00FB0653 /* AppIcon64.png in Resources */,
 				BCF4D34E25803BA50050427B /* HowTo.png in Resources */,
 				BC6D973D25800F7E00086A5C /* Assets.xcassets in Resources */,
@@ -471,14 +520,18 @@
 				BC91B5902580DA6F00152D1C /* ParticlesCalculator+CPU.swift in Sources */,
 				BC6D9727257FE46B00086A5C /* GraviFieldsView.swift in Sources */,
 				BCA00EF0258118F900163AC5 /* ParticlesView.swift in Sources */,
+				BCBFB6EB2583B0B30040D60C /* ActionProtocol+Controls.swift in Sources */,
 				BC6D96EC257FE33100086A5C /* AppDelegate.swift in Sources */,
 				BC6D9724257FE46B00086A5C /* Model+CPU.swift in Sources */,
+				BCBFB6F02583B4440040D60C /* ActionIdentifierProtocol.swift in Sources */,
 				BC91B5932580DBBC00152D1C /* ParticlesCalculator+GPU.metal in Sources */,
+				BCBFB6DE25838D500040D60C /* BoxStackView.swift in Sources */,
 				BCBFB6D72582F7A70040D60C /* MacOSViewController+Actions.swift in Sources */,
 				BC91B59A2580F44A00152D1C /* World+CPU.swift in Sources */,
 				BC91B5972580ED4D00152D1C /* ParticlesLayer.swift in Sources */,
 				BCBFB6D92582F8900040D60C /* World+UI.swift in Sources */,
 				BC6D9726257FE46B00086A5C /* MacOSViewController.swift in Sources */,
+				BCBFB6E1258392D70040D60C /* ActionsBox.swift in Sources */,
 				BCA00EED258101CE00163AC5 /* World+GPU.swift in Sources */,
 				BC6D9721257FE46B00086A5C /* Model+GPU.metal in Sources */,
 				BC6D9725257FE46B00086A5C /* GravityFieldsCalculator+CPU.swift in Sources */,
@@ -505,6 +558,7 @@
 				BC6D976525800FB600086A5C /* Model+GPU.metal in Sources */,
 				BC91B5912580DA6F00152D1C /* ParticlesCalculator+CPU.swift in Sources */,
 				BC6D976425800FB600086A5C /* Model+CPU.swift in Sources */,
+				BCBFB6F12583B4440040D60C /* ActionIdentifierProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +579,14 @@
 				BC6D973F25800F7E00086A5C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BCBFB6E82583A8E10040D60C /* Actions.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCBFB6E72583A8E10040D60C /* en */,
+			);
+			name = Actions.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -1,0 +1,13 @@
+/* 
+  Actions.strings
+  MF Metal Example
+
+  Created by Tristan Leblanc on 11/12/2020.
+  
+*/
+
+"showHideFields" = "Show/Hide Fields";
+"showHideObjects" = "Show/Hide Objects";
+"showHideControls" = "Show/Hide Controls";
+"randomize" = "Randomize";
+
