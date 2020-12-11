@@ -11,24 +11,7 @@ import MetalKit
 import MoofFoundation
 
 class MacOSViewController: NSViewController, MTKViewDelegate {
-    
-    enum Action: Int {
-        case showHideMetalView = 100
-        case showHideAttractors = 101
-        case randomize = 102
-        case showHideControls = 103
-        case lockOnGrid = 110
-    }
-    
-    enum SliderAction: Int {
-        case setNumberOfAttractors = 100
-        case setNumberOfParticles = 101
         
-        case setMinDistance = 200
-        case setExponent = 201
-        case setScale = 202
-    }
-    
     @IBOutlet var controlBox: NSBox!
     @IBOutlet var fpsLabel: NSTextField!
     @IBOutlet var attractorsLabel: NSTextField!
@@ -61,6 +44,8 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     func draw(in view: MTKView) {
     }
     
+    // MARK: - Initialization
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,30 +72,6 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
         particlesView.autoresizingMask = [.width, .height]
     }
     
-    @IBAction func buttonTapped(_ sender: NSButton) {
-        guard let action = Action(rawValue: sender.tag) else { return }
-        switch action {
-        case .showHideMetalView:
-            mtkView.isHidden = !mtkView.isHidden
-        case .showHideAttractors:
-            particlesView.isHidden = !particlesView.isHidden
-            break
-        case .randomize:
-            randomize()
-        case .showHideControls:
-            controlsView.isHidden = !controlsView.isHidden
-        case .lockOnGrid:
-            world.lockParticles = sender.state == NSControl.StateValue.on
-        }
-        
-        // Since we hide the metal view, the rendered closure won't be called anymore, so we start our timer to continue update particles if needed.
-        if mtkView.isHidden && !particlesView.isHidden {
-            startTimer()
-        }
-        else {
-            stopTimer()
-        }
-    }
     
     var timer: Timer?
     
@@ -147,28 +108,7 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
         self.particlesView.update() { }
         finishUpdate()
     }
-    
-    @IBAction func sliderChanged(_ sender: NSSlider) {
-        guard let action = SliderAction(rawValue: sender.tag) else { return }
-        switch action {
-        case .setNumberOfAttractors:
-            world.complexity = Int(sender.intValue)
-        case .setNumberOfParticles:
-            world.numberOfParticles = Int(sender.intValue)
-        case .setExponent:
-            world.gravityExponent = CGFloat(sender.doubleValue / 10)
-        case .setMinDistance:
-            world.minimalDistance = CGFloat(sender.doubleValue / 10)
-        case .setScale:
-            world.gravityFactor = CGFloat(sender.doubleValue / 10)
-        }
-    }
-    
-    /// Recreate random attractors
-    func randomize() {
-        world.randomize()
-    }
-    
+        
     func updateFPS() {
         let elapsedTime = -chrono.timeIntervalSinceNow
         chrono = Date()

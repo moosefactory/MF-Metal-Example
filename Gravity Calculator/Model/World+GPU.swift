@@ -120,7 +120,6 @@ class WorldBuffers {
         
         // Particles changed
         
-        //if updateFlag.contains(.particles) {
         if !updateFlag.isEmpty {
             particlesBuffer = device.tryToMakeBuffer(length: particlesBufferSize)
             objects.particles.enumerated().forEach { index, particle in
@@ -130,8 +129,7 @@ class WorldBuffers {
             numberOfParticles = world.objects.particles.count
             
             // Reposition elements from frameIndex
-            updateParticlesPosition()
-
+            //updateParticlesPosition()
         }
     }
     
@@ -150,7 +148,8 @@ class WorldBuffers {
                                           minimalDistance: objects.settings.minimalDistance,
                                           gravityFactor: objects.settings.gravityFactor,
                                           gravityExponent: objects.settings.gravityExponent,
-                                          lockParticles: objects.settings.lockParticles)
+                                          lockParticles: objects.settings.lockParticles,
+                                          spring: objects.settings.spring)
 
     }
     
@@ -162,17 +161,18 @@ class WorldBuffers {
     }
     
     func updateParticlesPosition() {
-        let rendererFrame = CGRect(origin: .zero, size: rendererSize)
-        objects.particles.enumerated().forEach { index, particle in
-            let loc = CGPoint(simd: particle.location).fromPositiveFractional(in: rendererFrame)
-            let newParticle = Model.Particle(location: loc.simd,
-                                             mass: particle.mass,
-                                             color: particle.color,
-                                             gravityVector: particle.gravityVector,
-                                             gravityPolarVector: particle.gravityPolarVector)
-            
-            particlesArray[index] = newParticle
-        }
+
+//        let rendererFrame = CGRect(origin: .zero, size: rendererSize)
+//        objects.particles.enumerated().forEach { index, particle in
+//            let loc = CGPoint(simd: particle.location).fromPositiveFractional(in: rendererFrame)
+//            let newParticle = Model.Particle(location: loc.simd,
+//                                             mass: particle.mass,
+//                                             color: particle.color,
+//                                             gravityVector: particle.gravityVector,
+//                                             gravityPolarVector: particle.gravityPolarVector)
+//
+//            particlesArray[index] = newParticle
+//        }
     }
 
 }

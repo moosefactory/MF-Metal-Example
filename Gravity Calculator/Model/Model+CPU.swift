@@ -6,7 +6,7 @@
 //  Copyright © 2020 Moose Factory Software. All rights reserved.
 //
 
-import Foundation
+import MoofFoundation
 import QuartzCore
 import simd
 
@@ -45,15 +45,31 @@ public struct Model {
     }
     
     public struct Particle: WorldElement {
-        
+        /// The particle location
         public let location: simd_float2
+        /// The initial particle location
+        /// - If gridLock is true, then location will stick to anchor
+        /// - If spring is set, then a force will attract particle to it's anchor
+        public let anchor: simd_float2
+        /// The particle mass
         let mass: simd_float1
+        /// Particle color
         let color: simd_float4
         
         // Will be computed by Particles Calculator
 
-        let gravityVector: simd_float2
-        let gravityPolarVector: simd_float2
+        /// The mighty gravity force
+        let gravityVector: simd_float2 = .zero
+        /// The mighty gravity force expressed in polar coordinate
+        let gravityPolarVector: simd_float2 = .zero
+        
+        
+        init(location: CGPoint, mass: CGFloat = 1, color: Color = .white) {
+            self.location = location.simd
+            self.anchor = location.simd
+            self.mass = mass.simd
+            self.color = color.simd
+        }
     }
     
     public struct Settings {
@@ -72,6 +88,7 @@ public struct Model {
         var gravityExponent: simd_float1 = 2
         
         var lockParticles: Bool = false
+        var spring: simd_float1 = 0
     }
 }
 

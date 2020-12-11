@@ -38,56 +38,29 @@ class World {
         var settings = Model.Settings()
     }
     
-    var objects = Objects()
+    // MARK: - Properties
+    
+    private(set) var objects = Objects()
 
     var updateFlag = UpdateFlag()
-    
-    // Settings
-    
+
+    var settings: Model.Settings {
+        get { objects.settings }
+        set {
+            objects.settings = newValue
+            updateFlag.insert(.settings)
+        }
+    }
     var complexity: Int = 10 {
         didSet {
             makeWorld()
         }
     }
         
-    // MARK: - Convenience getters/setters for UI
-    
-    var numberOfParticles: Int = 1000 {
+    var particlesGridSize: Int = 10 {
         didSet {
             makeParticles()
         }
-    }
-    
-    var gravityFactor: CGFloat {
-        set {
-            objects.settings.gravityFactor = newValue.simd
-            updateFlag = .settings
-        }
-        get { return CGFloat(objects.settings.gravityFactor) }
-    }
-    
-    var gravityExponent: CGFloat {
-        set {
-            objects.settings.gravityExponent = newValue.simd
-            updateFlag = .settings
-        }
-        get { return CGFloat(objects.settings.gravityExponent) }
-    }
-    
-    var minimalDistance: CGFloat {
-        set {
-            objects.settings.minimalDistance = newValue.simd
-            updateFlag = .settings
-        }
-        get { return CGFloat(objects.settings.minimalDistance) }
-    }
-    
-    var lockParticles: Bool {
-        set {
-            objects.settings.lockParticles = newValue
-            updateFlag = .settings
-        }
-        get { return Bool(objects.settings.lockParticles) }
     }
 
     /// Creates the attractors and groups
@@ -99,29 +72,26 @@ class World {
         makeWorld()
     }
     
-    func randomize() {
-        makeWorld()
-    }
-    
+    ///  Create particles on a grid
     func makeParticles() {
-        objects.particles = [Model.Particle]()
-        let di = CGFloat(1) / CGFloat(numberOfParticles)
-        let dj = CGFloat(1) / CGFloat(numberOfParticles)
+        var newParticles = [Model.Particle]()
+        let di = CGFloat(1) / CGFloat(particlesGridSize)
+        let dj = CGFloat(1) / CGFloat(particlesGridSize)
         
-        for i in 0..<numberOfParticles {
-            for j in 0..<numberOfParticles {
+        for i in 0..<particlesGridSize {
+            for j in 0..<particlesGridSize {
                 let loc = CGPoint(x: di / 2 + di * CGFloat(i) , y: dj / 2 + dj * CGFloat(j) )
-                let color = Color(red: 0, green: 0.3, blue: 0.9, alpha: 0.9)
-                let particle = Model.Particle(location: loc.simd,
-                                              mass: 1, color: color.simd,
-                                              gravityVector: .zero,
-                                              gravityPolarVector: .zero)
-                objects.particles.append(particle)
+                let particle = Model.Particle(location: loc)
+                newParticles.append(particle)
             }
         }
+        objects.particles = newParticles
         updateFlag.insert(.particles)
     }
     
+    /// Create the world
+    ///
+    /// Random attractors will be created, depending of the complexity
     func makeWorld() {
         if updateFlag.contains(.attractors) {
             return

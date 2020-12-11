@@ -20,9 +20,16 @@ kernel void computeParticlesForces(device Particle* p,
     uint particleIndexInGroup = float(gid.x);
     uint particlesGroupIndex = float(gid.y);
     
-    uint particleIndex = particlesGroupIndex * settings->numberOfParticlesPerGroup + particleIndexInGroup;
-    float2 particleLocation = p[particleIndex].location;
+    uint i = particlesGroupIndex * settings->numberOfParticlesPerGroup + particleIndexInGroup;
+    float2 particleLocation = p[i].location;
+    float2 anchor = p[i].anchor;
     
+    // TODO: Remove an use fracional location
+    particleLocation.x *= settings->width;
+    particleLocation.y *= settings->height;
+    anchor.x *= settings->width;
+    anchor.y *= settings->height;
+
     float g = 0;
     float d = 0;
     float2 gVec = 0;
@@ -31,12 +38,12 @@ kernel void computeParticlesForces(device Particle* p,
     
     // Iterates through attractors to compute gravity vector for particle
     
-    for (uint i=0; i<n; i++) {
-        float2 attractorLocation = a[i].location;
+    for (uint j=0; j<n; j++) {
+        float2 attractorLocation = a[j].location;
 
         // Compute distance and gravity
         d = max(settings->minimalDistance, distance(attractorLocation, particleLocation));
-        g = settings->gravityFactor * a[i].mass / pow(d, settings->gravityExponent);
+        g = settings->gravityFactor * a[j].mass / pow(d, settings->gravityExponent);
         
         // Computes unit vector
         float2 u = (attractorLocation - particleLocation) / d;
@@ -48,14 +55,28 @@ kernel void computeParticlesForces(device Particle* p,
     // set g to final gravity, computed from gravity vector length
     g = distance(0, gVec);
 
-    p[particleIndex].gravityVector = gVec;
-    p[particleIndex].gravityPolarVector.x = g;
-    p[particleIndex].gravityPolarVector.y = atan2(gVec.y, gVec.x);
+    p[i].gravityVector = gVec;
+    p[i].gravityPolarVector.x = g;
+    p[i].gravityPolarVector.y = atan2(gVec.y, gVec.x);
     
-    // If not locked, update particle position by applying gravity force
-    
-    if (!settings->lockParticles) {
-        p[particleIndex].location += gVec * 100;
+    // If not locked or spring force < 1, update particle position by applying gravity force
+    if (!settings->lockParticles && settings->spring < 1) {
+        
+        p[i].location.x += gVec.x * 100 / settings->width;
+        p[i].location.y += gVec.y * 100 / settings->height;
+
+        // If spring force > 9, compute spring attraction
+        if (settings->spring > 0) {
+            //F = k(p – p0)
+            float d = distance(p[i].anchor, p[i].location);
+            // Computes unit vector
+            float2 u = (p[i].anchor - p[i].location) / d;
+            p[i].location += u * d * settings->spring;
+        }
+        
+    } else {
+        // TODO: Remove an use fracional location
+        p[i].location = p[i].anchor;
     }
 }
 

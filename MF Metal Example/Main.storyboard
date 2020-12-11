@@ -711,16 +711,16 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="kVZ-4e-NJC">
-                                <rect key="frame" x="131" y="292" width="392" height="110"/>
+                                <rect key="frame" x="131" y="268" width="392" height="134"/>
                                 <view key="contentView" id="JED-o2-eTH">
-                                    <rect key="frame" x="0.0" y="0.0" width="392" height="110"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="392" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4pP-l8-1lF">
-                                            <rect key="frame" x="5" y="5" width="382" height="100"/>
+                                            <rect key="frame" x="5" y="5" width="382" height="124"/>
                                             <subviews>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="19" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m6C-fG-Da7">
-                                                    <rect key="frame" x="0.0" y="79" width="382" height="21"/>
+                                                    <rect key="frame" x="0.0" y="103" width="382" height="21"/>
                                                     <subviews>
                                                         <button verticalHuggingPriority="750" tag="102" translatesAutoresizingMaskIntoConstraints="NO" id="BR7-zZ-mGy">
                                                             <rect key="frame" x="-6" y="-7" width="107" height="32"/>
@@ -777,10 +777,10 @@
                                                     </customSpacing>
                                                 </stackView>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3QF-XF-eUr">
-                                                    <rect key="frame" x="46" y="0.0" width="336" height="69"/>
+                                                    <rect key="frame" x="46" y="0.0" width="336" height="93"/>
                                                     <subviews>
                                                         <stackView distribution="fill" orientation="vertical" alignment="trailing" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yaz-UR-NJa">
-                                                            <rect key="frame" x="0.0" y="5" width="177" height="64"/>
+                                                            <rect key="frame" x="0.0" y="29" width="177" height="64"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gXC-ts-jVn">
                                                                     <rect key="frame" x="0.0" y="48" width="177" height="16"/>
@@ -888,10 +888,10 @@
                                                             </customSpacing>
                                                         </stackView>
                                                         <stackView distribution="fill" orientation="vertical" alignment="trailing" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gev-Uv-Txe">
-                                                            <rect key="frame" x="177" y="0.0" width="159" height="69"/>
+                                                            <rect key="frame" x="177" y="0.0" width="159" height="93"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZKK-kO-UKk">
-                                                                    <rect key="frame" x="0.0" y="53" width="159" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="77" width="159" height="16"/>
                                                                     <subviews>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="35U-4p-w2v">
                                                                             <rect key="frame" x="-2" y="0.0" width="65" height="16"/>
@@ -922,7 +922,7 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rei-3w-qTS">
-                                                                    <rect key="frame" x="8" y="29" width="151" height="16"/>
+                                                                    <rect key="frame" x="8" y="53" width="151" height="16"/>
                                                                     <subviews>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2PA-EW-qYl">
                                                                             <rect key="frame" x="-2" y="0.0" width="57" height="16"/>
@@ -940,6 +940,37 @@
                                                                             <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="80" tickMarkPosition="above" sliderType="linear" id="CzX-pJ-2Pt"/>
                                                                             <connections>
                                                                                 <action selector="sliderChanged:" target="XfG-lQ-9wD" id="7qy-2F-VTf"/>
+                                                                            </connections>
+                                                                        </slider>
+                                                                    </subviews>
+                                                                    <visibilityPriorities>
+                                                                        <integer value="1000"/>
+                                                                        <integer value="1000"/>
+                                                                    </visibilityPriorities>
+                                                                    <customSpacing>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                    </customSpacing>
+                                                                </stackView>
+                                                                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VXK-Kf-Jmp">
+                                                                    <rect key="frame" x="21" y="29" width="138" height="16"/>
+                                                                    <subviews>
+                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dY7-xm-4gd">
+                                                                            <rect key="frame" x="-2" y="0.0" width="44" height="16"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Spring" id="ZAg-MO-vF0">
+                                                                                <font key="font" usesAppearanceFont="YES"/>
+                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                        <slider verticalHuggingPriority="750" tag="111" translatesAutoresizingMaskIntoConstraints="NO" id="LQx-RO-nlO">
+                                                                            <rect key="frame" x="46" y="-1" width="94" height="19"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="90" id="mDZ-HI-T64"/>
+                                                                            </constraints>
+                                                                            <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" tickMarkPosition="above" sliderType="linear" id="7Qn-3w-fu5"/>
+                                                                            <connections>
+                                                                                <action selector="sliderChanged:" target="XfG-lQ-9wD" id="Npx-W5-CeC"/>
                                                                             </connections>
                                                                         </slider>
                                                                     </subviews>
@@ -984,8 +1015,10 @@
                                                                 <integer value="1000"/>
                                                                 <integer value="1000"/>
                                                                 <integer value="1000"/>
+                                                                <integer value="1000"/>
                                                             </visibilityPriorities>
                                                             <customSpacing>
+                                                                <real value="3.4028234663852886e+38"/>
                                                                 <real value="3.4028234663852886e+38"/>
                                                                 <real value="3.4028234663852886e+38"/>
                                                                 <real value="3.4028234663852886e+38"/>

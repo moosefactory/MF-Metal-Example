@@ -54,7 +54,7 @@ class ParticlesLayer: CALayer {
         
         for i in 0..<world.numberOfParticles {
             let p = world.particlesArray[i]
-            var c = p.position / 2
+            var c = p.position.fromPositiveFractional(in: bounds)/// 2
             
             // We flip coordinates on MacOS
             #if os(macOS)

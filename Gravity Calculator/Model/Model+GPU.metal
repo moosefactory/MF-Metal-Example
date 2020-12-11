@@ -29,6 +29,7 @@ struct Attractor {
 
 struct Particle {
     float2 location;
+    float2 anchor;
     float mass;
     float4 color;
     
@@ -64,4 +65,5 @@ struct Environment {
     float gravityExponent;
     
     bool lockParticles;
+    float spring;
 };
