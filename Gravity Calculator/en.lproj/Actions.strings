@@ -11,3 +11,16 @@
 "showHideControls" = "Show/Hide Controls";
 "randomize" = "Randomize";
 
+"setComplexity" = "Complexity";
+"setParticlesGridSize" = "Particles Grid Size";
+"lockOnGrid" = "Lock Particles";
+"setSpringForce" = "Spring Force";
+"drawSpring" = "Draw Spring";
+"showParticles" = "Show Particles";
+"showAttractors" = "Show Attractors";
+"setMinDistance" = "Minimal Distance";
+"setExponent" = "Distance Exponent";
+"setScale" = "Gravity";
+
+"Yes" = "Yes";
+"No" = "No";

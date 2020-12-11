@@ -36,7 +36,7 @@ class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        world.numberOfParticles = 0
+        world.particlesGridSize = 0
         
         // Creates the Metal view under the controls box
         mtkView = GraviFieldsView(frame: view.bounds, world: worldBuffers)
@@ -133,20 +133,20 @@ class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func horizontalPan(right: Bool) {
         if right {
-            if world.numberOfParticles >= 1 {
-                world.numberOfParticles -= 1
+            if world.particlesGridSize >= 1 {
+                world.particlesGridSize -= 1
             } else {
-                world.numberOfParticles = 0
+                world.particlesGridSize = 0
             }
         } else {
-            if world.numberOfParticles <= 40 {
-                world.numberOfParticles += 1
+            if world.particlesGridSize <= 40 {
+                world.particlesGridSize += 1
             } else {
-                world.numberOfParticles = 40
+                world.particlesGridSize = 40
             }
         }
         
-        particlesView.isHidden = world.numberOfParticles == 0
+        particlesView.isHidden = world.particlesGridSize == 0
     }
     
     func updateSettings() {

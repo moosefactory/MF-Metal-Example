@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		725E5D5A8E86D78725B048EA /* Pods_MF_Metal_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99386E52562299FAA575C4D1 /* Pods_MF_Metal_Example.framework */; };
+		BC23A48B2583EC7300A6B68D /* MacOSViewController+UIFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23A48A2583EC7300A6B68D /* MacOSViewController+UIFactory.swift */; };
+		BC23A48D2583F7AA00A6B68D /* ParameterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23A48C2583F7AA00A6B68D /* ParameterView.swift */; };
+		BC23A48E2584052700A6B68D /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D42582F7450040D60C /* Actions.swift */; };
 		BC56441B2582B66F00FB0653 /* HowTo2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC56441A2582B66F00FB0653 /* HowTo2.png */; };
 		BC5644242582BA2E00FB0653 /* AppIcon512.png in Resources */ = {isa = PBXBuildFile; fileRef = BC56441F2582BA2E00FB0653 /* AppIcon512.png */; };
 		BC5644252582BA2E00FB0653 /* AppIcon128.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5644202582BA2E00FB0653 /* AppIcon128.png */; };
@@ -77,6 +80,8 @@
 		99386E52562299FAA575C4D1 /* Pods_MF_Metal_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MF_Metal_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D774E98C21C4AF88B1D2C0 /* Pods_MF_Metal_Example_MF_Metal_ExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MF_Metal_Example_MF_Metal_ExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2CA5854CFEAA906F1FD71AC /* Pods-MF Metal ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MF Metal ExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-MF Metal ExampleTests/Pods-MF Metal ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BC23A48A2583EC7300A6B68D /* MacOSViewController+UIFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MacOSViewController+UIFactory.swift"; sourceTree = "<group>"; };
+		BC23A48C2583F7AA00A6B68D /* ParameterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterView.swift; sourceTree = "<group>"; };
 		BC56441A2582B66F00FB0653 /* HowTo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HowTo2.png; sourceTree = "<group>"; };
 		BC56441F2582BA2E00FB0653 /* AppIcon512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon512.png; sourceTree = "<group>"; };
 		BC5644202582BA2E00FB0653 /* AppIcon128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon128.png; sourceTree = "<group>"; };
@@ -174,6 +179,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BC23A48F2584052D00A6B68D /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				BCBFB6EF2583B4440040D60C /* ActionIdentifierProtocol.swift */,
+				BCBFB6EA2583B0B30040D60C /* ActionProtocol+Controls.swift */,
+				BCBFB6D42582F7450040D60C /* Actions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
 		BC5644162582240100FB0653 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +241,7 @@
 				BCBFB6EC2583B4000040D60C /* Strings.strings */,
 				BC6D9728257FE49800086A5C /* Main.storyboard */,
 				BC6D971F257FE46B00086A5C /* MacOSViewController.swift */,
+				BC23A48A2583EC7300A6B68D /* MacOSViewController+UIFactory.swift */,
 				BCBFB6D62582F7A70040D60C /* MacOSViewController+Actions.swift */,
 				BC6D96EF257FE33200086A5C /* Assets.xcassets */,
 				BC6D96F4257FE33200086A5C /* Info.plist */,
@@ -287,13 +303,12 @@
 			isa = PBXGroup;
 			children = (
 				BC91B5952580ED3500152D1C /* Views */,
-				BCBFB6EF2583B4440040D60C /* ActionIdentifierProtocol.swift */,
-				BCBFB6EA2583B0B30040D60C /* ActionProtocol+Controls.swift */,
-				BCBFB6D42582F7450040D60C /* Actions.swift */,
+				BC23A48F2584052D00A6B68D /* Actions */,
 				BCBFB6DF25838FBC0040D60C /* BoxStackView.xib */,
 				BCBFB6DD25838D500040D60C /* BoxStackView.swift */,
 				BCBFB6E2258399B40040D60C /* ActionsBox.xib */,
 				BCBFB6E0258392D70040D60C /* ActionsBox.swift */,
+				BC23A48C2583F7AA00A6B68D /* ParameterView.swift */,
 			);
 			path = "Gravity Controller";
 			sourceTree = "<group>";
@@ -518,6 +533,7 @@
 			files = (
 				BC6D9722257FE46B00086A5C /* GravityFieldsCalculator+GPU.metal in Sources */,
 				BC91B5902580DA6F00152D1C /* ParticlesCalculator+CPU.swift in Sources */,
+				BC23A48B2583EC7300A6B68D /* MacOSViewController+UIFactory.swift in Sources */,
 				BC6D9727257FE46B00086A5C /* GraviFieldsView.swift in Sources */,
 				BCA00EF0258118F900163AC5 /* ParticlesView.swift in Sources */,
 				BCBFB6EB2583B0B30040D60C /* ActionProtocol+Controls.swift in Sources */,
@@ -529,6 +545,7 @@
 				BCBFB6D72582F7A70040D60C /* MacOSViewController+Actions.swift in Sources */,
 				BC91B59A2580F44A00152D1C /* World+CPU.swift in Sources */,
 				BC91B5972580ED4D00152D1C /* ParticlesLayer.swift in Sources */,
+				BC23A48D2583F7AA00A6B68D /* ParameterView.swift in Sources */,
 				BCBFB6D92582F8900040D60C /* World+UI.swift in Sources */,
 				BC6D9726257FE46B00086A5C /* MacOSViewController.swift in Sources */,
 				BCBFB6E1258392D70040D60C /* ActionsBox.swift in Sources */,
@@ -552,6 +569,7 @@
 				BC6D976625800FB600086A5C /* GravityFieldsCalculator+CPU.swift in Sources */,
 				BC6D973425800F7D00086A5C /* AppDelegate.swift in Sources */,
 				BC6D976325800FB600086A5C /* GravityFieldsCalculator+GPU.metal in Sources */,
+				BC23A48E2584052700A6B68D /* Actions.swift in Sources */,
 				BC6D973625800F7D00086A5C /* SceneDelegate.swift in Sources */,
 				BC91B5942580DBBC00152D1C /* ParticlesCalculator+GPU.metal in Sources */,
 				BC91B5982580ED4D00152D1C /* ParticlesLayer.swift in Sources */,

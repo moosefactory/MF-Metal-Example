@@ -710,29 +710,134 @@
                         <rect key="frame" x="0.0" y="0.0" width="654" height="412"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <box boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="kVZ-4e-NJC" customClass="BoxStackView" customModule="MF_Metal_Example" customModuleProvider="target">
-                                <rect key="frame" x="322" y="392" width="10" height="10"/>
-                                <view key="contentView" id="JED-o2-eTH">
-                                    <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4pP-l8-1lF">
-                                            <rect key="frame" x="5" y="5" width="0.0" height="0.0"/>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="4pP-l8-1lF" firstAttribute="leading" secondItem="JED-o2-eTH" secondAttribute="leading" constant="5" id="299-lH-Dz1"/>
-                                        <constraint firstAttribute="trailing" secondItem="4pP-l8-1lF" secondAttribute="trailing" constant="5" id="AsA-0J-tSo"/>
-                                        <constraint firstItem="4pP-l8-1lF" firstAttribute="top" secondItem="JED-o2-eTH" secondAttribute="top" constant="5" id="pJC-TZ-vU0"/>
-                                        <constraint firstAttribute="bottom" secondItem="4pP-l8-1lF" secondAttribute="bottom" constant="5" id="tsH-W3-Ss7"/>
-                                    </constraints>
-                                </view>
-                                <color key="borderColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="fillColor" red="0.0" green="0.0" blue="0.0" alpha="0.752228213028169" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <connections>
-                                    <outlet property="stack" destination="4pP-l8-1lF" id="oV3-tD-rbD"/>
-                                </connections>
-                            </box>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a97-e6-Jmg">
+                                <rect key="frame" x="252" y="267" width="150" height="135"/>
+                                <subviews>
+                                    <box ambiguous="YES" boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="kVZ-4e-NJC" customClass="BoxStackView" customModule="MF_Metal_Example" customModuleProvider="target">
+                                        <rect key="frame" x="50" y="85" width="50" height="50"/>
+                                        <view key="contentView" ambiguous="YES" id="JED-o2-eTH">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4pP-l8-1lF">
+                                                    <rect key="frame" x="5" y="5" width="40" height="40"/>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4pP-l8-1lF" firstAttribute="leading" secondItem="JED-o2-eTH" secondAttribute="leading" constant="5" id="299-lH-Dz1"/>
+                                                <constraint firstAttribute="trailing" secondItem="4pP-l8-1lF" secondAttribute="trailing" constant="5" id="AsA-0J-tSo"/>
+                                                <constraint firstItem="4pP-l8-1lF" firstAttribute="top" secondItem="JED-o2-eTH" secondAttribute="top" constant="5" id="pJC-TZ-vU0"/>
+                                                <constraint firstAttribute="bottom" secondItem="4pP-l8-1lF" secondAttribute="bottom" constant="5" id="tsH-W3-Ss7"/>
+                                            </constraints>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="8p1-C1-hhw"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="9VS-Rw-mzB"/>
+                                        </constraints>
+                                        <color key="borderColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="fillColor" red="0.0" green="0.0" blue="0.0" alpha="0.752228213028169" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="stack" destination="4pP-l8-1lF" id="oV3-tD-rbD"/>
+                                        </connections>
+                                    </box>
+                                    <box boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="58P-9e-WAB" customClass="BoxStackView" customModule="MF_Metal_Example" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="75"/>
+                                        <view key="contentView" id="EYU-Gn-FVN">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="75"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <stackView distribution="fill" orientation="horizontal" alignment="bottom" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NuZ-oW-zsU">
+                                                    <rect key="frame" x="5" y="5" width="140" height="65"/>
+                                                    <subviews>
+                                                        <box boxType="custom" borderType="line" borderWidth="2" cornerRadius="5" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="mDZ-ua-2BN" customClass="ParameterView" customModule="MF_Metal_Example" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="140" height="65"/>
+                                                            <view key="contentView" id="vbj-oR-Fk3">
+                                                                <rect key="frame" x="2" y="2" width="136" height="61"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <subviews>
+                                                                    <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qud-VM-91L">
+                                                                        <rect key="frame" x="8" y="8" width="120" height="45"/>
+                                                                        <subviews>
+                                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HGx-3K-1gE">
+                                                                                <rect key="frame" x="-2" y="31" width="124" height="14"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="120" id="Ebh-p9-LmT"/>
+                                                                                </constraints>
+                                                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Parameter Name" id="Mvb-Ep-axg">
+                                                                                    <font key="font" metaFont="system" size="11"/>
+                                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                </textFieldCell>
+                                                                            </textField>
+                                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u4x-0Y-mvk">
+                                                                                <rect key="frame" x="27" y="0.0" width="67" height="27"/>
+                                                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="xAI-zh-K6n">
+                                                                                    <font key="font" metaFont="systemBold" size="23"/>
+                                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                </textFieldCell>
+                                                                            </textField>
+                                                                        </subviews>
+                                                                        <visibilityPriorities>
+                                                                            <integer value="1000"/>
+                                                                            <integer value="1000"/>
+                                                                        </visibilityPriorities>
+                                                                        <customSpacing>
+                                                                            <real value="3.4028234663852886e+38"/>
+                                                                            <real value="3.4028234663852886e+38"/>
+                                                                        </customSpacing>
+                                                                    </stackView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="qud-VM-91L" firstAttribute="leading" secondItem="vbj-oR-Fk3" secondAttribute="leading" constant="8" id="76X-Tr-ypP"/>
+                                                                    <constraint firstItem="qud-VM-91L" firstAttribute="top" secondItem="vbj-oR-Fk3" secondAttribute="top" constant="8" id="BRs-YE-Z4c"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="qud-VM-91L" secondAttribute="bottom" constant="8" id="VCK-bl-kyF"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="qud-VM-91L" secondAttribute="trailing" constant="8" id="v7k-LA-rTA"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <color key="borderColor" red="1" green="1" blue="1" alpha="0.746368838028169" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                            <connections>
+                                                                <outlet property="nameLabel" destination="HGx-3K-1gE" id="rA3-ml-qWe"/>
+                                                                <outlet property="stack" destination="qud-VM-91L" id="9Sb-DD-vEH"/>
+                                                                <outlet property="value" destination="u4x-0Y-mvk" id="jBN-VJ-48K"/>
+                                                            </connections>
+                                                        </box>
+                                                    </subviews>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="NuZ-oW-zsU" secondAttribute="bottom" constant="5" id="L9J-he-AuI"/>
+                                                <constraint firstItem="NuZ-oW-zsU" firstAttribute="leading" secondItem="EYU-Gn-FVN" secondAttribute="leading" constant="5" id="Rif-EW-2Eq"/>
+                                                <constraint firstAttribute="trailing" secondItem="NuZ-oW-zsU" secondAttribute="trailing" constant="5" id="XwB-Ra-dk0"/>
+                                                <constraint firstItem="NuZ-oW-zsU" firstAttribute="top" secondItem="EYU-Gn-FVN" secondAttribute="top" constant="5" id="rgZ-vx-8Yu"/>
+                                            </constraints>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="4L3-rN-5nP"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="Eow-lo-bBy"/>
+                                        </constraints>
+                                        <color key="borderColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="fillColor" red="0.0" green="0.0" blue="0.0" alpha="0.75222821299999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="stack" destination="NuZ-oW-zsU" id="6oM-dd-KRv"/>
+                                        </connections>
+                                    </box>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                             <box boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="4au-oT-plj">
                                 <rect key="frame" x="194" y="15" width="266" height="26"/>
                                 <view key="contentView" id="xwI-yd-vWU">
@@ -807,17 +912,20 @@
                             </box>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="kVZ-4e-NJC" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="8xG-22-jhZ"/>
-                            <constraint firstItem="kVZ-4e-NJC" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="NPZ-jT-tWF"/>
                             <constraint firstAttribute="bottom" secondItem="4au-oT-plj" secondAttribute="bottom" constant="15" id="Tgh-X8-n3y"/>
                             <constraint firstItem="4au-oT-plj" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="VbD-Lb-7hJ"/>
+                            <constraint firstItem="a97-e6-Jmg" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="tsO-kb-lcr"/>
+                            <constraint firstItem="a97-e6-Jmg" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="vbK-kL-okI"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="appActionButtons" destination="kVZ-4e-NJC" id="LrD-7s-lJK"/>
                         <outlet property="attractorsLabel" destination="rR4-kb-fpF" id="yU2-OG-JDF"/>
                         <outlet property="controlBox" destination="kVZ-4e-NJC" id="HGa-2n-wdK"/>
+                        <outlet property="controlsView" destination="kVZ-4e-NJC" id="Q6B-ei-XqT"/>
                         <outlet property="fpsLabel" destination="e7e-qA-web" id="nc2-qW-8QS"/>
+                        <outlet property="parametersView" destination="58P-9e-WAB" id="KGo-bz-iCJ"/>
+                        <outlet property="selectedParameterView" destination="mDZ-ua-2BN" id="Rca-go-CPi"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

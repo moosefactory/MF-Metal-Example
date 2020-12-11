@@ -51,7 +51,7 @@ extension ActionIdentifier: ActionIdentifierProtocol {
 enum ParameterIdentifier: Int, CaseIterable {
     
     /// setComplexity : Set the number of attractors and attractors groups that will be created.
-    case setNumberOfAttractors = 100
+    case setComplexity = 100
     
     /// setParticlesGridSize : Set the particles grid size. Number of particles will be gridSize^2.
     case setParticlesGridSize = 101
@@ -82,6 +82,15 @@ enum ParameterIdentifier: Int, CaseIterable {
     
     /// setGravityConstant : Set the gravity constant.
     case setScale = 202
+    
+    static var sliders: [ParameterIdentifier] {
+        return [.setScale, .setMinDistance, .setExponent, .setComplexity, .setParticlesGridSize, .setSpringForce ]
+    }
+
+    
+    static var switches: [ParameterIdentifier] {
+        return [.showParticles, .showAttractors, .lockOnGrid, .drawSpring ]
+    }
 }
 
 
@@ -101,8 +110,8 @@ extension ParameterIdentifier: ParameterIdentifierProtocol {
     
     var identifier: String {
         switch self {
-        case .setNumberOfAttractors:
-            return "setNumberOfAttractors"
+        case .setComplexity:
+            return "setComplexity"
         case .setParticlesGridSize:
             return "setParticlesGridSize"
         case .lockOnGrid:
@@ -128,7 +137,7 @@ extension ParameterIdentifier: ParameterIdentifierProtocol {
     
     var min: Double {
         switch self {
-        case .setNumberOfAttractors:
+        case .setComplexity:
             return 1
         case .setExponent:
             return 1
@@ -139,8 +148,8 @@ extension ParameterIdentifier: ParameterIdentifierProtocol {
     
     var max: Double {
         switch self {
-        case .setNumberOfAttractors:
-            return 10
+        case .setComplexity:
+            return 30
         case .setParticlesGridSize:
             return 80
         case .setSpringForce:
@@ -159,8 +168,8 @@ extension ParameterIdentifier: ParameterIdentifierProtocol {
     
     var `default`: Double {
         switch self {
-        case .setNumberOfAttractors:
-            return 5
+        case .setComplexity:
+            return 10
         case .setParticlesGridSize:
             return 10
         case .lockOnGrid, .setSpringForce, .drawSpring:

@@ -68,6 +68,14 @@ class ParticlesView: View {
             particleCalculator = try? ParticlesCalculator(world: world)
         }
         
+        // If we have no particles, we don't need to compute anything
+        // So we simply update with attractors
+        guard world.numberOfParticles > 0, particlesLayer.showParticles else {
+            self.particlesLayer.update()
+            completion()
+            return
+        }
+        
         // We avoid accessing buffer while recreating particles
         if !world.updateFlag.contains(.particles) {
             // Compute particles forces and update layers when done
@@ -76,7 +84,6 @@ class ParticlesView: View {
                     self.particlesLayer.update()
                 }
             })
-            
         }
         
         completion()

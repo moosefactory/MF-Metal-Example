@@ -35,10 +35,10 @@ extension ActionIdentifierProtocol {
 extension ParameterIdentifier {
     func makeSetParameterAction(from control: NSControl) -> TypeErasedParameterProtocol {
         switch self {
-        case .setNumberOfAttractors, .setSpringForce, .setMinDistance, .setExponent, .setScale:
+        case .setSpringForce, .setMinDistance, .setExponent, .setScale:
             let value = control.doubleValue
             return SetParameterAction<Double>(identifier: self, value: value)
-        case .setParticlesGridSize:
+        case .setComplexity, .setParticlesGridSize:
             let value = control.integerValue
             return SetParameterAction<Int>(identifier: self, value: value)
         default:

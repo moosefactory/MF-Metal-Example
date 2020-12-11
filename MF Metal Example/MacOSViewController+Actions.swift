@@ -15,23 +15,31 @@ extension MacOSViewController {
         switch action {
         case .showHideFields:
             mtkView.isHidden = !mtkView.isHidden
-            // Since we hide the metal view, the rendered closure won't be called anymore.
-            // We start our timer to continue to update particles.
-            if mtkView.isHidden && !particlesView.isHidden {
-                startTimer()
-            } else {
-                stopTimer()
-            }
+            startOrStopTimer()
         case .showHideObjects:
             particlesView.isHidden = !particlesView.isHidden
+            startOrStopTimer()
         case .showHideControls:
-            controlsView.isHidden = !controlsView.isHidden
+            parametersView.isHidden = !parametersView.isHidden
         case .randomize:
             world.randomize()
         }
     }
     
+    func startOrStopTimer() {
+        let particlesLayerDisplaySomething = particlesView.particlesLayer.showParticles || particlesView.particlesLayer.showAttractors
+        // Since we hide the metal view, the rendered closure won't be called anymore.
+        // We start our timer to continue to update particles.
+        if mtkView.isHidden && !particlesView.isHidden
+            && particlesLayerDisplaySomething && world.particlesGridSize > 0 {
+            startTimer()
+        } else {
+            stopTimer()
+        }
+    }
+    
     func executeParameterAction(_ action: TypeErasedParameterProtocol) {
+        selectedParameterView.setParameterAction = action
         switch action.identifier {
         case .setExponent:
             world.gravityExponent = action.cgFloat
@@ -47,21 +55,23 @@ extension MacOSViewController {
             
         case .showParticles:
             particlesView.particlesLayer.showParticles = action.bool
+            startOrStopTimer()
             
         case .showAttractors:
             particlesView.particlesLayer.showAttractors = action.bool
-
+            startOrStopTimer()
+            
         case .lockOnGrid:
             world.lockParticles = action.bool
 
         // Sliders
         
-        case .setNumberOfAttractors:
+        case .setComplexity:
             world.complexity = action.int
             
         case .setParticlesGridSize:
             world.particlesGridSize = action.int
-            
+            startOrStopTimer()
             
         case .setSpringForce:
             world.springForce = action.cgFloat

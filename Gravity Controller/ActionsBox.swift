@@ -16,6 +16,7 @@ class ActionsBox: BoxStackView {
     
     @discardableResult static func load(in view: NSView, title: String = "",
                                         orientation: NSUserInterfaceLayoutOrientation = .vertical,
+                                        labelOnLeft: Bool = true,
                                         with actions: [ActionIdentifierProtocol],
                                         actionClosure: @escaping (ActionIdentifierProtocol?, NSControl)->Void) -> ActionsBox {
         let box = ActionsBox.load(in: view, title: title)
@@ -26,7 +27,7 @@ class ActionsBox: BoxStackView {
             if control is NSButton {
                 title = ""
             }
-            let controlBox = BoxStackView.loadWithControl(in: box.stack, title: title, with: control)
+            let controlBox = BoxStackView.loadWithControl(in: box.stack, title: title, labelOnLeft: labelOnLeft, with: control)
         }
         box.stack.orientation = orientation
         box.stack.setContentHuggingPriority(NSLayoutConstraint.Priority.required, for: .horizontal)
@@ -45,6 +46,7 @@ extension BoxStackView {
     
     @discardableResult static func loadWithControl(in view: NSView, title: String = "",
                                         orientation: NSUserInterfaceLayoutOrientation = .horizontal,
+                                        labelOnLeft: Bool = true,
                                         with control: NSControl) -> BoxStackView {
         let box = BoxStackView.load(in: view)
         box.stack.orientation = orientation
@@ -53,7 +55,11 @@ extension BoxStackView {
             let label = NSTextField(labelWithString: title)
             box.stack.addArrangedSubview(label)
         }
-        box.stack.addArrangedSubview(control)
+        if labelOnLeft {
+            box.stack.addArrangedSubview(control)
+        } else {
+            box.stack.insertArrangedSubview(control, at: 0)
+        }
 //        box.stack.setContentHuggingPriority(NSLayoutConstraint.Priority.required, for: .horizontal)
         return box
     }

@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import QuartzCore
+
 #if os(macOS)
 import Cocoa
 #endif
@@ -66,6 +68,7 @@ protocol TypeErasedParameterProtocol {
     var identifier: ParameterIdentifier { get set }
     
     var typeErasedValue: Any? { get }
+    var stringValue: String { get }
 }
 
 extension TypeErasedParameterProtocol {
@@ -89,6 +92,22 @@ protocol SetParameterProtocol: TypeErasedParameterProtocol {
 }
 
 struct SetParameterAction<T>: SetParameterProtocol {
+    
+    var stringValue: String {
+        switch value {
+        case is CGFloat:
+            return "\((value as! CGFloat).dec3)"
+        case is Double:
+            return "\((value as! Double).dec3)"
+        case is Int:
+            return "\((value as! Int))"
+        case is Bool:
+            return "\((value as! Bool) ? "Yes".localized : "No".localized)"
+        default:
+            return "\(value)"
+        }
+    }
+    
     typealias ValueType = T
 
     var identifier: ParameterIdentifier

@@ -19,12 +19,10 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     @IBOutlet var fpsLabel: NSTextField!
     @IBOutlet var attractorsLabel: NSTextField!
     
-    @IBOutlet var minDistanceSlider: NSSlider!
-    @IBOutlet var gExponentSlider: NSSlider!
-    @IBOutlet var gFactorSlider: NSSlider!
-    
-    var controlsView: BoxStackView!
-    
+    @IBOutlet var controlsView: BoxStackView!
+    @IBOutlet var parametersView: BoxStackView!
+    @IBOutlet var selectedParameterView: ParameterView!
+
     var mtkView: GraviFieldsView!
     var particlesView: ParticlesView!
     
@@ -52,27 +50,10 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /// Create the main buttons box
+        loadControls()
         
-        ActionsBox.load(in: controlBox.stack, title: "Actions".localized,
-                        orientation: .horizontal,
-                        with: ActionIdentifier.allCases) { action, control in
-            if let appAction = action as? ActionIdentifier {
-                self.executeAppAction(appAction)
-            }
-        }
-        
-        /// Create the parameterss box
-        controlsView = ActionsBox.load(in: controlBox.stack,
-                                         title: "Parameters".localized,
-                                         with: ParameterIdentifier.allCases) { action, control in
-            if let appAction = action as? ParameterIdentifier {
-                let setParamAction = appAction.makeSetParameterAction(from: control)
-                self.executeParameterAction(setParamAction)
-            }
-        }
-        controlsView.stack.alignment = .right
-        
+        view.layer?.backgroundColor = CGColor(red: 0.25, green: 0, blue: 0, alpha: 1)
+
         makeGravityFieldsView()
         makeParticlesView()
     }
@@ -80,7 +61,7 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     func makeGravityFieldsView() {
         // Creates the Metal view under the controls box
         mtkView = GraviFieldsView( frame: view.bounds, world: worldBuffers)
-        view.addSubview(mtkView, positioned: NSWindow.OrderingMode.below, relativeTo: controlBox)
+        view.addSubview(mtkView, positioned: NSWindow.OrderingMode.below, relativeTo: controlsView)
         mtkView.autoresizingMask = [.width, .height]
         //mtkView.delegate = self // Not working... Wonder why
         mtkView.renderedClosure = { frameIndex in
@@ -91,8 +72,7 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     func makeParticlesView() {
         // Creates the Particles view between the metal view and the controls box
         particlesView = ParticlesView(frame: view.bounds, world: worldBuffers)
-        view.addSubview(particlesView, positioned: NSWindow.OrderingMode.below, relativeTo: controlBox)
-        view.layer?.backgroundColor = CGColor(red: 0.5, green: 0, blue: 0, alpha: 0.5)
+        view.addSubview(particlesView, positioned: NSWindow.OrderingMode.above, relativeTo: mtkView)
         particlesView.autoresizingMask = [.width, .height]
     }
     

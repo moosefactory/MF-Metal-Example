@@ -42,12 +42,13 @@ extension LoadableFromNib {
 class BoxStackView: NSBox, LoadableFromNib {
     @IBOutlet weak var stack: NSStackView!
 
-    static func load(in view: NSView, title: String) -> Self {
+    static func load(in view: NSView, title: String,
+                     orientation: NSUserInterfaceLayoutOrientation = .vertical) -> Self {
         let loadedView = Self.load(in: view)
 
         loadedView.title = title
         loadedView.titlePosition = .noTitle
-       
+        loadedView.stack.orientation = orientation
         return loadedView
     }
 }
