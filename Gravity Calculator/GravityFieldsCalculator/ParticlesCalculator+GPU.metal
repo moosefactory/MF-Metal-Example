@@ -72,11 +72,13 @@ kernel void computeParticlesForces(device Particle* p,
             // Computes unit vector
             float2 u = (p[i].anchor - p[i].location) / d;
             p[i].location += u * d * settings->spring;
+            p[i].distanceToAnchor = d;
         }
         
     } else {
         // TODO: Remove an use fracional location
         p[i].location = p[i].anchor;
+        p[i].distanceToAnchor = 0;
     }
 }
 

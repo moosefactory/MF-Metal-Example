@@ -15,21 +15,31 @@ extension MacOSViewController {
         
         switch action {
         
-        case .showHideMetalView:
-            mtkView.isHidden = !mtkView.isHidden
-            
-        case .showHideAttractors:
-            particlesView.isHidden = !particlesView.isHidden
-            
+                        
         case .randomize:
             world.randomize()
             
         case .showHideControls:
             controlsView.isHidden = !controlsView.isHidden
             
+        case .drawSpring:
+            particlesView.particlesLayer.drawSpring = sender.state == NSControl.StateValue.on
+            
+        case .showParticles:
+            particlesView.particlesLayer.showParticles = sender.state == NSControl.StateValue.on
+            
+        case .showAttractors:
+            particlesView.particlesLayer.showAttractors = sender.state == NSControl.StateValue.on
+
         case .lockOnGrid:
             world.lockParticles = sender.state == NSControl.StateValue.on
             
+        case .showHideAttractors:
+            particlesView.isHidden = !particlesView.isHidden
+
+        case .showHideMetalView:
+            mtkView.isHidden = !mtkView.isHidden
+
             // Since we hide the metal view, the rendered closure won't be called anymore.
             // We start our timer to continue to update particles.
             if mtkView.isHidden && !particlesView.isHidden {

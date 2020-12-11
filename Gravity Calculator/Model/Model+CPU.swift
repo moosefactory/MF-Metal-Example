@@ -56,13 +56,17 @@ public struct Model {
         /// Particle color
         let color: simd_float4
         
-        // Will be computed by Particles Calculator
+        // ----> Will be computed by Particles Calculator
 
         /// The mighty gravity force
         let gravityVector: simd_float2 = .zero
         /// The mighty gravity force expressed in polar coordinate
         let gravityPolarVector: simd_float2 = .zero
         
+        /// The distance to anchor
+        let distanceToAnchor: simd_float1 = .zero
+        
+        // <---
         
         init(location: CGPoint, mass: CGFloat = 1, color: Color = .white) {
             self.location = location.simd

@@ -13,6 +13,10 @@ enum Action: Int {
     case randomize = 102
     case showHideControls = 103
     case lockOnGrid = 110
+    case drawSpring = 112
+
+    case showParticles = 120
+    case showAttractors = 121
 }
 
 enum SliderAction: Int {

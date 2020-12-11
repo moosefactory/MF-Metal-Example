@@ -24,7 +24,7 @@ class ParticlesView: View {
     var world: WorldBuffers
     
     var particleCalculator: ParticlesCalculator?
-    
+        
     lazy var particlesLayer = {
         ParticlesLayer(world: world)
     }()

@@ -37,6 +37,8 @@ struct Particle {
     
     float2 gravityVector;
     float2 gravityPolarVector;
+    float distanceToAnchor;
+    
 };
 
 struct Environment {
