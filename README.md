@@ -4,12 +4,12 @@
 
 ### Initial goal
 
-This project was originally inteded to explain two types of computation using the Metal framework from Apple.
+This project was originally intended to explain two types of computation using the Apple Metal framework.
 
 - **Particles Calculator :** A simple computation optimized using the GPU power, using the Metal compute kernel. In this sample, we compute the force applied to _n_ particles by _m_ attractors. 
-- **Gravity FIeld Calculator :** A Texture computation, where a metal language function is used to process a 2d texture that is displayed in a Metal view. In this sample, we compute the gravity force applied by to each pixel of the view by _m_ attractors. The result is a visual representation of the gravity fields.
+- **Gravity FIeld Calculator :** A visual application, where a metal language function is used to process a 2d texture that is displayed in a Metal view. In this sample, we compute the gravity force applied by to each pixel of the view by _m_ attractors. The result is a visual representation of the gravity fields.
 
-The first example is a good base to compute anything using the Metal compute kernel, without any graphic consideration.
+The first example is a good base to compute anything using the Metal compute kernel, without any graphic consideration. Trust me, it can dramatically boost your apps.
 
 ### Second goal
 
