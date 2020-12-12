@@ -10,15 +10,15 @@ import Cocoa
 import MetalKit
 import MoofFoundation
 
-class MacOSViewController: NSViewController, MTKViewDelegate {
-        
-    @IBOutlet var controlBox: BoxStackView!
-    
-    @IBOutlet var appActionButtons: NSBox!
 
+class MacOSViewController: NSViewController, MTKViewDelegate {
+            
+    @IBOutlet var uiContainer: MFStackView!
+
+    /// Holds the main buttons
+    var controlsView: ActionsBox!
     
-    @IBOutlet var controlsView: BoxStackView!
-    @IBOutlet var parametersView: BoxStackView!
+    var paramControlsBox: ActionsBox!
     @IBOutlet var selectedParameterView: ParameterView!
 
     var mtkView: GraviFieldsView!
@@ -54,7 +54,7 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
         
         loadControls()
         
-        view.layer?.backgroundColor = CGColor(red: 0.25, green: 0, blue: 0, alpha: 1)
+        view.layer?.backgroundColor = CGColor(red: 0.12, green: 0, blue: 0, alpha: 1)
 
         makeGravityFieldsView()
         makeParticlesView()

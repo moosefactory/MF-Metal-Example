@@ -18,7 +18,7 @@ extension MainViewController {
             particlesView.isHidden = !particlesView.isHidden
             startOrStopTimer()
         case .showHideControls:
-            parametersView.isHidden = !parametersView.isHidden
+            paramControlsBox.isHidden = !paramControlsBox.isHidden
         case .randomize:
             world.randomize()
         }

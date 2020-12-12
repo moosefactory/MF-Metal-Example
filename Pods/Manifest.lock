@@ -1,8 +1,14 @@
 PODS:
   - MoofFoundation (1.0.0)
+  - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - MoofFoundation (from `/Users/moose/Documents/MooseFactory/2021/Frameworks/MoofFoundation`)
+  - SnapKit
+
+SPEC REPOS:
+  trunk:
+    - SnapKit
 
 EXTERNAL SOURCES:
   MoofFoundation:
@@ -10,7 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   MoofFoundation: 8b5c303c22be1969e5a8413bc78412c7a568cdb1
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: fad876c76367ff4f13b6d1fc89ef7cf615f5c141
+PODFILE CHECKSUM: fdf7ef03cc60ad2b8f52bdce422df9a4293ef34f
 
 COCOAPODS: 1.9.3

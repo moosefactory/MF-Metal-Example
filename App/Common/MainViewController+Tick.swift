@@ -22,7 +22,7 @@ extension MainViewController {
     @objc func tick() {
         func finishUpdate() {
             if world.updateFlag.contains(.attractors) {
-                attractorsLabel.stringValue = "\(Int(world.objects.attractors.count))"
+                attractorsLabel.text = "\(Int(world.objects.attractors.count))"
             }
             self.updateFPS()
             if !world.updateFlag.isEmpty { world.updateFlag = [] }
@@ -47,7 +47,7 @@ extension MainViewController {
         chrono = Date()
         // Use low pass filter to avoid rapid value changes
         (1 / elapsedTime).lowPassFilter(value: &fps)
-        fpsLabel.stringValue = "\(Int(fps))"
+        fpsLabel.text = "\(Int(fps))"
     }
 
 }

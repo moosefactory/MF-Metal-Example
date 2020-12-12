@@ -9,11 +9,10 @@ import MoofFoundation
 
 #if os(macOS)
 import Cocoa
-#endif
 
 extension ActionIdentifierProtocol {
     
-    func makeControl(target: AnyObject?, action: Selector?) -> NSControl {
+    func makeControl(target: AnyObject?, action: Selector?) -> MFControl {
         switch controlType {
         case .button:
             return NSButton(title: title, target: target, action: action)
@@ -32,8 +31,36 @@ extension ActionIdentifierProtocol {
     }
 }
 
+#else
+
+import UIKit
+
+extension ActionIdentifierProtocol {
+    
+    func makeControl(target: AnyObject?, action: Selector) -> MFControl {
+        switch controlType {
+        case .button:
+            return UIButton(title: title, target: target, action: action)
+        case .switch:
+            return UISwitch(target: target, action: action)
+        case .slider:
+            let slider = UISlider(target: target, action: action)
+            if let param = self as? ParameterIdentifierProtocol {
+                slider.minValue = param.min
+                slider.maxValue = param.max
+                slider.doubleValue = param.default
+            }
+            slider.width = 100
+            return slider
+        }
+    }
+}
+
+#endif
+
+
 extension ParameterIdentifier {
-    func makeSetParameterAction(from control: NSControl) -> TypeErasedParameterProtocol {
+    func makeSetParameterAction(from control: MFControl) -> TypeErasedParameterProtocol {
         switch self {
         case .setSpringForce, .setMinDistance, .setExponent, .setScale:
             let value = control.doubleValue
@@ -42,7 +69,7 @@ extension ParameterIdentifier {
             let value = control.integerValue
             return SetParameterAction<Int>(identifier: self, value: value)
         default:
-            let value = control.isOn
+            let value = control.on
             return SetParameterAction<Bool>(identifier: self, value: value)
         }
     }

@@ -6,9 +6,9 @@
   
 */
 
-"showHideFields" = "Show/Hide Fields";
-"showHideObjects" = "Show/Hide Objects";
-"showHideControls" = "Show/Hide Controls";
+"showHideFields" = "Fields";
+"showHideObjects" = "Objects";
+"showHideControls" = "Controls";
 "randomize" = "Randomize";
 
 "setComplexity" = "Complexity";

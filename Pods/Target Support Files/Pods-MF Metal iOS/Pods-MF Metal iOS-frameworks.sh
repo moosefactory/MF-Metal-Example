@@ -198,9 +198,11 @@ fi
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/MoofFoundation-iOS/MoofFoundation.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SnapKit-iOS/SnapKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/MoofFoundation-iOS/MoofFoundation.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SnapKit-iOS/SnapKit.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

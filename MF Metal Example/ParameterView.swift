@@ -8,7 +8,7 @@
 import Foundation
 import Cocoa
 
-class ParameterView: BoxStackView {
+class ParameterView: ActionsBox {
     
     var setParameterAction: TypeErasedParameterProtocol? {
         didSet {

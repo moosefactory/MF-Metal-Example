@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-MF Metal Example/Pods-MF Metal Example-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/MoofFoundation-macOS/MoofFoundation.framework
+${BUILT_PRODUCTS_DIR}/SnapKit-macOS/SnapKit.framework

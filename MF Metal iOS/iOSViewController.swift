@@ -8,14 +8,13 @@
 import UIKit
 
 class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
-
-    @IBOutlet var imageView: UIImageView!
     
     var mtkView: GraviFieldsView!
     var particlesView: ParticlesView!
 
-    @IBOutlet var controlsView: UIStackView!
-    @IBOutlet var parametersView: UIStackView!
+    @IBOutlet var uiContainer: UIStackView!
+    
+    var paramControlsBox: ActionsBox!
     @IBOutlet var selectedParameterView: ParameterUIView!
 
     @IBOutlet var fpsLabel: UILabel!
@@ -32,9 +31,7 @@ class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
     var needsUpdateSettings = true
     
     var splahStep: Int = 0
-    
-    let splashImages = ["HowTo", "HowTo2"]
-    
+        
     // The world, contains particles, attractors, and environment variables
     var world = World()
     
@@ -52,18 +49,19 @@ class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
         makeGravityFieldsView()
         makeParticlesView()
         
-        randomize()
-        
-        self.view.addSubview(imageView)
+        loadControls()
         
         installGestures()
+        
+        uiContainer.contentScaleFactor = 0.3
+        
+        randomize()
     }
 
     func makeGravityFieldsView() {
         // Creates the Metal view under the controls box
         mtkView = GraviFieldsView(frame: view.bounds, world: worldBuffers)
-        view.addSubview(mtkView)
-        view.layer.backgroundColor = CGColor(red: 0.08, green: 0.0, blue: 0.03, alpha: 1)
+        view.insertSubview(mtkView, belowSubview: uiContainer)
         mtkView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 
         mtkView.renderedClosure = { frame in
@@ -74,97 +72,26 @@ class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
             self.mtkView.isPaused = false
             self.world.updateFlag = []
         }
-        
-        //self.tick()
     }
 
+    
+    func makeParticlesView() {
+        // Creates the Particles view between the metal view and the controls box
+        particlesView = ParticlesView(frame: view.bounds, world: worldBuffers)
+        particlesView.isHidden = true
+        view.insertSubview(particlesView, belowSubview: uiContainer)
+    }
+    
     func installGestures() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
         tap.numberOfTouchesRequired = 1
         view.addGestureRecognizer(tap)
-        
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
-        doubleTap.numberOfTapsRequired = 2
-        view.addGestureRecognizer(doubleTap)
-        
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(panned))
-        view.addGestureRecognizer(pan)
-        pan.delegate = self
     }
-    
+ 
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
-        if sender.numberOfTouches == 2 {
-            particlesView.isHidden = !particlesView.isHidden
-            return
-        }
-        splahStep += 1
-        if splahStep >= splashImages.count {
-            imageView?.removeFromSuperview()
-        } else {
-            imageView?.image = UIImage(named: splashImages[splahStep])
-        }
-        randomize()
+        paramControlsBox.isHidden = !paramControlsBox.isHidden
     }
-    
-    @IBAction func doubleTapped(_ sender: UITapGestureRecognizer) {
-        mtkView.isHidden = !mtkView.isHidden
-    }
-    
-    var previousPanValue: CGPoint?
-    
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        previousPanValue = (gestureRecognizer as? UIPanGestureRecognizer)?.translation(in: mtkView)
-        return true
-    }
-    
 
-    @IBAction func panned(_ sender: UIPanGestureRecognizer) {
-        let ty = (previousPanValue?.y ?? 0) - sender.translation(in: mtkView).y
-        let tx = (previousPanValue?.x ?? 0) - sender.translation(in: mtkView).x
-
-        print(tx)
-        
-        previousPanValue = sender.translation(in: mtkView)
-        
-        if tx > 10 {
-            horizontalPan(right: true)
-        }
-        else if tx < -10 {
-            horizontalPan(right: false)
-        }
-
-        switch sender.numberOfTouches {
-            case 1:
-                minDistance += ty / 10
-                minDistance = max(0, min(400, minDistance))
-            case 2:
-                gExponent += ty  / 1000
-                gExponent = max(2, min(4, gExponent))
-            default:
-                gScale += ty / 1000
-                gScale = max(0.1, min(4, gScale))
-        }
-       updateSettings()
-    }
-    
-    func horizontalPan(right: Bool) {
-        if right {
-            if world.particlesGridSize >= 1 {
-                world.particlesGridSize -= 1
-            } else {
-                world.particlesGridSize = 0
-            }
-        } else {
-            if world.particlesGridSize <= 40 {
-                world.particlesGridSize += 1
-            } else {
-                world.particlesGridSize = 40
-            }
-        }
-        
-        particlesView.isHidden = world.particlesGridSize == 0
-    }
-    
     func updateSettings() {
        world.minimalDistance = minDistance
         world.gravityFactor = gScale
@@ -176,18 +103,6 @@ class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
         world.complexity = Int.random(in: 1...10)
         world.randomize()
         needsUpdateSettings = true
-    }
-
-    func makeParticlesView() {
-        // Creates the Particles view between the metal view and the controls box
-        particlesView = ParticlesView(frame: view.bounds, world: worldBuffers)
-        #if os(macOS)
-        view.addSubview(particlesView, positioned: NSWindow.OrderingMode.below, relativeTo: controlBox)
-        particlesView.autoresizingMask = [.width, .height]
-        #else
-        particlesView.isHidden = true
-        view.addSubview(particlesView)
-        #endif
     }
 
 }

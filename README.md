@@ -10,9 +10,13 @@ pod install
 xed .
 ```
 
-## <font color='#1E72AD'>Screenshot</font>
+## <font color='#1E72AD'>Mac OS Screenshot</font>
 
-![MacDown logo](ReadMeImage.jpg)
+![MacDown logo](Documentation/ReadMeImage.jpg)
+
+## <font color='#1E72AD'>iOS Screenshot</font>
+
+![MacDown logo](Documentation/ReadMeImage-iOS.jpg)
 
 ## <font color='#1E72AD'>Author</font>
 
