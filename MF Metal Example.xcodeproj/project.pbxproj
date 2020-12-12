@@ -11,6 +11,12 @@
 		BC23A48B2583EC7300A6B68D /* MacOSViewController+UIFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23A48A2583EC7300A6B68D /* MacOSViewController+UIFactory.swift */; };
 		BC23A48D2583F7AA00A6B68D /* ParameterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23A48C2583F7AA00A6B68D /* ParameterView.swift */; };
 		BC23A48E2584052700A6B68D /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D42582F7450040D60C /* Actions.swift */; };
+		BC23A491258413FD00A6B68D /* MainViewController+Tick.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23A490258413FD00A6B68D /* MainViewController+Tick.swift */; };
+		BC23A492258413FD00A6B68D /* MainViewController+Tick.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23A490258413FD00A6B68D /* MainViewController+Tick.swift */; };
+		BC23A4932584141600A6B68D /* MainViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D62582F7A70040D60C /* MainViewController+Actions.swift */; };
+		BC23A495258453B700A6B68D /* ParameterUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23A494258453B700A6B68D /* ParameterUIView.swift */; };
+		BC23A49C2584599E00A6B68D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23A49B2584599E00A6B68D /* MainViewController.swift */; };
+		BC23A49D2584599E00A6B68D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23A49B2584599E00A6B68D /* MainViewController.swift */; };
 		BC56441B2582B66F00FB0653 /* HowTo2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC56441A2582B66F00FB0653 /* HowTo2.png */; };
 		BC5644242582BA2E00FB0653 /* AppIcon512.png in Resources */ = {isa = PBXBuildFile; fileRef = BC56441F2582BA2E00FB0653 /* AppIcon512.png */; };
 		BC5644252582BA2E00FB0653 /* AppIcon128.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5644202582BA2E00FB0653 /* AppIcon128.png */; };
@@ -51,7 +57,7 @@
 		BCA00EF0258118F900163AC5 /* ParticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA00EEF258118F900163AC5 /* ParticlesView.swift */; };
 		BCA00EF1258118F900163AC5 /* ParticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA00EEF258118F900163AC5 /* ParticlesView.swift */; };
 		BCBFB6D52582F7450040D60C /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D42582F7450040D60C /* Actions.swift */; };
-		BCBFB6D72582F7A70040D60C /* MacOSViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D62582F7A70040D60C /* MacOSViewController+Actions.swift */; };
+		BCBFB6D72582F7A70040D60C /* MainViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D62582F7A70040D60C /* MainViewController+Actions.swift */; };
 		BCBFB6D92582F8900040D60C /* World+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D82582F8900040D60C /* World+UI.swift */; };
 		BCBFB6DA2582F8900040D60C /* World+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D82582F8900040D60C /* World+UI.swift */; };
 		BCBFB6DE25838D500040D60C /* BoxStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6DD25838D500040D60C /* BoxStackView.swift */; };
@@ -82,6 +88,9 @@
 		B2CA5854CFEAA906F1FD71AC /* Pods-MF Metal ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MF Metal ExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-MF Metal ExampleTests/Pods-MF Metal ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BC23A48A2583EC7300A6B68D /* MacOSViewController+UIFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MacOSViewController+UIFactory.swift"; sourceTree = "<group>"; };
 		BC23A48C2583F7AA00A6B68D /* ParameterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterView.swift; sourceTree = "<group>"; };
+		BC23A490258413FD00A6B68D /* MainViewController+Tick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Tick.swift"; sourceTree = "<group>"; };
+		BC23A494258453B700A6B68D /* ParameterUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterUIView.swift; sourceTree = "<group>"; };
+		BC23A49B2584599E00A6B68D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BC56441A2582B66F00FB0653 /* HowTo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HowTo2.png; sourceTree = "<group>"; };
 		BC56441F2582BA2E00FB0653 /* AppIcon512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon512.png; sourceTree = "<group>"; };
 		BC5644202582BA2E00FB0653 /* AppIcon128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon128.png; sourceTree = "<group>"; };
@@ -116,7 +125,7 @@
 		BCA00EEC258101CE00163AC5 /* World+GPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "World+GPU.swift"; sourceTree = "<group>"; };
 		BCA00EEF258118F900163AC5 /* ParticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticlesView.swift; sourceTree = "<group>"; };
 		BCBFB6D42582F7450040D60C /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
-		BCBFB6D62582F7A70040D60C /* MacOSViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MacOSViewController+Actions.swift"; sourceTree = "<group>"; };
+		BCBFB6D62582F7A70040D60C /* MainViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Actions.swift"; sourceTree = "<group>"; };
 		BCBFB6D82582F8900040D60C /* World+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "World+UI.swift"; sourceTree = "<group>"; };
 		BCBFB6DD25838D500040D60C /* BoxStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxStackView.swift; sourceTree = "<group>"; };
 		BCBFB6DF25838FBC0040D60C /* BoxStackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxStackView.xib; sourceTree = "<group>"; };
@@ -189,6 +198,35 @@
 			path = Actions;
 			sourceTree = "<group>";
 		};
+		BC23A4982584592B00A6B68D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BCBFB6D62582F7A70040D60C /* MainViewController+Actions.swift */,
+				BC23A49B2584599E00A6B68D /* MainViewController.swift */,
+				BC23A490258413FD00A6B68D /* MainViewController+Tick.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		BC23A4992584594D00A6B68D /* Gravity Kit */ = {
+			isa = PBXGroup;
+			children = (
+				BC6D9719257FE46B00086A5C /* Gravity Calculator */,
+				BCBFB6DB258379DC0040D60C /* Gravity Controller */,
+			);
+			path = "Gravity Kit";
+			sourceTree = "<group>";
+		};
+		BC23A49A2584597100A6B68D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BCBFB6EC2583B4000040D60C /* Strings.strings */,
+				BC56441E2582BA2E00FB0653 /* AppIcon */,
+				BC23A4982584592B00A6B68D /* Common */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		BC5644162582240100FB0653 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,9 +252,8 @@
 			children = (
 				BC6D9717257FE38300086A5C /* Podfile */,
 				BCF4D34F25804D470050427B /* README.md */,
-				BC56441E2582BA2E00FB0653 /* AppIcon */,
-				BC6D9719257FE46B00086A5C /* Gravity Calculator */,
-				BCBFB6DB258379DC0040D60C /* Gravity Controller */,
+				BC23A4992584594D00A6B68D /* Gravity Kit */,
+				BC23A49A2584597100A6B68D /* App */,
 				BC6D96EA257FE33100086A5C /* MF Metal Example */,
 				BC6D973225800F7D00086A5C /* MF Metal iOS */,
 				BC6D96E9257FE33100086A5C /* Products */,
@@ -238,11 +275,9 @@
 			isa = PBXGroup;
 			children = (
 				BC6D96EB257FE33100086A5C /* AppDelegate.swift */,
-				BCBFB6EC2583B4000040D60C /* Strings.strings */,
 				BC6D9728257FE49800086A5C /* Main.storyboard */,
 				BC6D971F257FE46B00086A5C /* MacOSViewController.swift */,
 				BC23A48A2583EC7300A6B68D /* MacOSViewController+UIFactory.swift */,
-				BCBFB6D62582F7A70040D60C /* MacOSViewController+Actions.swift */,
 				BC6D96EF257FE33200086A5C /* Assets.xcassets */,
 				BC6D96F4257FE33200086A5C /* Info.plist */,
 				BC6D96F5257FE33200086A5C /* MF_Metal_Example.entitlements */,
@@ -281,6 +316,7 @@
 				BC6D973325800F7D00086A5C /* AppDelegate.swift */,
 				BC6D973525800F7D00086A5C /* SceneDelegate.swift */,
 				BC6D973725800F7D00086A5C /* iOSViewController.swift */,
+				BC23A494258453B700A6B68D /* ParameterUIView.swift */,
 				BC6D973925800F7D00086A5C /* Main.storyboard */,
 				BC6D973C25800F7E00086A5C /* Assets.xcassets */,
 				BC6D973E25800F7E00086A5C /* LaunchScreen.storyboard */,
@@ -542,14 +578,16 @@
 				BCBFB6F02583B4440040D60C /* ActionIdentifierProtocol.swift in Sources */,
 				BC91B5932580DBBC00152D1C /* ParticlesCalculator+GPU.metal in Sources */,
 				BCBFB6DE25838D500040D60C /* BoxStackView.swift in Sources */,
-				BCBFB6D72582F7A70040D60C /* MacOSViewController+Actions.swift in Sources */,
+				BCBFB6D72582F7A70040D60C /* MainViewController+Actions.swift in Sources */,
 				BC91B59A2580F44A00152D1C /* World+CPU.swift in Sources */,
 				BC91B5972580ED4D00152D1C /* ParticlesLayer.swift in Sources */,
 				BC23A48D2583F7AA00A6B68D /* ParameterView.swift in Sources */,
+				BC23A49C2584599E00A6B68D /* MainViewController.swift in Sources */,
 				BCBFB6D92582F8900040D60C /* World+UI.swift in Sources */,
 				BC6D9726257FE46B00086A5C /* MacOSViewController.swift in Sources */,
 				BCBFB6E1258392D70040D60C /* ActionsBox.swift in Sources */,
 				BCA00EED258101CE00163AC5 /* World+GPU.swift in Sources */,
+				BC23A491258413FD00A6B68D /* MainViewController+Tick.swift in Sources */,
 				BC6D9721257FE46B00086A5C /* Model+GPU.metal in Sources */,
 				BC6D9725257FE46B00086A5C /* GravityFieldsCalculator+CPU.swift in Sources */,
 				BCBFB6D52582F7450040D60C /* Actions.swift in Sources */,
@@ -560,6 +598,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC23A49D2584599E00A6B68D /* MainViewController.swift in Sources */,
 				BC6D973825800F7D00086A5C /* iOSViewController.swift in Sources */,
 				BCA00EEE258101CE00163AC5 /* World+GPU.swift in Sources */,
 				BCA00EF1258118F900163AC5 /* ParticlesView.swift in Sources */,
@@ -567,15 +606,18 @@
 				BC91B59B2580F44A00152D1C /* World+CPU.swift in Sources */,
 				BC6D976125800FAB00086A5C /* GraviFieldsView.swift in Sources */,
 				BC6D976625800FB600086A5C /* GravityFieldsCalculator+CPU.swift in Sources */,
+				BC23A4932584141600A6B68D /* MainViewController+Actions.swift in Sources */,
 				BC6D973425800F7D00086A5C /* AppDelegate.swift in Sources */,
 				BC6D976325800FB600086A5C /* GravityFieldsCalculator+GPU.metal in Sources */,
 				BC23A48E2584052700A6B68D /* Actions.swift in Sources */,
 				BC6D973625800F7D00086A5C /* SceneDelegate.swift in Sources */,
 				BC91B5942580DBBC00152D1C /* ParticlesCalculator+GPU.metal in Sources */,
+				BC23A492258413FD00A6B68D /* MainViewController+Tick.swift in Sources */,
 				BC91B5982580ED4D00152D1C /* ParticlesLayer.swift in Sources */,
 				BC6D976525800FB600086A5C /* Model+GPU.metal in Sources */,
 				BC91B5912580DA6F00152D1C /* ParticlesCalculator+CPU.swift in Sources */,
 				BC6D976425800FB600086A5C /* Model+CPU.swift in Sources */,
+				BC23A495258453B700A6B68D /* ParameterUIView.swift in Sources */,
 				BCBFB6F12583B4440040D60C /* ActionIdentifierProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

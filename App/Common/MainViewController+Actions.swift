@@ -1,15 +1,13 @@
 //
-//  MacOSViewController+Actions.swift
+//  MainViewController+Actions.swift
 //  MF Metal Example
 //
 //  Created by Tristan Leblanc on 11/12/2020.
 //
 
 import Foundation
-import Cocoa
 
-extension MacOSViewController {
-    
+extension MainViewController {
     
     func executeAppAction(_ action: ActionIdentifier) {
         switch action {
@@ -49,7 +47,7 @@ extension MacOSViewController {
             
         case .setScale:
             world.gravityFactor = action.cgFloat
-
+            
         case .drawSpring:
             particlesView.particlesLayer.drawSpring = action.bool
             
@@ -63,7 +61,7 @@ extension MacOSViewController {
             
         case .lockOnGrid:
             world.lockParticles = action.bool
-
+            
         // Sliders
         
         case .setComplexity:

@@ -27,7 +27,7 @@ class ActionsBox: BoxStackView {
             if control is NSButton {
                 title = ""
             }
-            let controlBox = BoxStackView.loadWithControl(in: box.stack, title: title, labelOnLeft: labelOnLeft, with: control)
+            BoxStackView.loadWithControl(in: box.stack, title: title, labelOnLeft: labelOnLeft, with: control)
         }
         box.stack.orientation = orientation
         box.stack.setContentHuggingPriority(NSLayoutConstraint.Priority.required, for: .horizontal)
@@ -60,7 +60,6 @@ extension BoxStackView {
         } else {
             box.stack.insertArrangedSubview(control, at: 0)
         }
-//        box.stack.setContentHuggingPriority(NSLayoutConstraint.Priority.required, for: .horizontal)
         return box
     }
 }

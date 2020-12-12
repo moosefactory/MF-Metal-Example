@@ -14,6 +14,17 @@ class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
     var mtkView: GraviFieldsView!
     var particlesView: ParticlesView!
 
+    @IBOutlet var controlsView: UIStackView!
+    @IBOutlet var parametersView: UIStackView!
+    @IBOutlet var selectedParameterView: ParameterUIView!
+
+    @IBOutlet var fpsLabel: UILabel!
+    @IBOutlet var attractorsLabel: UILabel!
+
+    var timer: Timer?
+    var chrono = Date()
+    var fps: Double = 0
+
     var minDistance: CGFloat = 0
     var gExponent: CGFloat = 2.5
     var gScale: CGFloat = 1
@@ -38,6 +49,17 @@ class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
         
         world.particlesGridSize = 0
         
+        makeGravityFieldsView()
+        makeParticlesView()
+        
+        randomize()
+        
+        self.view.addSubview(imageView)
+        
+        installGestures()
+    }
+
+    func makeGravityFieldsView() {
         // Creates the Metal view under the controls box
         mtkView = GraviFieldsView(frame: view.bounds, world: worldBuffers)
         view.addSubview(mtkView)
@@ -53,13 +75,7 @@ class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
             self.world.updateFlag = []
         }
         
-        makeParticlesView()
-        
-        randomize()
-        
-        self.view.addSubview(imageView)
-        
-        installGestures()
+        //self.tick()
     }
 
     func installGestures() {
