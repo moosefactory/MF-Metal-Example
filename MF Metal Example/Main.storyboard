@@ -728,7 +728,7 @@
                                                                 <constraint firstAttribute="width" constant="120" id="Ebh-p9-LmT"/>
                                                             </constraints>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Parameter Name" id="Mvb-Ep-axg">
-                                                                <font key="font" metaFont="system" size="11"/>
+                                                                <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>

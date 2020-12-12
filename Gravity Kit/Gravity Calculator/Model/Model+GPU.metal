@@ -19,10 +19,8 @@ struct Group {
 
 struct Attractor {
     int groupIndex;
-
     float2 location;
     float rotationSpeed;
-    
     float mass;
     float4 color;
 };

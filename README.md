@@ -28,7 +28,8 @@ This sample project is made for intermediate swift developper willing to have so
 
 It is also a guideline on how to architecture swift software in a safe and scalable way.
 
-I don't pretend to give the highest code quality or the best possible architecture, but simply to share my way to code after 30 years spent to scratch my head on these problems.
+I don't pretend to give the highest code quality or the best possible architecture, but simply to share my way to achieve this little after years spent to scratch my head on these problems.
+
 
 ### References
 
@@ -36,6 +37,43 @@ I don't pretend to give the highest code quality or the best possible architectu
 [Metal Language Specification](https://developer.apple.com/metal/Metal-Shading-Language-Specification.pdf)
 
 [Metal Documentation](https://developer.apple.com/documentation/metal)
+
+[SIMD Principles](https://www.sciencedirect.com/topics/computer-science/single-instruction-multiple-data)
+
+[Apple SIMD Framework](https://developer.apple.com/documentation/swift/simd)
+
+
+## Metal Model
+
+The first important point to have in mind when coding for metal is that your data model will have to be shared between two worlds. The CPU and the GPU.
+
+Note that even on the new Apple M1 processor, that make a big step by sharing the memory between the CPU and the GPU, you still will have to deal with alignments and data representation. GPU memory use SIMD alignments ( Single instruction, multiple data ).
+
+The better way to keep the data organized is to have a .swift model that exactly mirrors the .metal model.
+
+This way you can read/write buffers safely and access objects wihout mappings.
+
+A good thing to have is some syntaxic sugar like `myCGFloatValue.simd` or `mySimdValue.cgFloat` to pass values from Cocoa/AppKit to simd.
+
+![Shared Model](Documentation/SharedModel.jpg)
+
+## World
+
+**MTLBuffers** are used to store vectors of objects that will be passed to GPU. 
+To avoid over-charging metal calculators objects and be able to share data among several calculators, it is a nice idea to group all buffers in a dedicated object.
+
+I call it **World**, but it could be named anything. A memory of the 'world' object from video games where everything was defined.
+
+Note that the world object also holds a **MTLDevice** object that will be shared with everyone. In complex cases, a computer can have multiple GPUs, hence multiple MTLDevices.
+In our example, we use one MTLDevice only.
+
+**MTLDevice** is needed, because buffers are created in a given device memory.
+
+It is a good thing to have some utils to convert **MTLBuffers** to swift Array.
+See an example of code in the figure below.
+
+![Shared Model](Documentation/World.jpg)
+
 
 ## <font color='#1E72AD'>Required frameworks</font>
 

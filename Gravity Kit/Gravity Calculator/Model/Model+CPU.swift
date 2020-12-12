@@ -22,7 +22,7 @@ public extension WorldElement {
 public struct Model {
     
     
-    public struct Group: WorldElement {
+    public struct Group: WorldElement, Codable {
         // Group index. Group index is unique among all groups. Index 0 is root group.
         let index: simd_int1
         let superGroupIndex: simd_int1
@@ -34,12 +34,10 @@ public struct Model {
         static let root = Group(index: 0, superGroupIndex: 0, location: [0,0], rotationSpeed: 0, scale: 1)
     }
     
-    public struct Attractor: WorldElement {
+    public struct Attractor: WorldElement, Codable {
         let groupIndex: simd_int1
-
         public let location: simd_float2
         let rotationSpeed: simd_float1
-        
         let mass: simd_float1
         let color: simd_float4
     }
@@ -76,7 +74,7 @@ public struct Model {
         }
     }
     
-    public struct Settings {
+    public struct Settings: Codable {
         var frame: simd_int1 = 0
         var width: simd_int1 = 0
         var height: simd_int1 = 0
