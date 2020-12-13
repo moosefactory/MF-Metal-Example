@@ -6,21 +6,27 @@
   
 */
 
-"showHideFields" = "Fields";
-"showHideObjects" = "Objects";
-"showHideControls" = "Controls";
-"randomize" = "Randomize";
+"ShowHideFields" = "Fields";
+"ShowHideObjects" = "Objects";
+"ShowHideControls" = "Controls";
+"Randomize" = "Randomize";
 
-"setComplexity" = "Complexity";
-"setParticlesGridSize" = "Particles Grid Size";
-"lockOnGrid" = "Lock Particles";
-"setSpringForce" = "Spring Force";
-"drawSpring" = "Draw Spring";
-"showParticles" = "Show Particles";
-"showAttractors" = "Show Attractors";
-"setMinDistance" = "Minimal Distance";
-"setExponent" = "Distance Exponent";
-"setScale" = "Gravity";
+"SetComplexity" = "Complexity";
+"SetParticlesGridSize" = "Particles Grid Size";
+"LockOnGrid" = "Lock Particles";
+"SetSpringForce" = "Spring Force";
+"DrawSpring" = "Draw Spring";
+"ShowFields" = "Show Fields";
+"ShowParticles" = "Show Particles";
+"ShowAttractors" = "Show Attractors";
+"SetMinDistance" = "Minimal Distance";
+"SetExponent" = "Distance Exponent";
+"SetGravity" = "Gravity";
+
+"SetScale" = "Set Scale";
+"FieldsSensitivity" = "Set Fields Sensitivity";
+"ParticlesSensitivity" = "Set Particles Sensitivity";
+"InvertColors" = "Invert Colors";
 
 "Yes" = "Yes";
 "No" = "No";

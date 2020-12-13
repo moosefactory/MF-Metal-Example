@@ -17,7 +17,11 @@ extension ActionIdentifierProtocol {
         case .button:
             return NSButton(title: title, target: target, action: action)
         case .switch:
-            return NSSwitch(target: target, action: action)
+            let control = NSSwitch(target: target, action: action)
+            if let param = self as? ParameterIdentifierProtocol {
+                control.doubleValue = param.default
+            }
+            return control
         case .slider:
             let slider = NSSlider(target: target, action: action)
             if let param = self as? ParameterIdentifierProtocol {
@@ -42,7 +46,11 @@ extension ActionIdentifierProtocol {
         case .button:
             return UIButton(title: title, target: target, action: action)
         case .switch:
-            return UISwitch(target: target, action: action)
+            let control = UISwitch(target: target, action: action)
+            if let param = self as? ParameterIdentifierProtocol {
+                control.isOn = param.default > 0
+            }
+            return control
         case .slider:
             let slider = UISlider(target: target, action: action)
             if let param = self as? ParameterIdentifierProtocol {
@@ -59,13 +67,29 @@ extension ActionIdentifierProtocol {
 #endif
 
 
-extension ParameterIdentifier {
-    func makeSetParameterAction(from control: MFControl) -> TypeErasedParameterProtocol {
+extension ParticlesParametersIdentifier {
+    func makeSetParameterAction(from control: MFControl) -> TypeErasedSetParameterActionProtocol {
         switch self {
-        case .setSpringForce, .setMinDistance, .setExponent, .setScale:
+        case .setSpringForce, .setParticlesSensitivity:
             let value = control.doubleValue
             return SetParameterAction<Double>(identifier: self, value: value)
-        case .setComplexity, .setParticlesGridSize:
+        case .setParticlesGridSize:
+            let value = control.integerValue
+            return SetParameterAction<Int>(identifier: self, value: value)
+        default:
+            let value = control.on
+            return SetParameterAction<Bool>(identifier: self, value: value)
+        }
+    }
+}
+
+extension FieldsParametersIdentifier {
+    func makeSetParameterAction(from control: MFControl) -> TypeErasedSetParameterActionProtocol {
+        switch self {
+        case .setFieldsSensitivity, .setMinDistance, .setExponent, .setGravity, .setScale:
+            let value = control.doubleValue
+            return SetParameterAction<Double>(identifier: self, value: value)
+        case .setComplexity:
             let value = control.integerValue
             return SetParameterAction<Int>(identifier: self, value: value)
         default:

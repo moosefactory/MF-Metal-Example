@@ -9,35 +9,10 @@
 #include <metal_stdlib>
 using namespace metal;
 
-struct Group {
-    int index;
-    int superGroupIndex;
-    float2 location;
-    float rotationSpeed;
-    float scale;
-};
-
-struct Attractor {
-    int groupIndex;
-    float2 location;
-    float rotationSpeed;
-    float mass;
-    float4 color;
-};
-
-struct Particle {
-    float2 location;
-    float2 anchor;
-    float mass;
-    float4 color;
-    
-    // Will be computed by Particles Calculator
-    
-    float2 gravityVector;
-    float2 gravityPolarVector;
-    float distanceToAnchor;
-    
-};
+/// Environment
+///
+/// This structure holds our settings, and all properties we find usefull to be shared with
+/// the metal calculators.
 
 struct Environment {
     // Render informations, frame index, drawable width and height.
@@ -57,13 +32,88 @@ struct Environment {
     //
     // Particles are splitted in groups, each group will be dispatched in its own thread
     uint numberOfParticles;
-    uint numberOfParticlesPerGroup;
     
-    // Our environment settings
+    uint numberOfParticlesPerThreadGroup;
+    uint numberOfAttractorsPerThreadGroup;
+    
+    // The user settings
+    
     float minimalDistance;
     float gravityFactor;
     float gravityExponent;
     
+    float scale;
+    float fieldsSensitivity;
+    float particlesSensitivity;
+    bool invertColor;
     bool lockParticles;
     float spring;
+};
+
+/// Attractor
+///
+/// Attractors are attached to a group
+/// All attractors of a same group are rotating around the center of this group.
+struct Attractor {
+    int groupIndex;
+    /// anchor is the initial, unscaled ( in [-1..1] range ) location of the attractor
+    /// it will be used to compute location from frame index
+    float2 anchor;
+    
+    float rotationSpeed;
+    float mass;
+    float4 color;
+    
+    // Computed polar location
+    float2 polarLocation;
+    // Computed planar fractional location
+    float2 planarLocation;
+    // Computed location in drawable
+    float2 location;
+};
+
+/// Group
+///
+/// Groups contains attractors. They can be contained in a group themselves, in which case they also rotate
+/// around the center of the containing group.
+///
+/// Group with index 0 is the root group, it's scale is 1, which corresponds to the view size.
+struct Group {
+    uint index;
+    uint superGroupIndex;
+    /// anchor is the initial location of the group
+    /// it will be used to compute location from frame index
+    float2 anchor;
+    float rotationSpeed;
+    float scale;
+    
+    // Computed polar location
+    float2 polarLocation;
+    // Computed planar fractional location
+    float2 planarLocation;
+    // Computed location in drawable
+    float2 location;
+};
+
+/// Particle
+///
+/// Particles are free bodies that can be anywhere and are subjects to gravity.
+/// anchor represents the initial location.
+
+struct Particle {
+    float2 anchor;
+    float mass;
+    float4 color;
+    
+    // Will be computed by Particles Calculator
+    
+    float2 gravityVector;
+    float2 gravityPolarVector;
+    float distanceToAnchor;
+
+    // Computed planar fractional location
+    float2 planarLocation;
+    // Computed location in drawable
+    float2 location;
+    float2 anchorInView;
 };

@@ -22,9 +22,7 @@ typealias Rect = CGRect
 class ParticlesView: View {
     
     var world: WorldBuffers
-    
-    var particleCalculator: ParticlesCalculator?
-        
+            
     lazy var particlesLayer = {
         ParticlesLayer(world: world)
     }()
@@ -57,35 +55,12 @@ class ParticlesView: View {
             CATransaction.commit()
         }
     }
-    
-    var updating: Bool = false
-    
-    func update(_ completion: @escaping ()->Void) {
+        
+    func update() {
         guard !isHidden && !particlesLayer.updating else { return }
-
-        // Create the matal calculator if needed
-        if particleCalculator == nil {
-            particleCalculator = try? ParticlesCalculator(world: world)
-        }
-        
-        // If we have no particles, we don't need to compute anything
-        // So we simply update with attractors
-        guard world.numberOfParticles > 0, particlesLayer.showParticles else {
-            self.particlesLayer.update()
-            completion()
-            return
-        }
-        
         // We avoid accessing buffer while recreating particles
         if !world.updateFlag.contains(.particles) {
-            // Compute particles forces and update layers when done
-            try? particleCalculator?.compute(completion: { (commandBuffer) in
-                DispatchQueue.main.async {
-                    self.particlesLayer.update()
-                }
-            })
+            self.particlesLayer.update()
         }
-        
-        completion()
     }
 }

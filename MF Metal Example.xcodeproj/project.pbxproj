@@ -61,8 +61,8 @@
 		BCA00EF1258118F900163AC5 /* ParticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA00EEF258118F900163AC5 /* ParticlesView.swift */; };
 		BCBFB6D52582F7450040D60C /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D42582F7450040D60C /* Actions.swift */; };
 		BCBFB6D72582F7A70040D60C /* MainViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D62582F7A70040D60C /* MainViewController+Actions.swift */; };
-		BCBFB6D92582F8900040D60C /* World+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D82582F8900040D60C /* World+UI.swift */; };
-		BCBFB6DA2582F8900040D60C /* World+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D82582F8900040D60C /* World+UI.swift */; };
+		BCBFB6D92582F8900040D60C /* World+UIOutlets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D82582F8900040D60C /* World+UIOutlets.swift */; };
+		BCBFB6DA2582F8900040D60C /* World+UIOutlets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6D82582F8900040D60C /* World+UIOutlets.swift */; };
 		BCBFB6E1258392D70040D60C /* ActionsBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6E0258392D70040D60C /* ActionsBox.swift */; };
 		BCBFB6E325839EEB0040D60C /* ActionsBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBFB6E2258399B40040D60C /* ActionsBox.xib */; };
 		BCBFB6E62583A8E10040D60C /* Actions.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCBFB6E82583A8E10040D60C /* Actions.strings */; };
@@ -77,6 +77,20 @@
 		BCC879732584F33E00E3AC54 /* ActionProtocol+Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBFB6EA2583B0B30040D60C /* ActionProtocol+Controls.swift */; };
 		BCC879742584F94700E3AC54 /* MainViewController+UIFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23A48A2583EC7300A6B68D /* MainViewController+UIFactory.swift */; };
 		BCC879762584F99D00E3AC54 /* ActionsBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCC879752584F99D00E3AC54 /* ActionsBox.xib */; };
+		BCC8797B258624FF00E3AC54 /* WorldCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC8797A258624FF00E3AC54 /* WorldCalculator.swift */; };
+		BCC8797C258624FF00E3AC54 /* WorldCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC8797A258624FF00E3AC54 /* WorldCalculator.swift */; };
+		BCC8797E2586254600E3AC54 /* AttractorsCalculator+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC8797D2586254600E3AC54 /* AttractorsCalculator+CPU.swift */; };
+		BCC8797F2586254600E3AC54 /* AttractorsCalculator+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC8797D2586254600E3AC54 /* AttractorsCalculator+CPU.swift */; };
+		BCC879812586267A00E3AC54 /* AttractorsCalculator+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCC879802586267A00E3AC54 /* AttractorsCalculator+GPU.metal */; };
+		BCC879822586267A00E3AC54 /* AttractorsCalculator+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCC879802586267A00E3AC54 /* AttractorsCalculator+GPU.metal */; };
+		BCC87987258634C600E3AC54 /* AttractorGroupsCalculator+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC87986258634C600E3AC54 /* AttractorGroupsCalculator+CPU.swift */; };
+		BCC87988258634C600E3AC54 /* AttractorGroupsCalculator+CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC87986258634C600E3AC54 /* AttractorGroupsCalculator+CPU.swift */; };
+		BCC879892586483A00E3AC54 /* AttractorGroupsCalculator+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCC87983258632E600E3AC54 /* AttractorGroupsCalculator+GPU.metal */; };
+		BCC8798A2586483B00E3AC54 /* AttractorGroupsCalculator+GPU.metal in Sources */ = {isa = PBXBuildFile; fileRef = BCC87983258632E600E3AC54 /* AttractorGroupsCalculator+GPU.metal */; };
+		BCDEFCD025869BD100647717 /* Actions+Particles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEFCCF25869BD100647717 /* Actions+Particles.swift */; };
+		BCDEFCD125869BD100647717 /* Actions+Particles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEFCCF25869BD100647717 /* Actions+Particles.swift */; };
+		BCDEFCD325869C6C00647717 /* Actions+Fields.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEFCD225869C6C00647717 /* Actions+Fields.swift */; };
+		BCDEFCD425869C6C00647717 /* Actions+Fields.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEFCD225869C6C00647717 /* Actions+Fields.swift */; };
 		BCF4D34E25803BA50050427B /* HowTo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF4D34D25803BA40050427B /* HowTo.png */; };
 		BCF4D35025804D470050427B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BCF4D34F25804D470050427B /* README.md */; };
 		D850EE03D87C5E99E153522A /* Pods_MF_Metal_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7365C4B7B0D8896A55A784 /* Pods_MF_Metal_iOS.framework */; };
@@ -134,7 +148,7 @@
 		BCA00EEF258118F900163AC5 /* ParticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticlesView.swift; sourceTree = "<group>"; };
 		BCBFB6D42582F7450040D60C /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		BCBFB6D62582F7A70040D60C /* MainViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Actions.swift"; sourceTree = "<group>"; };
-		BCBFB6D82582F8900040D60C /* World+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "World+UI.swift"; sourceTree = "<group>"; };
+		BCBFB6D82582F8900040D60C /* World+UIOutlets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "World+UIOutlets.swift"; sourceTree = "<group>"; };
 		BCBFB6E0258392D70040D60C /* ActionsBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsBox.swift; sourceTree = "<group>"; };
 		BCBFB6E2258399B40040D60C /* ActionsBox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionsBox.xib; sourceTree = "<group>"; };
 		BCBFB6E72583A8E10040D60C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Actions.strings; sourceTree = "<group>"; };
@@ -144,6 +158,13 @@
 		BCC879752584F99D00E3AC54 /* ActionsBox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionsBox.xib; sourceTree = "<group>"; };
 		BCC8797825850CCD00E3AC54 /* ReadMeImage-iOS.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ReadMeImage-iOS.jpg"; sourceTree = "<group>"; };
 		BCC8797925850CCD00E3AC54 /* ReadMeImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ReadMeImage.jpg; sourceTree = "<group>"; };
+		BCC8797A258624FF00E3AC54 /* WorldCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldCalculator.swift; sourceTree = "<group>"; };
+		BCC8797D2586254600E3AC54 /* AttractorsCalculator+CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttractorsCalculator+CPU.swift"; sourceTree = "<group>"; };
+		BCC879802586267A00E3AC54 /* AttractorsCalculator+GPU.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = "AttractorsCalculator+GPU.metal"; sourceTree = "<group>"; };
+		BCC87983258632E600E3AC54 /* AttractorGroupsCalculator+GPU.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = "AttractorGroupsCalculator+GPU.metal"; sourceTree = "<group>"; };
+		BCC87986258634C600E3AC54 /* AttractorGroupsCalculator+CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttractorGroupsCalculator+CPU.swift"; sourceTree = "<group>"; };
+		BCDEFCCF25869BD100647717 /* Actions+Particles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Actions+Particles.swift"; sourceTree = "<group>"; };
+		BCDEFCD225869C6C00647717 /* Actions+Fields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Actions+Fields.swift"; sourceTree = "<group>"; };
 		BCF4D34D25803BA40050427B /* HowTo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HowTo.png; sourceTree = "<group>"; };
 		BCF4D34F25804D470050427B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BFB6DD8D9781EA899D91EB17 /* Pods-MF Metal iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MF Metal iOS.release.xcconfig"; path = "Target Support Files/Pods-MF Metal iOS/Pods-MF Metal iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +216,17 @@
 				3E7365C4B7B0D8896A55A784 /* Pods_MF_Metal_iOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC1A07F82586839D00CF699F /* World */ = {
+			isa = PBXGroup;
+			children = (
+				BCC8797A258624FF00E3AC54 /* WorldCalculator.swift */,
+				BC91B5992580F44900152D1C /* World+CPU.swift */,
+				BCA00EEC258101CE00163AC5 /* World+GPU.swift */,
+				BCBFB6D82582F8900040D60C /* World+UIOutlets.swift */,
+			);
+			path = World;
 			sourceTree = "<group>";
 		};
 		BC23A48F2584052D00A6B68D /* Actions */ = {
@@ -302,8 +334,9 @@
 		BC6D9719257FE46B00086A5C /* Gravity Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				BC1A07F82586839D00CF699F /* World */,
 				BC6D972C257FF9D900086A5C /* Model */,
-				BCBFB6DC25837A0C0040D60C /* Particles Claculator */,
+				BCBFB6DC25837A0C0040D60C /* Particles Calculator */,
 				BCF4D34C258031970050427B /* Fields Calculator */,
 				BCBFB6E82583A8E10040D60C /* Actions.strings */,
 			);
@@ -315,9 +348,6 @@
 			children = (
 				BC6D971A257FE46B00086A5C /* Model+GPU.metal */,
 				BC6D971D257FE46B00086A5C /* Model+CPU.swift */,
-				BC91B5992580F44900152D1C /* World+CPU.swift */,
-				BCBFB6D82582F8900040D60C /* World+UI.swift */,
-				BCA00EEC258101CE00163AC5 /* World+GPU.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -355,18 +385,24 @@
 			isa = PBXGroup;
 			children = (
 				BCBFB6D42582F7450040D60C /* Actions.swift */,
+				BCDEFCCF25869BD100647717 /* Actions+Particles.swift */,
+				BCDEFCD225869C6C00647717 /* Actions+Fields.swift */,
 				BC91B5952580ED3500152D1C /* Views */,
 			);
 			path = "Gravity Controller";
 			sourceTree = "<group>";
 		};
-		BCBFB6DC25837A0C0040D60C /* Particles Claculator */ = {
+		BCBFB6DC25837A0C0040D60C /* Particles Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				BC91B58F2580DA6F00152D1C /* ParticlesCalculator+CPU.swift */,
+				BCC87983258632E600E3AC54 /* AttractorGroupsCalculator+GPU.metal */,
+				BCC87986258634C600E3AC54 /* AttractorGroupsCalculator+CPU.swift */,
+				BCC879802586267A00E3AC54 /* AttractorsCalculator+GPU.metal */,
+				BCC8797D2586254600E3AC54 /* AttractorsCalculator+CPU.swift */,
 				BC91B5922580DBBC00152D1C /* ParticlesCalculator+GPU.metal */,
+				BC91B58F2580DA6F00152D1C /* ParticlesCalculator+CPU.swift */,
 			);
-			path = "Particles Claculator";
+			path = "Particles Calculator";
 			sourceTree = "<group>";
 		};
 		BCC8797725850CCD00E3AC54 /* Documentation */ = {
@@ -589,14 +625,20 @@
 			files = (
 				BC6D9722257FE46B00086A5C /* GravityFieldsCalculator+GPU.metal in Sources */,
 				BC23A4A52584C59000A6B68D /* NibView.swift in Sources */,
+				BCDEFCD325869C6C00647717 /* Actions+Fields.swift in Sources */,
 				BC91B5902580DA6F00152D1C /* ParticlesCalculator+CPU.swift in Sources */,
 				BC23A4A22584C22300A6B68D /* ActionsBox-iOS.swift in Sources */,
+				BCC8797E2586254600E3AC54 /* AttractorsCalculator+CPU.swift in Sources */,
+				BCC8797B258624FF00E3AC54 /* WorldCalculator.swift in Sources */,
+				BCC87987258634C600E3AC54 /* AttractorGroupsCalculator+CPU.swift in Sources */,
 				BC23A48B2583EC7300A6B68D /* MainViewController+UIFactory.swift in Sources */,
+				BCDEFCD025869BD100647717 /* Actions+Particles.swift in Sources */,
 				BC6D9727257FE46B00086A5C /* GraviFieldsView.swift in Sources */,
 				BCA00EF0258118F900163AC5 /* ParticlesView.swift in Sources */,
 				BCBFB6EB2583B0B30040D60C /* ActionProtocol+Controls.swift in Sources */,
 				BC6D96EC257FE33100086A5C /* AppDelegate.swift in Sources */,
 				BC6D9724257FE46B00086A5C /* Model+CPU.swift in Sources */,
+				BCC879812586267A00E3AC54 /* AttractorsCalculator+GPU.metal in Sources */,
 				BCBFB6F02583B4440040D60C /* ActionIdentifierProtocol.swift in Sources */,
 				BC91B5932580DBBC00152D1C /* ParticlesCalculator+GPU.metal in Sources */,
 				BCBFB6D72582F7A70040D60C /* MainViewController+Actions.swift in Sources */,
@@ -604,12 +646,13 @@
 				BC91B5972580ED4D00152D1C /* ParticlesLayer.swift in Sources */,
 				BC23A48D2583F7AA00A6B68D /* ParameterView.swift in Sources */,
 				BC23A49C2584599E00A6B68D /* MainViewController.swift in Sources */,
-				BCBFB6D92582F8900040D60C /* World+UI.swift in Sources */,
+				BCBFB6D92582F8900040D60C /* World+UIOutlets.swift in Sources */,
 				BC6D9726257FE46B00086A5C /* MacOSViewController.swift in Sources */,
 				BCBFB6E1258392D70040D60C /* ActionsBox.swift in Sources */,
 				BCA00EED258101CE00163AC5 /* World+GPU.swift in Sources */,
 				BC23A491258413FD00A6B68D /* MainViewController+Tick.swift in Sources */,
 				BC6D9721257FE46B00086A5C /* Model+GPU.metal in Sources */,
+				BCC879892586483A00E3AC54 /* AttractorGroupsCalculator+GPU.metal in Sources */,
 				BC6D9725257FE46B00086A5C /* GravityFieldsCalculator+CPU.swift in Sources */,
 				BCBFB6D52582F7450040D60C /* Actions.swift in Sources */,
 			);
@@ -622,9 +665,10 @@
 				BCC879732584F33E00E3AC54 /* ActionProtocol+Controls.swift in Sources */,
 				BC23A49D2584599E00A6B68D /* MainViewController.swift in Sources */,
 				BC6D973825800F7D00086A5C /* iOSViewController.swift in Sources */,
+				BCC87988258634C600E3AC54 /* AttractorGroupsCalculator+CPU.swift in Sources */,
 				BCA00EEE258101CE00163AC5 /* World+GPU.swift in Sources */,
 				BCA00EF1258118F900163AC5 /* ParticlesView.swift in Sources */,
-				BCBFB6DA2582F8900040D60C /* World+UI.swift in Sources */,
+				BCBFB6DA2582F8900040D60C /* World+UIOutlets.swift in Sources */,
 				BC23A4A62584C59000A6B68D /* NibView.swift in Sources */,
 				BC91B59B2580F44A00152D1C /* World+CPU.swift in Sources */,
 				BC6D976125800FAB00086A5C /* GraviFieldsView.swift in Sources */,
@@ -632,12 +676,18 @@
 				BC23A4932584141600A6B68D /* MainViewController+Actions.swift in Sources */,
 				BC6D973425800F7D00086A5C /* AppDelegate.swift in Sources */,
 				BCC879742584F94700E3AC54 /* MainViewController+UIFactory.swift in Sources */,
+				BCDEFCD425869C6C00647717 /* Actions+Fields.swift in Sources */,
 				BC6D976325800FB600086A5C /* GravityFieldsCalculator+GPU.metal in Sources */,
 				BCC8796E2584E0D800E3AC54 /* ActionsBox.swift in Sources */,
+				BCC8798A2586483B00E3AC54 /* AttractorGroupsCalculator+GPU.metal in Sources */,
+				BCC879822586267A00E3AC54 /* AttractorsCalculator+GPU.metal in Sources */,
 				BC6D973625800F7D00086A5C /* SceneDelegate.swift in Sources */,
 				BC91B5942580DBBC00152D1C /* ParticlesCalculator+GPU.metal in Sources */,
 				BC23A492258413FD00A6B68D /* MainViewController+Tick.swift in Sources */,
+				BCDEFCD125869BD100647717 /* Actions+Particles.swift in Sources */,
+				BCC8797F2586254600E3AC54 /* AttractorsCalculator+CPU.swift in Sources */,
 				BC91B5982580ED4D00152D1C /* ParticlesLayer.swift in Sources */,
+				BCC8797C258624FF00E3AC54 /* WorldCalculator.swift in Sources */,
 				BC6D976525800FB600086A5C /* Model+GPU.metal in Sources */,
 				BC91B5912580DA6F00152D1C /* ParticlesCalculator+CPU.swift in Sources */,
 				BCC8796F2584E14A00E3AC54 /* Actions.swift in Sources */,

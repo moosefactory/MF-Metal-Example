@@ -53,7 +53,7 @@ class GravityFieldsCalculator: MetalCalculator {
             // Get the drawable size to compute thread groups sizes
             let drawableSize = CGSize(width: texture.width, height: texture.height)
             
-            world.rendererSize = drawableSize
+            //world.rendererSize = drawableSize
             
             // Pass buffers to GPU
             computeEncoder.setTexture(texture, index: 0)

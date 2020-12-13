@@ -21,30 +21,67 @@ public extension WorldElement {
 
 public struct Model {
     
+    /// The environment variables
+
+    public struct Environment: Codable {
+        var frame: simd_int1 = 0
+        var width: simd_int1 = 0
+        var height: simd_int1 = 0
+        var radius: simd_float1 = 0
+        
+        var numberOfAttractors: simd_int1 = 0
+        var numberOfGroups: simd_int1 = 0
+        var numberOfParticles: simd_int1 = 0
+        
+        var numberOfParticlesPerThreadGroup: simd_int1 = 0
+        var numberOfAttractorsPerThreadGroup: simd_int1 = 0
+
+        // User settings
+        
+        var minimalDistance: simd_float1 = 0
+        var gravityFactor: simd_float1 = 1
+        var gravityExponent: simd_float1 = 2
+
+        var scale: simd_float1 = 1
+        var fieldsSensitivity: simd_float1 = 1
+        var particlesSensitivity: simd_float1 = 1
+        
+        var invertColors: Bool = false
+        
+        var lockParticles: Bool = false
+        var spring: simd_float1 = 0
+    }
+
     
+    public struct Attractor: WorldElement, Codable {
+        let groupIndex: simd_int1
+        public let anchor: simd_float2
+        let rotationSpeed: simd_float1
+        let mass: simd_float1
+        let color: simd_float4
+        
+        public let polarLocation: simd_float2 = .zero
+        public let planarLocation: simd_float2 = .zero
+        public let location: simd_float2 = .zero
+    }
+
     public struct Group: WorldElement, Codable {
         // Group index. Group index is unique among all groups. Index 0 is root group.
         let index: simd_int1
         let superGroupIndex: simd_int1
 
-        public let location: simd_float2
+        public let anchor: simd_float2
         let rotationSpeed: simd_float1
         let scale: simd_float1
         
-        static let root = Group(index: 0, superGroupIndex: 0, location: [0,0], rotationSpeed: 0, scale: 1)
-    }
-    
-    public struct Attractor: WorldElement, Codable {
-        let groupIndex: simd_int1
-        public let location: simd_float2
-        let rotationSpeed: simd_float1
-        let mass: simd_float1
-        let color: simd_float4
+        public let polarLocation: simd_float2 = .zero
+        public let planarLocation: simd_float2 = .zero
+        public let location: simd_float2 = .zero
+
+        static let root = Group(index: 0, superGroupIndex: 0, anchor: [0,0], rotationSpeed: 0, scale: 1)
     }
     
     public struct Particle: WorldElement {
-        /// The particle location
-        public let location: simd_float2
         /// The initial particle location
         /// - If gridLock is true, then location will stick to anchor
         /// - If spring is set, then a force will attract particle to it's anchor
@@ -64,82 +101,24 @@ public struct Model {
         /// The distance to anchor
         let distanceToAnchor: simd_float1 = .zero
         
+        /// The fractional location
+        public let planarLocation: simd_float2
+        /// The location in view
+        public let location: simd_float2 = .zero
+        /// The anchor location in view
+        public let anchorInView: simd_float2 = .zero
+
         // <---
         
         init(location: CGPoint, mass: CGFloat = 1, color: Color = .white) {
-            self.location = location.simd
             self.anchor = location.simd
             self.mass = mass.simd
             self.color = color.simd
+            self.planarLocation = anchor
         }
-    }
-    
-    public struct Settings: Codable {
-        var frame: simd_int1 = 0
-        var width: simd_int1 = 0
-        var height: simd_int1 = 0
-        var radius: simd_float1 = 0
-        
-        var numberOfAttractors: simd_int1 = 0
-        var numberOfGroups: simd_int1 = 0
-        var numberOfParticles: simd_int1 = 0
-        var numberOfParticlesPerGroup: simd_int1 = 0
-        
-        var minimalDistance: simd_float1 = 0
-        var gravityFactor: simd_float1 = 0.1
-        var gravityExponent: simd_float1 = 2
-        
-        var lockParticles: Bool = false
-        var spring: simd_float1 = 0
     }
 }
 
 public extension Model.Particle {
     var position: CGPoint { return CGPoint(x: CGFloat(location.x), y: CGFloat(location.y))}
-}
-
-public extension Model.Attractor {
-
-    func positionned(at frameIndex: Int, in frame: CGRect, in group: [Model.Group]) -> Model.Attractor {
-        let width = Float(frame.width / 2)
-        let height = Float(frame.height / 2)
-        let ray = Float(max(width, height));
-
-        var groupid = groupIndex
-        var polarLocation =  location
-        
-        let rho = polarLocation.x * ray * group[Int(groupid)].scale;
-        let theta = polarLocation.y + Float(frameIndex) * rotationSpeed;
-        var offset: simd_float2 = .zero;
-        
-        offset.x += rho * cos(theta);
-        offset.y += rho * sin(theta);
-
-        // convert location from group to rootGroup
-        while (true) {
-            if (groupid == 0) {
-                break;
-            }
-            
-            polarLocation = group[Int(groupid)].location;
-
-            // Move to upper group
-            groupid = group[Int(groupid)].superGroupIndex;
-            
-            let rho = polarLocation.x * ray * group[Int(groupid)].scale;
-            let theta = polarLocation.y + Float(frameIndex) * group[Int(groupid)].rotationSpeed;
-
-            offset.x += rho * cos(theta);
-            offset.y += rho * sin(theta);
-        }
-        
-        offset.x += width;
-        offset.y += height
-        return Model.Attractor(groupIndex: groupid,
-                                           location: offset,
-                                           rotationSpeed: rotationSpeed,
-                                           mass: mass,
-                                           color: color)
-    }
-
 }

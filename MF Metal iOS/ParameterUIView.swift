@@ -10,7 +10,7 @@ import UIKit
 
 class ParameterUIView: UIView {
     
-    var setParameterAction: TypeErasedParameterProtocol? {
+    var setParameterAction: TypeErasedSetParameterActionProtocol? {
         didSet {
             update()
             if setParameterAction != nil {

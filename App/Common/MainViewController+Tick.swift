@@ -5,7 +5,7 @@
 //  Created by Tristan Leblanc on 11/12/2020.
 //
 
-import Foundation
+import MoofFoundation
 
 extension MainViewController {
     
@@ -34,11 +34,13 @@ extension MainViewController {
         }
         // If metal view is  hidden, we update position and frame index here // TO CHANGE
         if mtkView.isHidden {
-            self.worldBuffers.createOrUpdateBuffers()
-            self.worldBuffers.frameIndex += 1
+            worldBuffers.calculator.computeFrame(drawable: nil, renderSize: view.frame.size * 2, rpd: nil) {
+                //
+            }
         }
         
-        self.particlesView.update() { }
+        self.particlesView.update()
+        
         finishUpdate()
     }
         

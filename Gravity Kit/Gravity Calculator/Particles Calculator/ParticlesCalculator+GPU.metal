@@ -15,21 +15,21 @@ kernel void computeParticlesForces(device Particle* p,
                                  device const Environment* settings,
                                  uint2 gid [[thread_position_in_grid]])
 {
-    
     // Convert the thread position in grid to particle index in particles buffer
     uint particleIndexInGroup = float(gid.x);
     uint particlesGroupIndex = float(gid.y);
     
-    uint i = particlesGroupIndex * settings->numberOfParticlesPerGroup + particleIndexInGroup;
-    float2 particleLocation = p[i].location;
-    float2 anchor = p[i].anchor;
+    uint i = particlesGroupIndex * settings->numberOfParticlesPerThreadGroup + particleIndexInGroup;
+    float2 particleLocation = p[i].planarLocation;
     
-    // TODO: Remove an use fracional location
-    particleLocation.x *= settings->width;
-    particleLocation.y *= settings->height;
-    anchor.x *= settings->width;
-    anchor.y *= settings->height;
+    // Updates anchor in view coordinates
+    
+    p[i].anchorInView = p[i].anchor * settings->radius;
+    p[i].anchorInView.x += settings->width / 2;
+    p[i].anchorInView.y += settings->height / 2;
 
+    // Compute gravity force
+    
     float g = 0;
     float d = 0;
     float2 gVec = 0;
@@ -39,10 +39,10 @@ kernel void computeParticlesForces(device Particle* p,
     // Iterates through attractors to compute gravity vector for particle
     
     for (uint j=0; j<n; j++) {
-        float2 attractorLocation = a[j].location;
+        float2 attractorLocation = a[j].planarLocation;
 
         // Compute distance and gravity
-        d = max(settings->minimalDistance, distance(attractorLocation, particleLocation));
+        d = max(settings->minimalDistance, 400 * distance(attractorLocation, particleLocation));
         g = settings->gravityFactor * a[j].mass / pow(d, settings->gravityExponent);
         
         // Computes unit vector
@@ -53,7 +53,7 @@ kernel void computeParticlesForces(device Particle* p,
     }
     
     // set g to final gravity, computed from gravity vector length
-    g = distance(0, gVec);
+    g = distance(0, gVec) / settings->particlesSensitivity;
 
     p[i].gravityVector = gVec;
     p[i].gravityPolarVector.x = g;
@@ -62,23 +62,27 @@ kernel void computeParticlesForces(device Particle* p,
     // If not locked or spring force < 1, update particle position by applying gravity force
     if (!settings->lockParticles && settings->spring < 1) {
         
-        p[i].location.x += gVec.x * 100 / settings->width;
-        p[i].location.y += gVec.y * 100 / settings->height;
+        p[i].planarLocation.x += gVec.x;
+        p[i].planarLocation.y += gVec.y;
 
         // If spring force > 9, compute spring attraction
         if (settings->spring > 0) {
             //F = k(p – p0)
-            float d = distance(p[i].anchor, p[i].location);
+            float d = distance(p[i].anchor, p[i].planarLocation);
             // Computes unit vector
-            float2 u = (p[i].anchor - p[i].location) / d;
-            p[i].location += u * d * settings->spring;
+            float2 u = (p[i].anchor - p[i].planarLocation) / d;
+            p[i].planarLocation += u * d * settings->spring;
             p[i].distanceToAnchor = d;
         }
         
     } else {
         // TODO: Remove an use fracional location
-        p[i].location = p[i].anchor;
+        p[i].planarLocation = p[i].anchor;
         p[i].distanceToAnchor = 0;
     }
+    
+    p[i].location = p[i].planarLocation * settings->radius;
+    p[i].location.x += settings->width / 2;
+    p[i].location.y += settings->height / 2;
 }
 

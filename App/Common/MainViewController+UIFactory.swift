@@ -9,11 +9,16 @@ import Foundation
 
 extension MainViewController {
     
-    func loadControls() {
+    enum ControlsCategory {
+        case fields
+        case particles
+    }
+    
+    // 1 ---  Create the main buttons box
+    // A simple horizontal box containing main buttons
+    
+    func loadMainControls() {
         
-        // 1 ---  Create the main buttons box
-        // A simple horizontal box containing main buttons
- 
         ActionsBox.loadBox(in: uiContainer, style: .main, title: "Actions".localized,
                            orientation: .horizontal,
                            with: ActionIdentifier.allCases) { action, control in
@@ -22,22 +27,28 @@ extension MainViewController {
             }
         }
         
-        // 2 ---  Create the parameters controls box under the buttons box
-        // A second horizontal box containing sub-boxes for switches, selected param and sliders
-
+        loadParticlesControls()
+        loadFieldsControls()
+    }
+    
+    // 2 ---  Create the parameters controls box under the buttons box
+    // A second horizontal box containing sub-boxes for switches, selected param and sliders
+    
+    func loadParticlesControls() {
+        
         var orientation: MFOrientation = .horizontal
         #if !os(macOS)
         orientation = .vertical
         #endif
         
-        paramControlsBox = ActionsBox.loadBox(in: uiContainer, style: .main, title: "", orientation: orientation)
+        particlesParamControlsBox = ActionsBox.loadBox(in: uiContainer, style: .main, title: "", orientation: orientation)
         
         // <-------- Switches on the left
-                
-        let switchesView = ActionsBox.loadBox(in: paramControlsBox.stack, style: .sub,
+        
+        let switchesView = ActionsBox.loadBox(in: particlesParamControlsBox.stack, style: .sub,
                                               title: "", labelOnLeft: false,
-                                              with: ParameterIdentifier.switches) { action, control in
-            if let appAction = action as? ParameterIdentifier {
+                                              with: ParticlesParametersIdentifier.switches) { action, control in
+            if let appAction = action as? ParticlesParametersIdentifier {
                 let setParamAction = appAction.makeSetParameterAction(from: control)
                 self.executeParameterAction(setParamAction)
             }
@@ -48,7 +59,7 @@ extension MainViewController {
         #else
         switchesView.stack.alignment = .leading
         #endif
-
+        
         switchesView.width = 160
         
         //  -----> Selected parameter in middle <-----
@@ -56,17 +67,17 @@ extension MainViewController {
         //selectedParameterView.removeFromSuperview()
         //uiContainer.removeArrangedSubview(selectedParameterView)
         #if os(macOS)
-        paramControlsBox.stack.addArrangedSubview(selectedParameterView)
+        particlesParamControlsBox.stack.addArrangedSubview(selectedParameterView)
         #else
-
+        
         #endif
-
+        
         // Sliders on the right -------->
         
-        let slidersView = ActionsBox.loadBox(in: paramControlsBox.stack, style: .sub,
+        let slidersView = ActionsBox.loadBox(in: particlesParamControlsBox.stack, style: .sub,
                                              title: "", labelOnLeft: true,
-                                             with: ParameterIdentifier.sliders) { action, control in
-            if let appAction = action as? ParameterIdentifier {
+                                             with: ParticlesParametersIdentifier.sliders) { action, control in
+            if let appAction = action as? ParticlesParametersIdentifier {
                 let setParamAction = appAction.makeSetParameterAction(from: control)
                 self.executeParameterAction(setParamAction)
             }
@@ -77,7 +88,65 @@ extension MainViewController {
         #else
         slidersView.stack.alignment = .trailing
         #endif
-
+    }
+    
+    
+    // 2 ---  Create the parameters controls box under the buttons box
+    // A second horizontal box containing sub-boxes for switches, selected param and sliders
+    
+    func loadFieldsControls() {
         
+        var orientation: MFOrientation = .horizontal
+        #if !os(macOS)
+        orientation = .vertical
+        #endif
+        
+        fieldsParamControlsBox = ActionsBox.loadBox(in: uiContainer, style: .main, title: "", orientation: orientation)
+        
+        // <-------- Switches on the left
+        
+        let switchesView = ActionsBox.loadBox(in: fieldsParamControlsBox.stack, style: .sub,
+                                              title: "", labelOnLeft: false,
+                                              with: FieldsParametersIdentifier.switches) { action, control in
+            if let appAction = action as? FieldsParametersIdentifier {
+                let setParamAction = appAction.makeSetParameterAction(from: control)
+                self.executeParameterAction(setParamAction)
+            }
+        }
+        
+        #if os(macOS)
+        switchesView.stack.alignment = .left
+        #else
+        switchesView.stack.alignment = .leading
+        #endif
+        
+        switchesView.width = 160
+        
+        //  -----> Selected parameter in middle <-----
+        // Move the selectedParameter view ( defined in storyboard ) in the parameters box
+        //selectedParameterView.removeFromSuperview()
+        //uiContainer.removeArrangedSubview(selectedParameterView)
+        #if os(macOS)
+        fieldsParamControlsBox.stack.addArrangedSubview(selectedParameterView)
+        #else
+        
+        #endif
+        
+        // Sliders on the right -------->
+        
+        let slidersView = ActionsBox.loadBox(in: fieldsParamControlsBox.stack, style: .sub,
+                                             title: "", labelOnLeft: true,
+                                             with: FieldsParametersIdentifier.sliders) { action, control in
+            if let appAction = action as? FieldsParametersIdentifier {
+                let setParamAction = appAction.makeSetParameterAction(from: control)
+                self.executeParameterAction(setParamAction)
+            }
+        }
+        
+        #if os(macOS)
+        slidersView.stack.alignment = .right
+        #else
+        slidersView.stack.alignment = .trailing
+        #endif
     }
 }

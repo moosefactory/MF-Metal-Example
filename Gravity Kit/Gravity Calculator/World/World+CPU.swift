@@ -35,7 +35,7 @@ class World {
         var particles = [Model.Particle]()
         var attractors = [Model.Attractor]()
         var groups = [Model.Group]()
-        var settings = Model.Settings()
+        var settings = Model.Environment()
     }
     
     // MARK: - Properties
@@ -44,7 +44,7 @@ class World {
 
     var updateFlag = UpdateFlag()
 
-    var settings: Model.Settings {
+    var settings: Model.Environment {
         get { objects.settings }
         set {
             objects.settings = newValue
@@ -70,17 +70,18 @@ class World {
     /// Finally each group as a random number of attractors between 1 and 20
     init() {
         makeWorld()
+        makeParticles()
     }
     
     ///  Create particles on a grid
     func makeParticles() {
         var newParticles = [Model.Particle]()
-        let di = CGFloat(1) / CGFloat(particlesGridSize)
-        let dj = CGFloat(1) / CGFloat(particlesGridSize)
+        let di = CGFloat(2) / CGFloat(particlesGridSize)
+        let dj = CGFloat(2) / CGFloat(particlesGridSize)
         
         for i in 0..<particlesGridSize {
             for j in 0..<particlesGridSize {
-                let loc = CGPoint(x: di / 2 + di * CGFloat(i) , y: dj / 2 + dj * CGFloat(j) )
+                let loc = CGPoint(x: di / 2 + di * CGFloat(i) - 1, y: dj / 2 + dj * CGFloat(j) - 1)
                 let particle = Model.Particle(location: loc)
                 newParticles.append(particle)
             }
@@ -137,13 +138,14 @@ class World {
         let rho = CGFloat.random()
         let theta = CGFloat.randomAngle()
         let rotSpeed = sqrt(CGFloat.randomAngle()) / 400
-        let scale = CGFloat(group.scale) * (0.6 + CGFloat.random() * 0.2)
+        
+        let scale = 0.6 + CGFloat.random() * 0.2
         
         // We increment index before creating the group - Index 0 is reserved for the root group
         index += 1
         return Model.Group(index: index,
                            superGroupIndex: group.index,
-                           location:  [Float(rho), Float(theta)],
+                           anchor: [Float(rho), Float(theta)],
                            rotationSpeed: Float(rotSpeed),
                            scale: Float(scale))
     }
@@ -168,7 +170,7 @@ class World {
             let a = 0
             
             let attractor = Model.Attractor(groupIndex: group.index,
-                                            location: [Float(rho), Float(theta)],
+                                            anchor: [Float(rho), Float(theta)],
                                             rotationSpeed: Float(rotSpeed),
                                             mass: Float( 1 + CGFloat.random() * 1000),
                                             color: [Float(r), Float(g), Float(b), Float(a)])

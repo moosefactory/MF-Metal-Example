@@ -14,7 +14,8 @@ class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet var uiContainer: UIStackView!
     
-    var paramControlsBox: ActionsBox!
+    var particlesParamControlsBox: ActionsBox!
+    var fieldsParamControlsBox: ActionsBox!
     @IBOutlet var selectedParameterView: ParameterUIView!
 
     @IBOutlet var fpsLabel: UILabel!
@@ -38,7 +39,7 @@ class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
     // The world adapted to GPU - it basically holds raw buffers with world element,
     // and adds the notion of time and space ( Renderer size and frame index )
     lazy var worldBuffers: WorldBuffers = {
-        return WorldBuffers(world: world, for: MTLCreateSystemDefaultDevice()!)
+        return (try? WorldBuffers(world: world, for: MTLCreateSystemDefaultDevice()!))!
     }()
 
     override func viewDidLoad() {
@@ -49,8 +50,10 @@ class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
         makeGravityFieldsView()
         makeParticlesView()
         
-        loadControls()
-        
+        loadMainControls()
+
+        fieldsParamControlsBox.isHidden = true
+        particlesParamControlsBox.isHidden = true
         installGestures()
         
         uiContainer.contentScaleFactor = 0.3
@@ -66,9 +69,7 @@ class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
                 
         mtkView.renderedClosure = { frame in
             self.mtkView.isPaused = true
-            self.particlesView?.update {
-                
-            }
+            self.particlesView?.update()
             self.mtkView.isPaused = false
             self.world.updateFlag = []
         }
@@ -78,7 +79,6 @@ class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
     func makeParticlesView() {
         // Creates the Particles view between the metal view and the controls box
         particlesView = ParticlesView(frame: view.bounds, world: worldBuffers)
-        particlesView.isHidden = true
         view.insertSubview(particlesView, belowSubview: uiContainer)
     }
     
@@ -89,7 +89,8 @@ class iOSViewController: UIViewController, UIGestureRecognizerDelegate {
     }
  
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
-        paramControlsBox.isHidden = !paramControlsBox.isHidden
+        particlesParamControlsBox.isHidden = true
+        fieldsParamControlsBox.isHidden = true
     }
 
     func updateSettings() {

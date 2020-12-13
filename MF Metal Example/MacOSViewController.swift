@@ -18,7 +18,8 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     /// Holds the main buttons
     var controlsView: ActionsBox!
     
-    var paramControlsBox: ActionsBox!
+    var particlesParamControlsBox: ActionsBox!
+    var fieldsParamControlsBox: ActionsBox!
     @IBOutlet var selectedParameterView: ParameterView!
 
     var mtkView: GraviFieldsView!
@@ -37,11 +38,11 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     // The world adapted to GPU - it basically holds raw buffers with world element,
     // and adds the notion of time and space ( Renderer size and frame index )
     lazy var worldBuffers: WorldBuffers = {
-        return WorldBuffers(world: world, for: MTLCreateSystemDefaultDevice()!)
+        return (try? WorldBuffers(world: world, for: MTLCreateSystemDefaultDevice()!))!
     }()
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        mtkView.calculator = nil
+//        mtkView.fieldsTextureCalculator = nil
     }
     
     func draw(in view: MTKView) {
@@ -52,12 +53,14 @@ class MacOSViewController: NSViewController, MTKViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadControls()
+        loadMainControls()
         
-        view.layer?.backgroundColor = CGColor(red: 0.12, green: 0, blue: 0, alpha: 1)
+        view.layer?.backgroundColor = CGColor(red: 0.08, green: 0, blue: 0, alpha: 1)
 
         makeGravityFieldsView()
         makeParticlesView()
+        particlesParamControlsBox.isHidden = true
+        fieldsParamControlsBox.isHidden = true
     }
     
     func makeGravityFieldsView() {

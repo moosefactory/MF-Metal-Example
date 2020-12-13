@@ -5,27 +5,14 @@
 //  Created by Tristan Leblanc on 09/12/2020.
 //
 
-import Foundation
 import MoofFoundation
 
-class ParticlesCalculator: MetalCalculator {
-    
-    enum Errors: String, Error {
-        case particlesBufferEmpty
-        case attractorsBufferEmpty
-        case settingsBufferEmpty
-    }
-    
-    // Swift Model ( CPU )
-    var world: WorldBuffers
-            
+class ParticlesCalculator: WorldCalculator {
+                
     var numberOfParticlesPerGroup: Int = 0
     
-    // MARK: - Init
-    
-    public init(world: WorldBuffers) throws {
-        self.world = world
-        try super.init(device: world.device, computeFunctionName: "computeParticlesForces", drawable: nil)
+    init(world: WorldBuffers) throws {
+        try super.init(world: world, functionName: "computeParticlesForces")
     }
     
     /// Encode command
@@ -33,6 +20,7 @@ class ParticlesCalculator: MetalCalculator {
     /// Render pass descriptor is used for more complex cases ( With vertexes ).
     /// In this example, we don't need it. We simply compute pixels color, and move onscreen at the end
     override func encodeCommand(commandBuffer: MTLCommandBuffer, rpd: MTLRenderPassDescriptor? = nil) throws {
+        
         let nParticles = world.numberOfParticles
         guard nParticles > 0 else {
             throw Errors.particlesBufferEmpty
@@ -63,7 +51,7 @@ class ParticlesCalculator: MetalCalculator {
         let threadGroupsSize = MTLSize(width: particlesPerGroup, height: numberOfParticleGroups, depth: 1)
         
         // Set the number of particles per group in our environment structure
-        world.settingsArray[0].numberOfParticlesPerGroup = particlesPerGroup.simd
+        world.settingsArray[0].numberOfParticlesPerThreadGroup = particlesPerGroup.simd
         
         // Pass buffers to GPU
         computeEncoder.setBuffer(world.particlesBuffer, offset: 0, index: 0)

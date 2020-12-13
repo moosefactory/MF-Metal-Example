@@ -10,7 +10,7 @@ import Cocoa
 
 class ParameterView: ActionsBox {
     
-    var setParameterAction: TypeErasedParameterProtocol? {
+    var setParameterAction: TypeErasedSetParameterActionProtocol? {
         didSet {
             update()
             if setParameterAction != nil {

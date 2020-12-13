@@ -45,6 +45,39 @@ extension World {
         }
         get { return CGFloat(settings.minimalDistance) }
     }
+
+    
+    var fieldsSensitivity: CGFloat {
+        set {
+            settings.fieldsSensitivity = newValue.simd
+            updateFlag = .settings
+        }
+        get { return CGFloat(settings.fieldsSensitivity) }
+    }
+    
+    var particlesSensitivity: CGFloat {
+        set {
+            settings.particlesSensitivity = newValue.simd
+            updateFlag = .settings
+        }
+        get { return CGFloat(settings.particlesSensitivity) }
+    }
+    
+    var scale: CGFloat {
+        set {
+            settings.scale = newValue.simd
+            updateFlag = .settings
+        }
+        get { return CGFloat(settings.scale) }
+    }
+
+    var invertColors: Bool {
+        set {
+            settings.invertColors = newValue
+            updateFlag = .settings
+        }
+        get { return Bool(settings.invertColors) }
+    }
     
     var lockParticles: Bool {
         set {

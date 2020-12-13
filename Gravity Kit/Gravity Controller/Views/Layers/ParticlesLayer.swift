@@ -24,13 +24,13 @@ class ParticlesLayer: CALayer {
         }
     }
     
-    var showParticles: Bool = true {
+    var showParticles: Bool = false {
         didSet {
             update()
         }
     }
     
-    var showAttractors: Bool = true {
+    var showAttractors: Bool = false {
         didSet {
             update()
         }
@@ -89,7 +89,7 @@ class ParticlesLayer: CALayer {
 
         for i in 0..<world.numberOfParticles {
             let p = world.particlesArray[i]
-            var c = p.position.fromPositiveFractional(in: bounds)
+            var c = p.position / 2//.fromPositiveFractional(in: bounds)
             
             let g = p.gravityVector
             
@@ -115,7 +115,7 @@ class ParticlesLayer: CALayer {
             let da = CGFloat(p.distanceToAnchor)
 
             if drawSpring &&  da > 0.001 {
-                var k = CGPoint(simd: p.anchor).fromPositiveFractional(in: bounds)
+                var k = CGPoint(simd: p.anchorInView) / 2 //.fromPositiveFractional(in: bounds)
                 #if os(macOS)
                 k.y = bounds.height - k.y
                 #endif
@@ -144,6 +144,7 @@ class ParticlesLayer: CALayer {
         for i in 0..<world.numberOfAttractors {
             let a = world.attractorsArray[i]
             var c = a.position  / 2
+            
             // We flip coordinates on MacOS
             #if os(macOS)
             c.y = bounds.height - c.y

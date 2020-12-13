@@ -52,14 +52,21 @@ kernel void computeGravityFields(texture2d<float, access::write> output [[textur
     }
     
     // set g to final gravity, computed from gravity vector length
-    g = distance(0, gVec);
+    g = distance(0, gVec) / settings->fieldsSensitivity;
     
     // We base our scale on a 2000 pixels circle
     float scale = 1000 / settings->radius;
     
-    color.r = min(1.0f, (scale * 0.6 * ( color.r / g)));
-    color.g = min(1.0f, (scale * 0.4 * ( color.g / g) * ( color.g / g)));
-    color.b = 0;
+    if (settings->invertColor) {
+        color.r = 1 - min(1.0f, (scale * 0.6 * ( color.r / g)));
+        color.b = 1 - min(1.0f, (scale * 0.4 * ( color.g / g) * ( color.g / g)));
+        color.g = 0;
+    }
+    else {
+        color.r = min(1.0f, (scale * 0.6 * ( color.r / g)));
+        color.g = min(1.0f, (scale * 0.4 * ( color.g / g) * ( color.g / g)));
+        color.b = 0;
+    }
     color.a = 1;
     output.write(color, gid);
 }

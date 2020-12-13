@@ -22,6 +22,10 @@ class WorldBuffers {
         set { world.updateFlag = newValue }
     }
     
+    // Aggregate Calculator
+    
+    var calculator: AggregateCalculator!
+    
     // MTL Buffers
     
     private(set) var particlesBuffer: MTLBuffer!
@@ -29,6 +33,7 @@ class WorldBuffers {
     private(set) var attractorsBuffer: MTLBuffer!
     private(set) var settingsBuffer: MTLBuffer!
     
+    var numberOfAttractorsGroups: Int = 0
     var numberOfAttractors: Int = 0
     var numberOfParticles: Int = 0
     
@@ -69,21 +74,30 @@ class WorldBuffers {
         groupsBuffer.contents().assumingMemoryBound(to: Model.Group.self)
     }
     
-    var settingsBufferSize: Int { return MemoryLayout<Model.Settings>.stride }
+    var settingsBufferSize: Int { return MemoryLayout<Model.Environment>.stride }
     
-    var settingsArray: UnsafeMutablePointer<Model.Settings> {
-        settingsBuffer.contents().assumingMemoryBound(to: Model.Settings.self)
+    var settingsArray: UnsafeMutablePointer<Model.Environment> {
+        settingsBuffer.contents().assumingMemoryBound(to: Model.Environment.self)
     }
 
+    var commandQueue: MTLCommandQueue
+    
     // MARK: -  Initialisation
     
-    init(world: World, for device: MTLDevice) {
+    init(world: World, for device: MTLDevice) throws {
         self.device = device
+        self.commandQueue = try device.safeMakeCommandQueue()
         self.world = world
+        self.calculator = AggregateCalculator(world: self)
     }
     
     // Create buffers. This function will be called on creation and or when number of elements is changed
-    func createOrUpdateBuffers() {
+    //
+    // Returns true if buffer were recreated.
+    
+    func createOrUpdateBuffers() -> Bool {
+        
+        var out = false
         
         //guard !updateFlag.isEmpty else { return }
 
@@ -101,10 +115,9 @@ class WorldBuffers {
        if updateFlag.contains(.attractors) {
             groupsBuffer = device.tryToMakeBuffer(length: groupsBufferSize)
             attractorsBuffer = device.tryToMakeBuffer(length: attractorsBufferSize)
-            let rendererFrame = CGRect(origin: .zero, size: rendererSize)
 
             objects.attractors.enumerated().forEach { index, attractor in
-                attractorsArray[index] = attractor.positionned(at: frameIndex, in: rendererFrame, in: objects.groups)
+                attractorsArray[index] = attractor
             }
 
             objects.groups.enumerated().forEach { index, group in
@@ -112,67 +125,49 @@ class WorldBuffers {
             }
             
             // Store attractors buffer size for access from outside
-            // ( world is private, and objects count may differ from buffer size
+            // (world objects count may differ from buffer size)
             numberOfAttractors = world.objects.attractors.count
-       } else {
-            updateAttractorsPosition()
+            numberOfAttractorsGroups = world.objects.groups.count
+            out = true
        }
         
         // Particles changed
         
-        if !updateFlag.isEmpty {
+        if updateFlag.contains(.particles) {
             particlesBuffer = device.tryToMakeBuffer(length: particlesBufferSize)
             objects.particles.enumerated().forEach { index, particle in
                 particlesArray[index] = particle
-            }
-            
+            }            
             numberOfParticles = world.objects.particles.count
-            
-            // Reposition elements from frameIndex
-            //updateParticlesPosition()
+            out = true
         }
+        
+        return out
     }
     
     //MARK: - Buffer updates
     
     /// We add renderer properties to World settings
     func updateEnvironment() {
-        settingsArray[0] = Model.Settings(frame: frameIndex.simd,
+        settingsArray[0] = Model.Environment(frame: frameIndex.simd,
                                           width: Int32(rendererSize.width),
                                           height: Int32(rendererSize.height),
                                           radius: rendererSize.diagonal.simd,
                                           numberOfAttractors: objects.attractors.count.simd,
                                           numberOfGroups: objects.groups.count.simd,
                                           numberOfParticles: objects.particles.count.simd,
-                                          numberOfParticlesPerGroup: 0,
+                                          numberOfParticlesPerThreadGroup: 0,
+                                          numberOfAttractorsPerThreadGroup: 0,
                                           minimalDistance: objects.settings.minimalDistance,
                                           gravityFactor: objects.settings.gravityFactor,
                                           gravityExponent: objects.settings.gravityExponent,
+                                          
+                                          scale: objects.settings.scale,
+                                          fieldsSensitivity: objects.settings.fieldsSensitivity,
+                                          invertColors: objects.settings.invertColors,
+
                                           lockParticles: objects.settings.lockParticles,
                                           spring: objects.settings.spring)
 
     }
-    
-    func updateAttractorsPosition() {
-        let rendererFrame = CGRect(origin: .zero, size: rendererSize)
-        objects.attractors.enumerated().forEach { (index, attractor) in
-            attractorsArray[index] = attractor.positionned(at: frameIndex, in: rendererFrame, in: objects.groups)
-        }
-    }
-    
-    func updateParticlesPosition() {
-
-//        let rendererFrame = CGRect(origin: .zero, size: rendererSize)
-//        objects.particles.enumerated().forEach { index, particle in
-//            let loc = CGPoint(simd: particle.location).fromPositiveFractional(in: rendererFrame)
-//            let newParticle = Model.Particle(location: loc.simd,
-//                                             mass: particle.mass,
-//                                             color: particle.color,
-//                                             gravityVector: particle.gravityVector,
-//                                             gravityPolarVector: particle.gravityPolarVector)
-//
-//            particlesArray[index] = newParticle
-//        }
-    }
-
 }

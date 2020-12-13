@@ -56,7 +56,7 @@ protocol ParameterIdentifierProtocol: ActionIdentifierProtocol {
     var max: Double { get }
     var `default`: Double { get }
     #if os(macOS)
-    func makeSetParameterAction(from control: NSControl) -> TypeErasedParameterProtocol
+    func makeSetParameterAction(from control: NSControl) -> TypeErasedSetParameterActionProtocol
     #endif
 }
 
@@ -64,14 +64,14 @@ protocol ParameterIdentifierProtocol: ActionIdentifierProtocol {
 
 /// We use TypeErasedParameterProtocol to store values sent by controls
 /// We won't be able to cast ParameterProtocol, since they have an associated type
-protocol TypeErasedParameterProtocol {
-    var identifier: ParameterIdentifier { get set }
+protocol TypeErasedSetParameterActionProtocol {
+    var identifier: ParameterIdentifierProtocol { get set }
     
     var typeErasedValue: Any? { get }
     var stringValue: String { get }
 }
 
-extension TypeErasedParameterProtocol {
+extension TypeErasedSetParameterActionProtocol {
     var cgFloat: CGFloat { return CGFloat(typeErasedValue as? Double ?? 0)}
     var double: Double { return typeErasedValue as? Double ?? 0}
     var int: Int { return typeErasedValue as? Int ?? 0 }
@@ -82,7 +82,7 @@ extension TypeErasedParameterProtocol {
 ///
 /// - value is a transient property that is used to transport value from control to parameter
 /// - min, max and default are values that will be used to build control
-protocol SetParameterProtocol: TypeErasedParameterProtocol {
+protocol SetParameterActionProtocol: TypeErasedSetParameterActionProtocol {
     associatedtype ValueType
     
     var value: ValueType { get set }
@@ -91,7 +91,7 @@ protocol SetParameterProtocol: TypeErasedParameterProtocol {
     var `default`: ValueType? { get set }
 }
 
-struct SetParameterAction<T>: SetParameterProtocol {
+struct SetParameterAction<T>: SetParameterActionProtocol {
     
     var stringValue: String {
         switch value {
@@ -110,7 +110,7 @@ struct SetParameterAction<T>: SetParameterProtocol {
     
     typealias ValueType = T
 
-    var identifier: ParameterIdentifier
+    var identifier: ParameterIdentifierProtocol
 
     var typeErasedValue: Any? { return value }
     var value: T
@@ -118,7 +118,7 @@ struct SetParameterAction<T>: SetParameterProtocol {
     var max: T?
     var `default`: T?
     
-    init(identifier: ParameterIdentifier, value: T) {
+    init(identifier: ParameterIdentifierProtocol, value: T) {
         self.identifier = identifier
         self.value = value
         self.min = identifier.min as? T
